@@ -17,7 +17,7 @@
         </el-tooltip>
     </el-menu>
     <div class = "content-container">
-      <HelloWorld></HelloWorld>
+      <NewsMP></NewsMP>
     </div>
   </div>
 </template>
@@ -27,15 +27,17 @@
 import HelloWorld from './components/HelloWorld.vue'
 import { getTabularDataset } from '@/communication/communicator.js'
 import { Dataset } from '@/dataset/dataset.js'
+import NewsMP from './components/NewsMP.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  },
+    HelloWorld,
+    NewsMP
+},
   data() {
     return {
-      appName: "Tree Recommendation",
+      appName: "News Reader",
       operationArray: ['#operation1', '#operation2'],
       activeIndex: '',
       loadingData: true

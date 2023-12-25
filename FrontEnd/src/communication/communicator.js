@@ -12,8 +12,21 @@ export function getTabularDataset(tabularDataList, getTabularDataCallback) {
     })
     .then((res) => {
         let tabularDatasetList = res['data']['data']
-        console.log('tabularDatasetList', tabularDatasetList)
+        // console.log('tabularDatasetList', tabularDatasetList)
         getTabularDataCallback(tabularDatasetList)
     })
 }
-
+export function getGPTMp(input_text, mp_level,getGPTMpCallback) {
+    let formData = {"input_text": input_text,"mp_level":mp_level}
+    axios({
+        methods: 'get',
+        url: server_address + '/GptMp',
+        params: formData,
+        timeout: 50000
+    })
+    .then((res) => {
+        let GptMpList = res['data']['data']
+        console.log('GPTMp in commu', GptMpList)
+        getGPTMpCallback(GptMpList)
+    })
+}

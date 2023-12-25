@@ -1,5 +1,5 @@
 {
-  "name": "image-hiding-system",
+  "name": "news-reading-system",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -31,12 +31,26 @@
     "root": true,
     "env": {
       "node": true
+      
     },
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended"
+      
     ],
-    "rules": {},
+    "globals": {
+      "d3":true,
+      "sysDatasetObj":true
+    },
+    "rules": {
+      "no-console":"warn",
+      "no-alert":"warn",
+      "no-unused-vars":"warn",
+      "vue/valid-v-for":"warn"
+      
+      
+
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
