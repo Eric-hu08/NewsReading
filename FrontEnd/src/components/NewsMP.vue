@@ -17,7 +17,7 @@
             <el-slider
                 class="MpSlider"
                 v-model="mp_level_input"
-                :step="5"
+                :step="10"
                 show-stops
                 show-input>
             </el-slider>
