@@ -31,25 +31,21 @@
     "root": true,
     "env": {
       "node": true
-      
     },
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended"
-      
     ],
     "globals": {
-      "d3":true,
-      "sysDatasetObj":true
+      "d3": true,
+      "sysDatasetObj": true,
+      "$": true
     },
     "rules": {
-      "no-console":"warn",
-      "no-alert":"warn",
-      "no-unused-vars":"warn",
-      "vue/valid-v-for":"warn"
-      
-      
-
+      "no-console": "warn",
+      "no-alert": "warn",
+      "no-unused-vars": "warn",
+      "vue/valid-v-for": "warn"
     },
     "parserOptions": {
       "parser": "babel-eslint"

@@ -24,7 +24,7 @@
             <el-button type="primary" round @click="beginMp" class="MpButton" style="transform: translate(-20,0);">Generate</el-button>
         </div>
         <div class="MpShow" v-loading="LoadingMp" element-loading-text="Waiting GPT answering">
-            <span class="MpSpan">{{ MpContent }}</span>
+            <span class="MpSpan" style="white-space:pre-wrap;">{{ MpContent }}</span>
         </div>
     </div>
 
@@ -44,7 +44,7 @@ export default {
         return{
             new_input: '',
             mp_level_input: 0,
-            MpContent: '',
+            MpContent: 'hello',
             LoadingMp: false,
         }
     },
@@ -140,7 +140,7 @@ color: #42b983;
     }
     .block{
         position: absolute;
-        top: 50%;
+        top: 80%;
         left: 50%;
         bottom: 0%;
         right: 0%;
@@ -153,9 +153,9 @@ color: #42b983;
         }        
         .MpButton{
             position: absolute;
-            top: 10%;
+            top: 15%;
             left: 45%;
-            bottom: 85%;
+            bottom: 70%;
             right: 45%;
         }
 
@@ -165,7 +165,7 @@ color: #42b983;
         position: absolute;
         top: 10%;
         left: 51%;
-        bottom: 50%;
+        bottom: 20%;
         right: 5%;
     }
 }

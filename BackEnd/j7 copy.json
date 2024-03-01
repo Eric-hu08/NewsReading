@@ -1,0 +1,596 @@
+{
+    "name": "In Tokyo, Rescuing the Residential Spaceship That Fell to Earth",
+    "type": "title",
+    "index": 0,
+    "children": [
+        {
+            "name": " Fifty years ago, the Nakagin Capsule Tower was hailed as a marvel of organic architecture",
+            "type": "C",
+            "index": 1,
+            "children": [
+                {
+                    "name": "Now its legacy lives on through 23 orphaned capsules",
+                    "type": "($E_O). ",
+                    "index": 1,
+                    "children": null,
+                    "name_less": "Legacy preserved by 23 remaining capsules."
+                },
+                {
+                    "name": "In 1972, residents of Tokyo looked up to see something extraordinary looming over downtown",
+                    "type": "($E_O). ",
+                    "index": 1,
+                    "children": null,
+                    "name_less": "Tokyo residents saw an unusual sight over downtown in 1972."
+                },
+                {
+                    "name": "It looked like something out of a science-fiction film \u2014 a futuristic tower composed of 140 detachable capsules, each suitable for a single resident and with a porthole looking out, like a pile of eyes fixed on the city",
+                    "type": "($E_O). ",
+                    "index": 1,
+                    "children": null,
+                    "name_less": "Futuristic tower with 140 individual capsules for residents offering city views."
+                },
+                {
+                    "name": "With its modular design and minimal aesthetics, the 13-story Nakagin Capsule Tower was a marvel of 20th-century design intended to express a postwar Japanese theory of architecture as a living organism",
+                    "type": "($E_O). ",
+                    "index": 1,
+                    "children": null,
+                    "name_less": "The Nakagin Capsule Tower was a 20th-century architectural marvel with a modular, minimalist design, embodying a postwar Japanese concept of architecture as a living entity."
+                },
+                {
+                    "name": "Metabolism, as explained by the architect Kisho Kurokawa, who designed the tower, envisioned cities and buildings with modular parts that could be attached and detached as needed, just as some organisms grow new appendages",
+                    "type": "($E_O). ",
+                    "index": 1,
+                    "children": null,
+                    "name_less": "Kisho Kurokawa's Metabolism design philosophy envisions cities and buildings with interchangeable modular parts similar to how organisms regenerate appendages."
+                },
+                {
+                    "name": "\u201cIf you replace the capsules every 25 years, it could last 200 years,\u201d Kurokawa said in an interview in 2007, the year he died",
+                    "type": "($E_E). ",
+                    "index": 1,
+                    "children": null,
+                    "name_less": "Kurokawa stated that with capsule replacement every 25 years, it could endure for 200 years."
+                },
+                {
+                    "name": "\u201cIt\u2019s recyclable. I designed it as sustainable architecture\u201d",
+                    "type": "($E_E). ",
+                    "index": 1,
+                    "children": null,
+                    "name_less": "The design is sustainable and recyclable."
+                },
+                {
+                    "name": "Each capsule measured eight by 13 feet and was affixed to one of two central towers of reinforced concrete",
+                    "type": "($E_O). ",
+                    "index": 1,
+                    "children": null,
+                    "name_less": "Capsules sized 8x13 feet were attached to two reinforced concrete towers."
+                }
+            ],
+            "name_less": "The Nakagin Capsule Tower was considered an architectural wonder 50 years ago."
+        },
+        {
+            "name": "But over the years, many of them were abandoned and left to decay, and residents finally decided to let the building die rather than save it",
+            "type": "C",
+            "index": 2,
+            "children": [
+                {
+                    "name": "Lamenting its fate, The New York Times called the Nakagin tower \u201can architectural tragedy\u201d",
+                    "type": "($E_E). ",
+                    "index": 2,
+                    "children": null,
+                    "name_less": "The New York Times described the Nakagin tower as an \"architectural tragedy.\""
+                }
+            ],
+            "name_less": "Residents chose to not preserve an increasingly decaying building."
+        },
+        {
+            "name": "After years of delays, the Nakagin Capsule Tower was dismantled in late 2022, its 140 prefabricated capsules plucked from their sockets one by one and discarded",
+            "type": "C",
+            "index": 3,
+            "children": [
+                {
+                    "name": "Most were unsalvageable",
+                    "type": "($E_O). ",
+                    "index": 3,
+                    "children": null,
+                    "name_less": "Many were beyond repair."
+                },
+                {
+                    "name": "But 23 pods managed to survive \u2014 pieces with no puzzle",
+                    "type": "($E_O). ",
+                    "index": 3,
+                    "children": null,
+                    "name_less": "23 pods remained intact without a clear purpose."
+                }
+            ],
+            "name_less": "The Nakagin Capsule Tower was dismantled in late 2022 after a series of delays."
+        },
+        {
+            "name": "Now, after some refurbishment, these orphan capsules are embarking on a surprising second life, pollinating new architectural ideas across Japan and the world, where they\u2019re being repurposed into art spaces, museum pieces and even holiday accommodations",
+            "type": "C",
+            "index": 4,
+            "children": [
+                {
+                    "name": "\u201cEven though we couldn\u2019t save the building, Kisho Kurokawa\u2019s original idea of capsules as interchangeable, mobile elements gave us the impetus to preserve them,\u201d said Tatsuyuki Maeda, a former Nakagin resident and now the head of the Nakagin Capsule Tower Building Preservation and Regeneration Project",
+                    "type": "($E_E). ",
+                    "index": 4,
+                    "children": null,
+                    "name_less": "Preservation efforts for the Nakagin Capsule Tower are inspired by Kisho Kurokawa's design of mobile, interchangeable capsules, led by former resident Tatsuyuki Maeda."
+                },
+                {
+                    "name": "Mr. Maeda, 56, fell in love with the tower when he first saw it as a boy, imagining it to be a base for the superhero of Japan\u2019s \u201cUltraman\u201d science-fiction franchise",
+                    "type": "($E_P). ",
+                    "index": 4,
+                    "children": null,
+                    "name_less": "Mr. Maeda has been fascinated with the tower since childhood, associating it with Ultraman's base."
+                },
+                {
+                    "name": "\u201cI felt drawn to its unique exterior,\u201d he said",
+                    "type": "($E_P). ",
+                    "index": 4,
+                    "children": null,
+                    "name_less": "He was attracted to its distinctive appearance."
+                },
+                {
+                    "name": "\u201cI wanted to look out through one of those round windows someday\u201d",
+                    "type": "($E_P). ",
+                    "index": 4,
+                    "children": null,
+                    "name_less": "I aspire to peer through a round window one day."
+                },
+                {
+                    "name": "Since the demolition, Mr. Maeda has fielded requests from wealthy people to buy the pods, but they\u2019re not for sale",
+                    "type": "($E_O). ",
+                    "index": 4,
+                    "children": null,
+                    "name_less": "Mr. Maeda has received purchase inquiries for pods from wealthy individuals since the demolition, but he is not selling them."
+                },
+                {
+                    "name": "Putting these Metabolist castaways in the care of museums and commercial facilities was the best solution",
+                    "type": "($E_O). ",
+                    "index": 4,
+                    "children": null,
+                    "name_less": "Museums and commercial facilities became ideal caretakers for the Metabolist castaways."
+                },
+                {
+                    "name": "\u201cThe concept was that when a capsule became old, it would be replaced with a new one,\u201d he said",
+                    "type": "($E_E). ",
+                    "index": 4,
+                    "children": null,
+                    "name_less": "Capsules are designed to be replaced when they age."
+                },
+                {
+                    "name": "\u201cThis meant that the capsule itself could be moved. By exhibiting capsules around the world, I want as many people as possible to understand this concept\u201d",
+                    "type": "($E_E). ",
+                    "index": 4,
+                    "children": null,
+                    "name_less": "The capsule can be relocated globally to spread awareness of its concept."
+                }
+            ],
+            "name_less": "Orphan capsules are being reused as art spaces, museums, and holiday lodgings worldwide."
+        },
+        {
+            "name": "All 23 have been reborn \u2014 their asbestos removed, their insides and outsides repaired and repainted, and in some cases new furnishings installed",
+            "type": "C",
+            "index": 5,
+            "children": [
+                {
+                    "name": "Now they\u2019re finding a new purpose as messengers from a bygone design era",
+                    "type": "($E_O). ",
+                    "index": 5,
+                    "children": null,
+                    "name_less": "Architectural elements are being repurposed as representatives of past design trends."
+                },
+                {
+                    "name": "An Osaka steel company placed one on a trailer undercarriage and has been displaying it at trade shows in Tokyo, Nagoya and Osaka to promote its design brand",
+                    "type": "($E_O). ",
+                    "index": 5,
+                    "children": null,
+                    "name_less": "A steel company from Osaka showcases its design brand by displaying a product on a trailer at trade fairs in Tokyo, Nagoya, and Osaka."
+                },
+                {
+                    "name": "Another capsule was acquired by the Museum of Modern Art, Wakayama, which Kurokawa\u2019s studio designed in 1990",
+                    "type": "($E_O). ",
+                    "index": 5,
+                    "children": null,
+                    "name_less": "The Museum of Modern Art, Wakayama, acquired a capsule designed by Kurokawa's studio."
+                },
+                {
+                    "name": "Kurokawa\u2019s own capsule found its way to the San Francisco Museum of Modern Art",
+                    "type": "($E_O). ",
+                    "index": 5,
+                    "children": null,
+                    "name_less": "Capsule designed by Kurokawa is now in SFMOMA."
+                },
+                {
+                    "name": "\u201cIt is hard to find Metabolist drawings available, so when we heard that the Nakagin Tower residents were unsuccessful in their bid to restore the towers and it was going to be demolished, we decided to go and see the demolition and the saved towers to begin a conversation,\u201d said Jennifer Dunlop Fletcher, the Helen Hilton Raiser Curator of Architecture and Design at SFMOMA",
+                    "type": "($E_E). ",
+                    "index": 5,
+                    "children": null,
+                    "name_less": "SFMOMA's curator, Jennifer Dunlop Fletcher, says they visited the Nakagin Tower's demolition after restoration bids failed to start a dialogue about preserving Metabolist architecture."
+                }
+            ],
+            "name_less": "23 structures have been renovated and asbestos removed."
+        },
+        {
+            "name": "Erected on the edge of the upscale Ginza district, Kurokawa\u2019s capsule tower reimagined minimal modern living",
+            "type": "C",
+            "index": 6,
+            "children": [
+                {
+                    "name": "Each capsule was just large enough for a bed, closet, workstation, bathroom and a porthole window",
+                    "type": "($E_O). ",
+                    "index": 6,
+                    "children": null,
+                    "name_less": "Capsule accommodations provide essential living amenities in a compact space."
+                },
+                {
+                    "name": "Deluxe versions came with a built-in Sony stereo, tape deck, color TV and digital clock",
+                    "type": "($E_O). ",
+                    "index": 6,
+                    "children": null,
+                    "name_less": "Deluxe versions featured integrated entertainment systems and a digital clock."
+                },
+                {
+                    "name": "At first, the pods were aimed at busy salarymen looking for a pied-\u00e0-terre downtown rather than a long commute",
+                    "type": "($E_O). ",
+                    "index": 6,
+                    "children": null,
+                    "name_less": "Capsule hotels target working professionals needing temporary city accommodation."
+                },
+                {
+                    "name": "\u201cThis \u2018capsule\u2019 will provide a good living space and a secluded environment in which to select and evaluate business data,\u201d proclaimed an early sales brochure, advertising features like housekeepers, typewriters and calculators",
+                    "type": "($E_O). ",
+                    "index": 6,
+                    "children": null,
+                    "name_less": "The brochure advertised a capsule as a comfortable, private space equipped for business data analysis with amenities like housekeeping and office tools."
+                },
+                {
+                    "name": "And more than just a convenient place to stay, Nakagin was a living art installation \u2014 an expression of the postwar Japanese philosophy mixing modern architecture with organic biological growth",
+                    "type": "($E_O). ",
+                    "index": 6,
+                    "children": null,
+                    "name_less": "The Nakagin Capsule Tower epitomized postwar Japanese ideals by blending modern design with organic growth concepts."
+                },
+                {
+                    "name": "The Metabolist movement, said Ms. Fletcher, \u201cemphasized proof of concept, light environmental footprint and an early interest in biotechnology\u201d",
+                    "type": "($E_E). ",
+                    "index": 6,
+                    "children": null,
+                    "name_less": "The Metabolist movement focused on practical demonstration, eco-friendliness, and initial biotechnological interest, according to Ms. Fletcher."
+                }
+            ],
+            "name_less": "Kurokawa's capsule tower introduced minimalist modern living in Ginza."
+        },
+        {
+            "name": "But like many living bodies, Kurokawa\u2019s tower encountered unexpected maladies",
+            "type": "C",
+            "index": 7,
+            "children": [
+                {
+                    "name": "Upon its completion in 1972, all the units were sold and the building basked in critical acclaim",
+                    "type": "($E_O). ",
+                    "index": 7,
+                    "children": null,
+                    "name_less": "The building was fully sold out and highly praised after its completion in 1972."
+                },
+                {
+                    "name": "But second-generation owners who had inherited capsules weren\u2019t as interested in using them, much less in paying for replacements when the steel shells began to deteriorate",
+                    "type": "($E_O). ",
+                    "index": 7,
+                    "children": null,
+                    "name_less": "Inheritance diminished interest and investment in maintaining capsule properties."
+                },
+                {
+                    "name": "The capsules had to be removed for renewal, which was prohibitively expensive",
+                    "type": "($E_O). ",
+                    "index": 7,
+                    "children": null,
+                    "name_less": "The capsules were removed due to costly renewal."
+                },
+                {
+                    "name": "Asbestos was another major problem",
+                    "type": "($E_O). ",
+                    "index": 7,
+                    "children": null,
+                    "name_less": "Asbestos posed a significant issue."
+                },
+                {
+                    "name": "As the decades passed, many units became corroded, and netting was placed over the structure to prevent pieces from crashing to the street below",
+                    "type": "($E_O). ",
+                    "index": 7,
+                    "children": null,
+                    "name_less": "Decades of corrosion led to safety netting being installed over the structure to protect the street below."
+                },
+                {
+                    "name": "Units were left vacant or used for storage",
+                    "type": "($E_O). ",
+                    "index": 7,
+                    "children": null,
+                    "name_less": "Vacant units were repurposed for storage."
+                },
+                {
+                    "name": "In 2018, a real estate company purchased the land, along with some of the capsules, with plans for redevelopment",
+                    "type": "($E_O). ",
+                    "index": 7,
+                    "children": null,
+                    "name_less": "A real estate company bought land and capsules for redevelopment in 2018."
+                },
+                {
+                    "name": "But the pandemic infected those plans",
+                    "type": "($E_O). ",
+                    "index": 7,
+                    "children": null,
+                    "name_less": "Pandemic disrupted plans."
+                },
+                {
+                    "name": "Since the tower was now certain to be knocked down, preservationists agreed to pay part of the demolition cost to the real estate company in exchange for the transfer of the 23 capsules free of charge",
+                    "type": "($E_O). ",
+                    "index": 7,
+                    "children": null,
+                    "name_less": "Preservationists negotiated the salvage of 23 capsules by contributing to demolition costs before the tower's destruction."
+                }
+            ],
+            "name_less": "Kurokawa's tower faced unforeseen problems."
+        },
+        {
+            "name": "Despite its premature demise, the tower had become an icon of Tokyo, attracting design enthusiasts from around the world",
+            "type": "C",
+            "index": 8,
+            "children": [
+                {
+                    "name": "Even though most owners decided to sell, Nakagin had developed a small community of residents",
+                    "type": "($E_O). ",
+                    "index": 8,
+                    "children": null,
+                    "name_less": "Most owners chose to sell, but a community formed among Nakagin residents.\n"
+                },
+                {
+                    "name": "In place of the salarymen of old, it drew writers, architects, photographers and other creatives",
+                    "type": "($E_O). ",
+                    "index": 8,
+                    "children": null,
+                    "name_less": "The area became a hub for creative professionals."
+                },
+                {
+                    "name": "They held drinking parties, hosted famous visitors (among them Francis Ford Coppola and Keanu Reeves) and dreamed of saving the structure from the proverbial wrecking ball",
+                    "type": "($E_O). ",
+                    "index": 8,
+                    "children": null,
+                    "name_less": "Prominent guests attended their social events aimed at preserving the building."
+                },
+                {
+                    "name": "Takayuki Sekine bought two capsules in 2005 while he was a manager at a regional chamber of commerce",
+                    "type": "($E_P). ",
+                    "index": 8,
+                    "children": null,
+                    "name_less": "Takayuki Sekine purchased two capsules in 2005 during his tenure as a regional chamber of commerce manager."
+                },
+                {
+                    "name": "He spent weekends there for the next 15 years, always welcoming curious visitors",
+                    "type": "($E_P). ",
+                    "index": 8,
+                    "children": null,
+                    "name_less": "He regularly welcomed visitors at weekends for 15 years."
+                },
+                {
+                    "name": "\u201cEveryone was very happy and enjoyed the unique space, with many saying it was their favorite building in the world,\u201d said Mr. Sekine, 61",
+                    "type": "($E_P). ",
+                    "index": 8,
+                    "children": null,
+                    "name_less": "Mr. Sekine, 61, reported that many considered the building their favorite in the world due to its uniqueness and the enjoyment it provided."
+                },
+                {
+                    "name": "Shojiro Okuyama, 46, a journalist, bought a unit in 2016 in a bid to help save the building",
+                    "type": "($E_P). ",
+                    "index": 8,
+                    "children": null,
+                    "name_less": "Journalist Shojiro Okuyama purchased a unit in 2016 to contribute to saving a building."
+                },
+                {
+                    "name": "\u201cWe had the preservation project going at the time, but even so it was heartbreaking to see my own capsule being scrapped,\u201d he said",
+                    "type": "($E_P). ",
+                    "index": 8,
+                    "children": null,
+                    "name_less": "It was sad to see my capsule discarded during the preservation project."
+                },
+                {
+                    "name": "\u201cI was first drawn to it because of the architecture, but it was the community that I came to really love. I hope the preserved capsules can spread that sense of community across borders\u201d",
+                    "type": "($E_P). ",
+                    "index": 8,
+                    "children": null,
+                    "name_less": "The speaker initially appreciated the architecture but ultimately cherished the community, hoping that preserved capsules can extend this camaraderie globally."
+                }
+            ],
+            "name_less": "The tower became a renowned Tokyo landmark, drawing global design admirers before its untimely end."
+        },
+        {
+            "name": "Refurbished capsules are now drawing fans in Ginza, Tokyo\u2019s upscale shopping and nightlife district",
+            "type": "C",
+            "index": 9,
+            "children": [
+                {
+                    "name": "The entertainment company Shochiku, known for its Kabuki theater, has put two on permanent display",
+                    "type": "($E_O). ",
+                    "index": 9,
+                    "children": null,
+                    "name_less": "Shochiku has permanently displayed two Kabuki theaters."
+                },
+                {
+                    "name": "At a recent gathering in its purpose-built gallery, Wakana Nitta, a musician who goes by the name Cosplay DJ Koe-chan, set up her turntables between the pods and began spinning tunes from anime shows and sci-fi films",
+                    "type": "($E_P). ",
+                    "index": 9,
+                    "children": null,
+                    "name_less": "Cosplay DJ Koe-chan, also known as Wakana Nitta, performed anime and sci-fi music at a recent event in a dedicated gallery."
+                },
+                {
+                    "name": "A former resident, Ms. Nitta, now 44, meticulously documented the tower\u2019s dismantling",
+                    "type": "($E_P). ",
+                    "index": 9,
+                    "children": null,
+                    "name_less": "Ms. Nitta, 44, recorded the tower's dismantling in detail."
+                },
+                {
+                    "name": "At the recent event, her photos of cranes carrying capsules out of the structure were on display in a capsule that had been stripped down to its frame; the other, refurbished, displayed images of her life in her own pod, gazing out its porthole at Tokyo",
+                    "type": "($E_P). ",
+                    "index": 9,
+                    "children": null,
+                    "name_less": "The recent exhibit showcased her photography of cranes and capsules against structural backdrops and her life in Tokyo viewed from her pod."
+                },
+                {
+                    "name": "\u201cIt felt like aliens had taken me aboard a spaceship,\u201d she laughed",
+                    "type": "($E_P). ",
+                    "index": 9,
+                    "children": null,
+                    "name_less": "She humorously described an extraordinary experience."
+                },
+                {
+                    "name": "\u201cWith the cranes lifting them, the capsules finally flew through the sky like UFOs\u201d",
+                    "type": "($E_P). ",
+                    "index": 9,
+                    "children": null,
+                    "name_less": "Capsules were hoisted by cranes and flew through the sky."
+                }
+            ],
+            "name_less": "Refurbished capsules gain popularity in Tokyo's Ginza district."
+        },
+        {
+            "name": "The Nakagin tower also lives on digitally",
+            "type": "C",
+            "index": 10,
+            "children": [
+                {
+                    "name": "The architecture and design firm Gluon took more than 20,000 photos with drones and single-lens reflex cameras to record the entire building with civil-engineering laser scanners",
+                    "type": "($E_O). ",
+                    "index": 10,
+                    "children": null,
+                    "name_less": "The firm Gluon extensively documented a building using drones, cameras, and laser scanners."
+                },
+                {
+                    "name": "The result is a precise 3-D rendering of the structure, rust stains and all, which has been uploaded to the internet for posterity",
+                    "type": "($E_O). ",
+                    "index": 10,
+                    "children": null,
+                    "name_less": "A detailed 3-D model of the structure has been created and made available online."
+                }
+            ],
+            "name_less": "Nakagin tower continues to exist in digital form."
+        },
+        {
+            "name": "For those who want to experience the real thing, Mr. Maeda and his colleagues plan to open a seaside \u201ccapsule village\u201d in Kanagawa Prefecture, south of Tokyo, this year",
+            "type": "C",
+            "index": 11,
+            "children": [
+                {
+                    "name": "Five refurbished Nakagin units will be set up along the coast, their portholes pointed toward the Pacific",
+                    "type": "($E_O). ",
+                    "index": 11,
+                    "children": null,
+                    "name_less": "Five renovated Nakagin apartments with coastal Pacific views will be installed."
+                },
+                {
+                    "name": "The idea was inspired by a 1972 Kurokawa scheme outlined in a book that is on display at the only other place where you can sleep in one of his original pods: Capsule House K, the architect\u2019s own former cottage in the hills of Nagano Prefecture west of Tokyo",
+                    "type": "($E_O). ",
+                    "index": 11,
+                    "children": null,
+                    "name_less": "The concept was influenced by Kurokawa's 1972 design, with Capsule House K in Nagano Prefecture offering a stay similar to his original pod models."
+                },
+                {
+                    "name": "Now a $1,400-a-night Airbnb rental, it comprises four capsules, made at the same time as those for the Nakagin tower, attached to a concrete core",
+                    "type": "($E_O). ",
+                    "index": 11,
+                    "children": null,
+                    "name_less": "A former Nakagin tower unit is now an expensive Airbnb rental with four capsules."
+                },
+                {
+                    "name": "Two are identical to the Nakagin units, one is a kitchen, and one is a chashitsu, or traditional Japanese tearoom",
+                    "type": "($E_O). ",
+                    "index": 11,
+                    "children": null,
+                    "name_less": "The space includes two Nakagin-style units, a kitchen, and a traditional Japanese tearoom."
+                },
+                {
+                    "name": "\u201cHe grew up in Aichi with a backyard tearoom where he and his siblings did their studies and played hide and seek,\u201d said Kurokawa\u2019s son, Mikio Kurokawa, 58, while showing a visitor the capsule on a recent afternoon",
+                    "type": "($E_P). ",
+                    "index": 11,
+                    "children": null,
+                    "name_less": "Kurokawa grew up in Aichi where his childhood was spent studying and playing in a backyard tearoom."
+                },
+                {
+                    "name": "\u201cIt\u2019s said that a room this size allows Japanese to feel most relaxed\u201d",
+                    "type": "($E_P). ",
+                    "index": 11,
+                    "children": null,
+                    "name_less": "A room of a certain size is considered most comfortable for Japanese."
+                }
+            ],
+            "name_less": "A seaside \"capsule village\" is planned to open this year in Kanagawa Prefecture, south of Tokyo, by Mr. Maeda and his team."
+        },
+        {
+            "name": "Back in Tokyo, the Ginza Six shopping mall has unveiled another Nakagin homage: a mock-up of the Nakagin tower erected on a rooftop skating rink, with a capsule refurbished as a retro music room set up at a street-level entrance",
+            "type": "C",
+            "index": 12,
+            "children": [
+                {
+                    "name": "\u201cHow do the people of today, who live in the future, feel about the \u2018future ideas of the 1970s\u2019 that the Nakagin building held, and how will they connect these ideas to our own future?\u201d asked Yoshiro Nishi, a spokesman for YAR, a design studio that did the interior",
+                    "type": "($E_E). ",
+                    "index": 12,
+                    "children": null,
+                    "name_less": "Public sentiment towards 1970s 'future ideas' exemplified by the Nakagin building and their relevance to contemporary future visions questioned."
+                },
+                {
+                    "name": "\u201cWe\u2019ll be happy if this exhibition can serve as a bridge from the past to the present and further into the future\u201d",
+                    "type": "($E_E). ",
+                    "index": 12,
+                    "children": null,
+                    "name_less": "The exhibition aims to connect the past, present, and future."
+                }
+            ],
+            "name_less": "A replica of the Nakagin tower has been installed at Ginza Six mall's rooftop skating rink in Tokyo, featuring a capsule transformed into a vintage music room."
+        },
+        {
+            "name": "Thus far, 16 of the 23 rescued capsules have found new homes",
+            "type": "C",
+            "index": 13,
+            "children": [
+                {
+                    "name": "As for Nakagin\u2019s legacy, it lives on in a variety of buildings: Kurokawa created the first capsule hotel, the Capsule Inn Osaka, which opened in 1979",
+                    "type": "($E_O). ",
+                    "index": 13,
+                    "children": null,
+                    "name_less": "Nakagin's legacy continues through the creation of the first capsule hotel, Capsule Inn Osaka, in 1979 by Kurokawa."
+                },
+                {
+                    "name": "Its units, stacked in twos, were only the width of a single mattress, but the concept was adopted in cities throughout Japan and even exported",
+                    "type": "($E_O). ",
+                    "index": 13,
+                    "children": null,
+                    "name_less": "Japan's capsule hotels, with units the size of a single mattress, became popular domestically and abroad."
+                },
+                {
+                    "name": "It was an early example of how modular architecture, now seen in everything from residences to airports, can inspire",
+                    "type": "($E_O). ",
+                    "index": 13,
+                    "children": null,
+                    "name_less": "Modular architecture serves as an inspiring precursor to modern design in various buildings."
+                }
+            ],
+            "name_less": "16 out of 23 rescued capsules have been rehomed."
+        },
+        {
+            "name": "\u201cUnder the Metabolism concept, the tower would remain and the capsules would be discarded like old cells,\u201d said Mikio Kurokawa",
+            "type": "C",
+            "index": 14,
+            "children": [
+                {
+                    "name": "\u201cThe fact that due to the strong feelings of many people, some capsules have survived and been restored as new cells for new locations is perhaps even more interesting than Metabolism itself",
+                    "type": "($E_O). Their architect would have been delighted\u201d($E",
+                    "index": 14,
+                    "children": null,
+                    "name_less": "Some capsules have been preserved and reused because of people's strong attachment to them, possibly overshadowing the significance of Metabolism itself."
+                }
+            ],
+            "name_less": "The Metabolism concept involves replacing old capsules on the tower like cells being discarded."
+        }
+    ],
+    "name_less": "Tokyo preserves a unique, futuristic residential building."
+}

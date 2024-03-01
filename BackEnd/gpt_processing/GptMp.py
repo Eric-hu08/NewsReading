@@ -2,7 +2,7 @@ import openai
 # openai migrate
 # export OPEN_API_KEY=
 import os# 从环境变量中读取openai api key
-os.environ["OPENAI_API_KEY"]= "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"
+os.environ["OPENAI_API_KEY"]= "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"
 
 #上面的GPT-3.5-turbo是使用的GPT3.5模型 可以替换为其他模型如：
 # gpt-4

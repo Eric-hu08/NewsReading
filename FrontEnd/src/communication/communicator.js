@@ -30,3 +30,45 @@ export function getGPTMp(input_text, mp_level,getGPTMpCallback) {
         getGPTMpCallback(GptMpList)
     })
 }
+export function getGPTExt(input_text, mp_level,getGPTExtCallback) {
+    let formData = {"input_text": input_text,"mp_level":mp_level}
+    axios({
+        methods: 'get',
+        url: server_address + '/GptExt',
+        params: formData,
+        timeout: 50000
+    })
+    .then((res) => {
+        let GptExtList = res['data']['data']
+        console.log('GPTExt in commu', GptExtList)
+        getGPTExtCallback(GptExtList)
+    })
+}
+export function getJsonData(cur_i, mp_level,getJsonDataCallback) {
+    let formData = {"mp_level":mp_level,"cur_i":cur_i}
+    axios({
+        methods: 'get',
+        url: server_address + '/JsonData',
+        params: formData,
+        timeout: 50000
+    })
+    .then((res) => {
+        let jsonData = res['data']['data']
+        console.log('Jsondata in commu', jsonData)
+        getJsonDataCallback(jsonData)
+    })
+}
+export function getTextData(cur_i,getTextDataCallback) {
+    let formData = {"cur_i":cur_i}
+    axios({
+        methods: 'get',
+        url: server_address + '/TextData',
+        params: formData,
+        timeout: 50000
+    })
+    .then((res) => {
+        let jsonData = res['data']['data']
+        console.log('Textdata in commu', jsonData)
+        getTextDataCallback(jsonData)
+    })
+}

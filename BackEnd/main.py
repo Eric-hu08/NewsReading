@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 from dataset.tabular_data_collection import load_tabular_dataset, get_tabular_dataset
 from gpt_processing.GptMp import genGPTMp
+from JsonRead import readJson,readText
 
 import os, random
 
@@ -27,7 +28,37 @@ def getGPTMp():
     # print('tabular_name_list[]', tabular_name_list)
     Mp_content=genGPTMp(input_text,mp_level)
     return {"data": Mp_content}
+@app.route('/GptExt', methods=['GET'])
+@cross_origin()
+def getGPTExt():
+    
+    input_text = request.args.get('input_text')
+    mp_level=request.args.get('mp_level')
+    # print('tabular_name_list[]', tabular_name_list)
+    Mp_content=genGPTMp(input_text,mp_level)
+    return {"data": Mp_content}
 
+@app.route('/JsonData', methods=['GET'])
+@cross_origin()
+def getJsonData():
+    
+    
+    mp_level=request.args.get('mp_level')
+    cur_i = request.args.get('cur_i')
+    # print('tabular_name_list[]', tabular_name_list)
+    json_data=readJson(mp_level,cur_i)
+    return {"data": json_data}
+
+@app.route('/TextData', methods=['GET'])
+@cross_origin()
+def getTextData():
+    
+    
+    
+    cur_i = request.args.get('cur_i')
+    # print('tabular_name_list[]', tabular_name_list)
+    json_data=readText(cur_i)
+    return {"data": json_data}
 
 if __name__ == "__main__":
     print('run 0.0.0.0:14449')
