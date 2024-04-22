@@ -1,32 +1,69 @@
 <template>
 
-  <g class="Claim" :transform="claim_tran()" :id="('C' + c_node_data.index)">
-    <circle cx="0" cy="0" :r="cNodeR" fill="blue" @click="cNodeClick()" opacity="0.3">
+  <g class="Claim" :id="('C' + c_node_data.index)">
+    <g class="claimN" :transform="claimNTran()">
+      <circle class="claimC" cx="0" cy="0" :r="cNodeR" fill="blue" @click="cNodeClick()" opacity="0.3">
+      </circle>
+      <text text-anchor="middle" class="nodeText" dy="3">{{ cNodeName }}</text>
+    </g>
 
-    </circle>
-    <text text-anchor="middle" class="nodeText" dy="3">{{ cNodeName }}</text>
+    <g class="textG" :transform="rectTran()">
+      <rect class="claimR" :y="-barHeight / 2" :height="barHeight" :width="barWidth" :fill="rectColor()">
+      </rect>
+      <text class="cText" :dy="c_text_dy" :dx="c_text_dx">{{ genCText() }}</text>
+    </g>
+
   </g>
+
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex';
+import NewsEvi from './NewsEvi.vue';
 
 export default {
   name: 'NewsClaim',
   props: {
     msg: String,
-    barHeight: Number,
+
     c_node_data: Object,
+
+    re_ce_data: Object,
+    CxArray: Object,
+
+    barHeight: Number,
     cNodeR: Number,
+    barWidth: Number,
+    rcInter: Number,
+    leftbarIndent: Number,
+    rcLinkRInter: Number,
+    rcLinkRW: Number,
+
+  },
+  components: {
+    // NewsEvi,
+    // NewsForce,
+
   },
   data() {
     return {
       marge: { top: 60, bottom: 60, left: 60, right: 60 },
       temp: 10,
-      barWidth: 850,
-      textWidth: 800,
+
+      textWidth: 600,
       c_index: 0,
       cNodeName: "C",
+
+      c_text_dy: -8,
+      c_text_dx: 5.5,
+      rcLinkHeightless: 0,
+
+      rcLinkCInter: 0,
+
+
+
+
+
 
     }
 
@@ -35,14 +72,7 @@ export default {
     displayMode: function () {
       console.log('displayMode')
     },
-    f_y_change: function () {
-      // console.log("y change")
-      // this.$forceUpdate()
 
-    },
-    b_value: function () {
-
-    }
   },
   computed: {
     ...mapState([
@@ -51,16 +81,131 @@ export default {
   },
   beforeMount: function () {
     this.cNodeName = "C" + String(this.c_node_data.index)
-    console.log("cnodename", this.cNodeName)
+
 
   },
   mounted: function () {
     let vuethis = this
-
+    vuethis.changeCText()
     vuethis.c_index = vuethis.c_node_data.index
+    vuethis.drawCRLink()
     // this.drawCNode()
   },
   methods: {
+    rectTran() {
+      let vuethis = this
+      let tran_str = "translate(" + vuethis.rcInter + ",0)"
+      return tran_str
+    },
+    genCText() {// not use
+      let vuethis = this
+      var c_text_str = vuethis.c_node_data.name
+      return c_text_str
+    },
+    changeCText() {
+      let vuethis = this
+      d3.select(vuethis.$el).select(".cText").text("")
+      d3.select(vuethis.$el).select(".cText").call(wrapText, vuethis.c_node_data.name, vuethis.textWidth)
+
+
+
+
+      function wrapText(text, getcontent, width) {
+        // console.log("getcontent: ", getcontent)
+        var content = getcontent
+
+        var words = content.split(/\s+/);
+        var lineHeight = 1; // 行高
+        var line = [];
+        var lineNumber = 0;
+        var tspan = text.append("tspan")
+          .attr("x", 0)
+          .attr("y", -5)
+          .attr("dy", 0);
+
+        words.forEach(function (word) {
+          line.push(word);
+          tspan.text(line.join(" "));
+          if (tspan.node().getComputedTextLength() > width) {
+            line.pop();
+            tspan.text(line.join(" "));
+            line = [word];
+            tspan = text.append("tspan")
+              .attr("x", 5)
+              .attr("y", -5)
+              // .attr("dy", 3)
+              .attr("dy", lineHeight * ++lineNumber + "em")
+              .text(word)
+            // .style("text-anchor", "middle")
+          }
+        });
+      }
+    },
+    claimNTran() {
+      let vuethis = this
+      var CxArray = vuethis.CxArray
+      var min = 0
+      for (var i = 0; i < CxArray.length; i++) {
+        if (min > CxArray[i]) {
+          min = CxArray[i]
+        }
+      }
+      var c_index = vuethis.re_ce_data["c_index"] - 1
+      // console.log("claimNTran", c_index, CxArray)
+      return "translate(" + (CxArray[c_index] - min - vuethis.cNodeR) + ",0)"
+
+    },
+
+    drawCRLink() {
+      let vuethis = this
+      var c_x = d3.select(vuethis.$el).select(".claimC").attr("cx")
+      var c_y = d3.select(vuethis.$el).select(".claimC").attr("cy")
+      var c_r_inter = vuethis.rcInter
+      //begin draw path line between the c circle and rect
+      // console.log("path: ", typeof c_x, typeof vuethis.cNodeR, typeof vuethis.rcLinkCInter)
+      var link_g = d3.select(vuethis.$el).append("g").attr("class", "CRLink")
+
+      var CxArray = vuethis.CxArray
+      var min = 0
+      for (var i = 0; i < CxArray.length; i++) {
+        if (min > CxArray[i]) {
+          min = CxArray[i]
+        }
+      }
+      var c_index = vuethis.re_ce_data["c_index"] - 1
+      var x_tran = CxArray[c_index] - min - vuethis.cNodeR
+
+
+
+      link_g.append("path")
+        .attr("d", "M " + ((parseFloat(c_x) + x_tran + vuethis.cNodeR + vuethis.rcLinkCInter)) + " " + c_y + " L " + (c_x + c_r_inter - vuethis.rcLinkRInter) + " " + c_y)
+        //              .attr("d", "M " + nodex + " " + (node_y_list[change_c_index] + vuethis.cNodeR) + " L " + nodex + " " + (node_y_list[change_c_index + 1] - vuethis.cNodeR))
+        .attr("stroke", "#c8ccc6")
+      link_g.append("rect")
+        .attr("y", -(vuethis.barHeight) / 2)
+        .attr("x", parseFloat(c_x) + (c_x + c_r_inter - vuethis.rcLinkRInter))
+        .attr("height", vuethis.barHeight - vuethis.rcLinkHeightless)
+        .attr("width", this.rcLinkRW)
+        .attr("rx", 1).attr("ry", 2)
+        .attr("stroke", "#c8ccc6")
+        .attr("fill", "#c8ccc6")
+
+      link_g.append("rect")
+        .attr("y", -(vuethis.barHeight) / 2)
+        .attr("x", parseFloat(c_x) + (c_x + c_r_inter - vuethis.rcLinkRInter + vuethis.barWidth + vuethis.leftbarIndent))
+        .attr("height", vuethis.barHeight - vuethis.rcLinkHeightless)
+        .attr("width", vuethis.rcLinkRW)
+        .attr("rx", 1).attr("ry", 2)
+        .attr("stroke", "#c8ccc6")
+        .attr("fill", "#c8ccc6")
+
+
+
+
+
+
+
+    },
     cNodeClick() {
       let vuethis = this
       vuethis.$store.commit("editCNodeUnfoldArray", vuethis.c_index - 1)
@@ -85,9 +230,7 @@ export default {
       }
 
     },
-    claim_tran() {
-      return "translate(" + this.marge.top + "," + this.marge.left + ")"
-    },
+
     drawCNode() {
       let vuethis = this;
 
@@ -95,7 +238,7 @@ export default {
       var barHeight = vuethis.barHeight
       var barWidth = vuethis.barWidth
       var textWidth = vuethis.textWidth
-      var nodeR = 3
+
 
       var svg = d3.select(vuethis.$el)
       var g1 = svg.append("g").attr("class", "nodeDetail").attr("id", "c" + vuethis.c_index)
@@ -107,7 +250,7 @@ export default {
       node_root = d3.hierarchy(vuethis.c_node_data);
       node_root.x0 = 0;
       node_root.y0 = 0;
-      update(node_root);
+      // update(node_root);
       function update(source) {
         var nodes = node_root.descendants();
 
@@ -343,7 +486,15 @@ export default {
         });
       }
     },
+    rectColor() {
+      let vuethis = this
+      // return "none"
+      return "#ffffff"
 
+
+
+
+    }
   },
 }
 </script>

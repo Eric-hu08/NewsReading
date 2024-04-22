@@ -7,6 +7,7 @@ export default createStore({
     cNodeUnfoldArray: [],
     change_c_index:0,
     f_fold:0,   //1: unfold 2:fold
+    eNodeYControlArray:[],
   },
   getters: {
     
@@ -45,6 +46,18 @@ export default createStore({
     },
     editFFold(state,value){
       state.f_fold=value
+    },
+    editENodeYControlArray(state,value_list){
+      var temp_array=lodash.cloneDeep(state.eNodeYControlArray)
+      console.log("eyc chagne: ",value_list)
+      temp_array[value_list[0]].splice(value_list[1],1,value_list[2])
+      state.eNodeYControlArray=lodash.cloneDeep(temp_array)
+      console.log("eyc change!",value_list,state.eNodeYControlArray)
+    },
+    setENodeYControlArray(state,value){
+      // console.log("eyc init!",value)
+      state.eNodeYControlArray=value
+      console.log("eyc init!",state.eNodeYControlArray)
     }
   },
     

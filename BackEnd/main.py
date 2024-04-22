@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 from dataset.tabular_data_collection import load_tabular_dataset, get_tabular_dataset
 from gpt_processing.GptMp import genGPTMp
-from JsonRead import readJson,readText
+from JsonRead import readJson,readText,readRelation
 
 import os, random
 
@@ -47,6 +47,17 @@ def getJsonData():
     cur_i = request.args.get('cur_i')
     # print('tabular_name_list[]', tabular_name_list)
     json_data=readJson(mp_level,cur_i)
+    return {"data": json_data}
+
+@app.route('/RelationData', methods=['GET'])
+@cross_origin()
+def getRelationData():
+    
+    
+    mp_level=request.args.get('mp_level')
+    cur_i = request.args.get('cur_i')
+    # print('tabular_name_list[]', tabular_name_list)
+    json_data=readRelation(cur_i)
     return {"data": json_data}
 
 @app.route('/TextData', methods=['GET'])

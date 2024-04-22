@@ -3,6 +3,7 @@ export function Dataset () {
     this.GPTMpList=[]
     this.jsonData=[]
     this.textData=[]
+    this.relationData=[]
 }
 
 Dataset.prototype = {
@@ -19,5 +20,8 @@ Dataset.prototype = {
     },
     updateTextData:function(processed_json_data){
         this.textData=processed_json_data
+    },
+    updateRelationData:function(processed_json_data){
+        this.relationData=processed_json_data
     }
 }

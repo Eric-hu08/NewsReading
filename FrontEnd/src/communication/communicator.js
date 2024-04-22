@@ -58,6 +58,20 @@ export function getJsonData(cur_i, mp_level,getJsonDataCallback) {
         getJsonDataCallback(jsonData)
     })
 }
+export function getRelationData(cur_i,getRelationDataCallback) {
+    let formData = {"cur_i":cur_i}
+    axios({
+        methods: 'get',
+        url: server_address + '/RelationData',
+        params: formData,
+        timeout: 50000
+    })
+    .then((res) => {
+        let jsonData = res['data']['data']
+        // console.log('Jsondata in commu', jsonData)
+        getRelationDataCallback(jsonData)
+    })
+}
 export function getTextData(cur_i,getTextDataCallback) {
     let formData = {"cur_i":cur_i}
     axios({

@@ -21,7 +21,7 @@
 <script>
 
 
-import { getTabularDataset, getJsonData, getTextData } from '@/communication/communicator.js'
+import { getTabularDataset, getJsonData, getTextData, getRelationData } from '@/communication/communicator.js'
 import { Dataset } from '@/dataset/dataset.js'
 
 import NewsS from './components/NewsS.vue'
@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       appName: "News Reader",
-      operationArray: ['News1', 'News2', 'News3', 'News4', 'News5', 'News6', 'News7'],
+      operationArray: ['News1', 'News2', 'News3', 'News4', 'News5', 'News6', 'News7', 'T7', 'T8'],
       cur_news_i: 1,
       cur_i_change: 1,
       activeIndex: '',
@@ -50,6 +50,7 @@ export default {
     let tabularDataDeferObj = $.Deferred()
     let jsonDataDeferObj = $.Deferred()
     let textDataDeferObj = $.Deferred()
+    let relationDataDeferObj = $.Deferred()
     $.when(tabularDataDeferObj, jsonDataDeferObj, textDataDeferObj).then(function () {
       self.loadingData = false
     })
@@ -69,6 +70,11 @@ export default {
     getTextData(self.cur_news_i, function (processed_json_data) {
       sysDatasetObj.updateTextData(processed_json_data)
       textDataDeferObj.resolve()
+
+    })
+    getRelationData(self.cur_news_i, function (processed_json_data) {
+      sysDatasetObj.updateRelationData(processed_json_data)
+      relationDataDeferObj.resolve()
 
     })
 

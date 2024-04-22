@@ -3,14 +3,29 @@
 
 
 
-        <div class="NewsText">
+        <!-- <div class="NewsText">
             <h3>{{ NewsTitle }}</h3>
             <span class="NewsOri" style="text-align: left;display: inline-block;">{{ NewsOri }}</span>
 
 
+        </div> -->
+        <div class="CEview" ref="CEview">
+            <svg class="CEsvg">
+                <NewsClaim v-for="(node_data, index_i) in node_data_array" :key=node_data.index
+                    :transform="genNodeTran(index_i)" :barHeight="cNodeYInter - cNodeIndent" :c_node_data="node_data"
+                    :b_value="b_value" :cNodeR="cNodeR" :re_ce_data="re_ce_data[index_i]" :CxArray="xArray"
+                    :rcInter="rcInter" :barWidth="barWidth" :leftbarIndent="leftbarIndent" :rcLinkRW="rcLinkRW"
+                    :rcLinkRInter="rcLinkRInter"></NewsClaim>
+                <NewsEvi v-for="(e_dict, index_i) in re_e_data" :key="e_dict.c_index" :e_dict="e_dict"
+                    :e_node_y_array="e_node_y_array" :e_render_index="index_i" :e_index_map_array="e_index_map_array"
+                    :eNodeR="eNodeR">
+                </NewsEvi>
+                <g class="CEPath"></g>
+            </svg>
+
         </div>
 
-        <div class="MpShow" v-loading="LoadingMp" element-loading-text="Waiting GPT answering">
+        <!-- <div class="MpShow" v-loading="LoadingMp" element-loading-text="Waiting GPT answering">
             <el-switch v-model="b_value" active-color="#13ce66" inactive-color="#ff4949" class="showButton"
                 active-text="coarse-grained" inactive-text="origin">
             </el-switch>
@@ -20,10 +35,10 @@
                     :b_value="b_value" :cNodeR="cNodeR"></NewsClaim>
             </svg>
 
-        </div>
-        <div class="forceView">
+        </div> -->
+        <!-- <div class="forceView">
             <NewsForce></NewsForce>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -33,6 +48,7 @@ import { getGPTMp, getGPTExt } from '@/communication/communicator.js'
 import { Dataset } from '@/dataset/dataset.js'
 import NewsClaim from './NewsClaim.vue';
 import NewsForce from './NewsForce.vue'
+import NewsEvi from './NewsEvi.vue';
 // const lodash = require('lodash')
 export default {
     name: 'NewsS',
@@ -43,7 +59,8 @@ export default {
     },
     components: {
         NewsClaim,
-        NewsForce,
+        NewsEvi,
+        // NewsForce,
 
     },
     data() {
@@ -58,15 +75,36 @@ export default {
             b_value: false,
             less_array: [],
             node_data_array: [],
+            re_ce_data: [],
+            re_cc_data: [],
+            xArray: [],
+            e_node_y_array: [],
+            e_index_map_array: [],
+
 
             //attribute set
-            cNodeYInter: 45,
-            marge: { top: 60, bottom: 60, left: 60, right: 60 },
+            cNodeYInter: 80,
+            cNodeXInter: 25,//25
+            marge: { top: 60, bottom: 60, left: 20, right: 60 },
             cNodeR: 15,
+            cNodeIndent: 20,
+            ENodeYInter: 30,
+            EnodeunfoldYInter: 70,
+            ENodeIndent: 10,
+            eNodeR: 10,
+            eTopInter: 40,
+
+            barWidth: 620,
+            rcInter: 100,
+            leftbarIndent: 7,
+            rcLinkRInter: 5,
+            rcLinkRW: 3,
         }
     },
     beforeMount: function () {
         this.genNodeDataArray()
+        this.genENodeTran()
+
 
     },
     mounted: function () {
@@ -74,31 +112,37 @@ export default {
         // this.genNodeDataArray()
         // this.draw_tree()
 
-        this.loadNews()
+        const divW = this.$refs.CEview.clientWidth
+        const divH = this.$refs.CEview.clientHeight + 500
+        // console.log("div w h ", divW, divH)
+        d3.select(".CEsvg").attr("width", divW)
+        d3.select(".CEsvg").attr("height", divH)
+
+        // this.loadNews()
         this.drawNodePath()
+        this.drawCELink()
+        // this.renderNodePath()
 
     },
     computed: {
         ...mapState([
             'displayMode',
             'cNodeYArray',
+            'eNodeYControlArray',
         ]),
 
     },
     watch: {
         cur_i_change: function () {
-            // d3.select(".MpShow").select("svg").remove()
 
-            // this.draw_tree()
-            // this.loadNews()
         },
-        displayMode: function () {
-            console.log('displayMode')
+        eNodeYControlArray: function () {
+            this.genENodeTran()
+            this.$nextTick(() => {
+                this.drawCELink()
+            })
         },
-        textarea2: function () {
-            console.log('test changed!')
-            console.log(this.textarea2)
-        },
+
         b_value: function () {
             // alert('b_value change!')
             let vuethis = this
@@ -156,11 +200,7 @@ export default {
             vuethis.drawNodePath()
         },
 
-        // less_array: function () {
 
-        //     // d3.select(".MpShow").select("svg").remove()
-        //     // this.draw_tree()
-        // }
     },
 
 
@@ -172,16 +212,100 @@ export default {
             vuethis.node_data_array = flare.children
             console.log("gennodedataarray,", vuethis.node_data_array)
             var node_num = vuethis.node_data_array.length
+
+            var relation_data = window.sysDatasetObj.relationData
+            var re_ce_data = relation_data["re_e"]
+            var re_cc_data = relation_data["re_c"]
+            vuethis.re_ce_data = re_ce_data
+            vuethis.re_cc_data = re_cc_data
+
+            var e_re_data = []
+            for (var i = 0; i < re_ce_data.length; i++) {
+                var e_re_list = re_ce_data[i].e_re_list
+                // console.log("in re e:", e_re_list)
+                for (var j = 0; j < e_re_list.length; j++) {
+                    e_re_data.push(e_re_list[j])
+                }
+
+            }
+            vuethis.re_e_data = e_re_data
+            console.log("re_e_data!!", vuethis.re_e_data)
+
             var unfoldarray = []
             var yArray = []
-            for (var i = 0; i < node_num; i++) {
+            for (i = 0; i < node_num; i++) {
                 unfoldarray.push(0)
                 yArray.push(1)
             }
+            var xArray = []
+            xArray.push(0)
+            var temp_x = 0
+            for (i = 0; i < vuethis.re_cc_data.length; i++) {
+                var relation_str = vuethis.re_cc_data[i]["relation"]
+                temp_x += vuethis.genXinter(relation_str)
+                xArray.push(temp_x * vuethis.cNodeXInter)
+            }
+            //do not let left get out
+            var minx = 0
+            for (i = 0; i < xArray.length; i++) {
+                if (minx > xArray[i]) {
+                    minx = xArray[i]
+                }
+            }
+            // console.log("x_array", minx * vuethis.cNodeXInter - vuethis.cNodeR, minx, vuethis.marge.left + vuethis.cNodeXInter * xArray[index_i], xArray[index_i])
+            if (minx - vuethis.cNodeR < 0) {
+                // console.log("left out!")
+                var pro_factor = (0 - minx + vuethis.cNodeR)
+                for (i = 0; i < xArray.length; i++) {
+                    xArray[i] += pro_factor
+                }
+            }
+            vuethis.xArray = xArray
+
             vuethis.$store.commit('setCNodeUnfoldArray', unfoldarray)
             //gen Node Y array
             vuethis.$store.commit('setCNodeYArray', yArray)
 
+            //init ENodeYControlArray
+            var eNodeYControlArray = []
+
+            var e_index_map_array = []
+            for (i = 0; i < re_ce_data.length; i++) {
+                var re_ce_list = re_ce_data[i].e_re_list
+                var temp_list = []
+                // var c_index=re_ce_data[i].c_index
+                for (j = 0; j < re_ce_list.length; j++) {
+                    temp_list.push(0)
+                    e_index_map_array.push(j)
+
+                }
+                eNodeYControlArray.push(lodash.cloneDeep(temp_list))
+            }
+            vuethis.e_index_map_array = e_index_map_array
+            vuethis.$store.commit('setENodeYControlArray', eNodeYControlArray)
+            // console.log('EnodeYC init', e_index_map_array, vuethis.e_index_map_array)
+
+
+
+
+
+
+
+
+        },
+        genXinter(relation_str) {
+            switch (relation_str) {
+                case "Sequence":
+                    return 0
+                case "Elaboration":
+                    return 1
+                case "Cause-effect":
+                    return 1
+                case "Concession":
+                    return - 1
+                case "Contrast":
+                    return -1
+            }
 
         },
         genNodeTran(index_i) {
@@ -193,14 +317,76 @@ export default {
                 index_c += y_array[i]
             }
             // console.log("cychange", y_array, index_c)
+            //gen CNode x array
+            // var xArray = []
+            // xArray.push(0)
+            // var temp_x = 0
+            // for (i = 0; i < vuethis.re_cc_data.length; i++) {
+            //     var relation_str = vuethis.re_cc_data[i]["relation"]
+            //     temp_x += vuethis.genXinter(relation_str)
+            //     xArray.push(temp_x)
+            // }
+            // //do not let left get out
+            // var minx = 0
+            // for (i = 0; i < xArray.length; i++) {
+            //     if (minx > xArray[i]) {
+            //         minx = xArray[i]
+            //     }
+            // }
+            // // console.log("x_array", minx * vuethis.cNodeXInter - vuethis.cNodeR, minx, vuethis.marge.left + vuethis.cNodeXInter * xArray[index_i], xArray[index_i])
+            // if (minx * vuethis.cNodeXInter - vuethis.cNodeR < 0) {
+            //     console.log("left out!")
+            //     var pro_factor = (0 - minx * vuethis.cNodeXInter + vuethis.cNodeR) / vuethis.cNodeXInter
+            //     for (i = 0; i < xArray.length; i++) {
+            //         xArray[i] += pro_factor
+            //     }
+            // }
+            // vuethis.xArray = xArray
 
-            return "translate(" + vuethis.marge.left + "," + (vuethis.marge.top + vuethis.cNodeYInter * (index_c)) + ")"
+            return "translate(" + (vuethis.marge.left) + "," + (vuethis.marge.top + vuethis.cNodeYInter * (index_c)) + ")"
 
 
         },
+        genENodeTran() {
+            let vuethis = this
+            let re_ce_data = vuethis.re_ce_data
+
+            //cal claim y 
+            var index_c = 0
+            var y_array = vuethis.cNodeYArray
+            var eNodeYControlArray = vuethis.eNodeYControlArray
+            // console.log("Enodecontrol in EnTran", eNodeYControlArray)
+            var claim_y_list = []
+
+            var indent_e = vuethis.eTopInter
+            var e_node_y_array = []
+            for (var i = 0; i < re_ce_data.length; i++) {
+                var e_dict_list = re_ce_data[i].e_re_list
+                var e_y_c_list = []
+
+                for (var j = 0; j < e_dict_list.length; j++) {
+
+                    e_y_c_list.push(indent_e)
+                    if (eNodeYControlArray[i][j] == 1) {
+                        indent_e += vuethis.EnodeunfoldYInter
+                    }
+                    else {
+                        indent_e += vuethis.ENodeYInter
+                    }
+
+
+                    // deepclone!!
+                }
+                e_node_y_array.push(lodash.cloneDeep(e_y_c_list))
+            }
+            // to gen a dict
+            // [c_dict,dict] C_index
+            // [e_dict] E_index
+            vuethis.e_node_y_array = lodash.cloneDeep(e_node_y_array)
+        },
         drawNodePath() {
             let vuethis = this
-            d3.select(".CNodeList").selectAll(".nodeLink").remove()
+            d3.select(".CEsvg").selectAll(".nodeLink").remove()
             // var cNodes = d3.select(vuethis.$el).selectAll(".Claim")
             // var cNode_array = cNodes._groups[0]
             // // console.log("cnodes", cNodes._groups[0][0])
@@ -215,6 +401,11 @@ export default {
             //     // console.log("cNode attr", nodey)
             // }
             var y_array = vuethis.cNodeYArray
+            var x_array = vuethis.xArray
+
+
+
+
             for (var i = 0; i < y_array.length - 1; i++) {
                 var index_c1 = 0
                 var index_c2 = 0
@@ -224,13 +415,97 @@ export default {
                 }
                 index_c2 = index_c1 + y_array[i]
                 //begin draw path between the near c node
-                d3.select(".CNodeList").append("path").attr("id", "p" + i).attr("class", "nodeLink")
-                    .attr("d", "M " + vuethis.marge.left + " " + (vuethis.marge.top + vuethis.cNodeYInter * index_c1 + vuethis.cNodeR) + " L " + vuethis.marge.left + " " + (vuethis.marge.top + vuethis.cNodeYInter * index_c2 - vuethis.cNodeR))
+                d3.select(".CEsvg").append("path").attr("id", "p" + i).attr("class", "nodeLink")
+                    .attr("d", "M " + (vuethis.marge.left + x_array[i] - vuethis.cNodeR) + " " + (vuethis.marge.top + vuethis.cNodeYInter * index_c1 + vuethis.cNodeR) + " L " + (vuethis.marge.left + x_array[i + 1] - vuethis.cNodeR) + " " + (vuethis.marge.top + vuethis.cNodeYInter * index_c2 - vuethis.cNodeR))
                     .attr("stroke", "black")
 
             }
 
             // console.log("cychange", y_array, index_c)
+
+
+        },
+        drawCELink() {
+            let vuethis = this
+            // get C x,y coor
+            // get C's all E x,y coor
+            d3.selectAll(".CELink").remove()
+            // draw path
+            var c_g_list = d3.select(vuethis.$el).selectAll(".Claim")
+            var c_x_list = []
+            var c_y_list = []
+            c_g_list.each(function (d, i) {
+                // console.log("d", d, i)
+                // console.log("c_g", d3.select(this).attr("transform"))
+                var c_tran_str = d3.select(this).attr("transform")
+
+                var index1 = c_tran_str.indexOf("(")
+                var index2 = c_tran_str.indexOf(",")
+                var index3 = c_tran_str.indexOf(")")
+                var c_x = parseFloat(c_tran_str.slice(index1 + 1, index2))
+                var c_y = parseFloat(c_tran_str.slice(index2 + 1, index3))
+                // console.log("c_x!!", c_x, c_y)
+                c_x_list.push(c_x)
+                c_y_list.push(c_y)
+
+            })
+            var e_x_list = []
+            var e_y_list = []
+            var e_g_list = d3.select(vuethis.$el).selectAll(".Evi")
+            e_g_list.each(function (d, i) {
+                var e_tran_str = d3.select(this).attr("transform")
+
+                var index1 = e_tran_str.indexOf("(")
+                var index2 = e_tran_str.indexOf(",")
+                var index3 = e_tran_str.indexOf(")")
+                var e_x = parseFloat(e_tran_str.slice(index1 + 1, index2))
+                var e_y = parseFloat(e_tran_str.slice(index2 + 1, index3))
+                e_x_list.push(e_x)
+                e_y_list.push(e_y)
+
+            })
+
+            var e_index_map_array = vuethis.e_index_map_array
+            var g_path = d3.select(vuethis.$el).select(".CEPath")
+            // console.log("e_map_array", e_index_map_array)
+            var Bézier_curve_generator = d3.linkHorizontal()
+                .x(function (d) { return d.x; })
+                .y(function (d) { return d.y; });
+            // .curve(d3.curveStepBefore);
+            var c_index = -1
+            for (var i = 0; i < e_index_map_array.length; i++) {
+                if (e_index_map_array[i] == 0) c_index++
+                var c_x = c_x_list[c_index]
+                var c_y = c_y_list[c_index]
+
+                var e_x = e_x_list[i]
+                var e_y = e_y_list[i]
+                var start_x = c_x + vuethis.barWidth + vuethis.rcInter + vuethis.leftbarIndent + vuethis.rcLinkRW - vuethis.rcLinkRInter
+                var start_y = c_y
+                var end_x = e_x - 10
+                var end_y = e_y
+                var start = { x: end_x, y: end_y }
+                var end = { x: start_x, y: start_y }
+
+                g_path.append("path").attr("class", "CELink")
+                    .attr("d", Bézier_curve_generator({ source: start, target: end }))
+                    // .attr("d", "M " + (c_x + 620 + 150 + 7 + 3 - 5) + " " + (c_y) + " L " + (e_x - 10) + " " + (e_y))
+                    .attr("stroke", "#c8ccc6")
+                    .attr("fill", "none")
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+
 
 
         },
@@ -268,9 +543,9 @@ export default {
         loadNews() {
             //load news ori text
 
-            let textData = window.sysDatasetObj.textData
-            this.NewsTitle = textData[0]
-            this.NewsOri = textData.slice(1, textData.length).join(' ')
+            // let textData = window.sysDatasetObj.textData
+            // this.NewsTitle = textData[0]
+            // this.NewsOri = textData.slice(1, textData.length).join(' ')
         },
         beginMp() {
             let vuethis = this;
@@ -762,12 +1037,23 @@ a {
     color: #42b983;
 }
 
-.node rect {
+.Claim .textG rect {
     cursor: pointer;
-    fill: #fff;
-    // fill-opacity: 0.5
-    stroke: #000000;
+    fill: #ffffff;
+    fill-opacity: 0.6; // stroke: #000000;
     stroke-width: 1.5px;
+}
+
+.Claim .cText {
+    font: 10px sans-serif;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.eText {
+    font: 8px sans-serif;
+    font-weight: bold;
+    pointer-events: none;
 }
 
 .node text {
@@ -805,14 +1091,20 @@ a {
     bottom: 0%;
     right: 0%;
 
-
+    .CEview {
+        position: absolute;
+        top: 0%;
+        left: 1%;
+        bottom: 0%;
+        right: 0%;
+    }
 
     .NewsText {
         position: absolute;
         top: 0%;
         left: 1%;
         bottom: 0%;
-        right: 60%;
+        right: 40%;
     }
 
     .block {
