@@ -1,4 +1,5 @@
 <template>
+
   <text class="eText" :dx="e_text_dx">{{ "hello" }}
   </text>
 </template>

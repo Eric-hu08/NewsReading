@@ -13,7 +13,12 @@
       </el-tooltip>
     </el-menu>
     <div class="content-container">
-      <NewsS :cur_i_change="cur_i_change" :key="cur_i_change"></NewsS>
+      <div class="nodeView"></div>
+      <div class="curveView"></div>
+      <div class="textView">
+        <NewsTextContent :jsonData="jsonData"></NewsTextContent>
+      </div>
+
     </div>
   </div>
 </template>
@@ -25,12 +30,13 @@ import { getTabularDataset, getJsonData, getTextData, getRelationData } from '@/
 import { Dataset } from '@/dataset/dataset.js'
 
 import NewsS from './components/NewsS.vue'
+import NewsTextContent from './components/NewsTextContent.vue';
 
 export default {
   name: 'app',
   components: {
 
-    NewsS,
+    NewsTextContent,
   },
   data() {
     return {
@@ -62,10 +68,11 @@ export default {
       sysDatasetObj.updateTabularDatasetList(processed_tabular_datalist)
       tabularDataDeferObj.resolve()
     })
+
     getJsonData(self.cur_news_i, 1, function (processed_json_data) {
       sysDatasetObj.updateJsonData(processed_json_data)
       jsonDataDeferObj.resolve()
-
+      self.jsonData = processed_json_data
     })
     getTextData(self.cur_news_i, function (processed_json_data) {
       sysDatasetObj.updateTextData(processed_json_data)
@@ -145,6 +152,8 @@ html {
       line-height: @menu-height;
     }
 
+    --el-menu-horizontal-height:@menu-height+1;
+
     .el-menu-item {
       border-bottom-color: rgb(84, 92, 100) !important;
       font-weight: bolder;
@@ -168,6 +177,14 @@ html {
     left: 0%;
     bottom: 0%;
     right: 0%;
+
+    .textView {
+      position: absolute;
+      top: 0%;
+      left: 40%;
+      bottom: 0%;
+      right: 0%;
+    }
   }
 }
 </style>
