@@ -5,10 +5,10 @@
       inactive-text="node mode" />
     <div class="mainText-content" ref="mainTextContent">
       <el-card class="mainTextCard">
-        <span v-for="(claim, c_index) in claim_list" :key="claim.name" :id="'C' + c_index" @mouseover="textMouseOver"
+        <mark v-for="(claim, c_index) in claim_list" :key="claim.name" :id="'C' + c_index" @mouseover="textMouseOver"
           @mouseout="textMouseOut" @click="textClick">
           {{ claim.name + ". " }}
-        </span>
+        </mark>
       </el-card>
     </div>
     <div class="eviView">
@@ -69,40 +69,40 @@ export default {
     textMouseOver(event) {
       // console.log("mouse in!!")
       // console.log(event.target.tagName)
-      if (event.target.tagName == 'SPAN') {
-        var mark_text = document.createElement("mark")
-        mark_text.onclick = this.onClick
-        mark_text.id = event.target.id
-        mark_text.style.backgroundColor = "blue"
-        var text_content = event.target.textContent
-        mark_text.innerHTML = text_content
-        event.target.textContent = ""
-        event.target.appendChild(mark_text)
-      }
+      // if (event.target.tagName == 'SPAN') {
+      //   var mark_text = document.createElement("mark")
+      //   mark_text.onclick = this.onClick
+      //   mark_text.id = event.target.id
+      //   mark_text.style.backgroundColor = "blue"
+      //   var text_content = event.target.textContent
+      //   mark_text.innerHTML = text_content
+      //   event.target.textContent = ""
+      //   event.target.appendChild(mark_text)
+      // }
 
     },
     textMouseOut(event) {
       // console.log("mouse in!!")
       // console.log(event.target.firstElementChild)
-      var id_str = event.target.id
-      var c_index = parseInt(id_str.slice(1, id_str.length))
-      var f_mark = this.claim_markF_list[c_index]
-      // console.log("mouse out", event.target, event.target.parentElement)
-      if (f_mark == 0) {
-        var mark_node, span_node
-        if (event.target.tagName == "SPAN") {
-          mark_node = event.target.firstElementChild
-          span_node = event.target
-        }
-        else {
-          mark_node = event.target
-          span_node = event.target.parentElement
-        }
+      // var id_str = event.target.id
+      // var c_index = parseInt(id_str.slice(1, id_str.length))
+      // var f_mark = this.claim_markF_list[c_index]
+      // // console.log("mouse out", event.target, event.target.parentElement)
+      // if (f_mark == 0) {
+      //   var mark_node, span_node
+      //   if (event.target.tagName == "SPAN") {
+      //     mark_node = event.target.firstElementChild
+      //     span_node = event.target
+      //   }
+      //   else {
+      //     mark_node = event.target
+      //     span_node = event.target.parentElement
+      //   }
 
-        var text_content = mark_node.innerHTML
-        span_node.removeChild(mark_node)
-        span_node.textContent = text_content
-      }
+      //   var text_content = mark_node.innerHTML
+      //   span_node.removeChild(mark_node)
+      //   span_node.textContent = text_content
+      // }
 
 
     },
@@ -159,6 +159,15 @@ export default {
     .mainTextCard {
       max-width: v-bind(card_width);
 
+    }
+
+    mark {
+      background: white;
+      cursor: pointer;
+    }
+
+    mark:hover {
+      background: yellow;
     }
 
 
