@@ -4,14 +4,27 @@
       style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949" active-text="text mode"
       inactive-text="node mode" />
     <div class="mainText-content" ref="mainTextContent">
-      <el-card class="mainTextCard">
-        <mark v-for="(claim, c_index) in claim_list" :key="claim.name" :id="'C' + c_index" @mouseover="textMouseOver"
+      <el-card class="mainTextCard" v-if="mainText_mode">
+        <mark class="mainMark" :class="{ 'paragraphHighlight': ifMark(c_index) }" ref="mainMark"
+          v-for="(claim, c_index) in claim_list" :key="claim.name" :id="'C' + c_index" @mouseover="textMouseOver"
           @mouseout="textMouseOut" @click="textClick">
           {{ claim.name + ". " }}
         </mark>
       </el-card>
+      <div class="node_card" v-if="!mainText_mode">
+        <el-card class="mainTextCard" v-for="(claim, c_index) in claim_list" :key="claim.name" :id="'C' + c_index">
+          <mark class="mainMark" :class="{ 'paragraphHighlight': ifMark(c_index) }" ref="mainMark" :id="'C' + c_index"
+            @mouseover="textMouseOver" @mouseout="textMouseOut" @click="textClick">
+            {{ claim.name + ". " }}
+          </mark>
+        </el-card>
+      </div>
     </div>
-    <div class="eviView">
+    <div class="linkDiv" ref="linkDiv">
+      <NewsLink>
+      </NewsLink>
+    </div>
+    <div class="eviView" ref="eviView">
       <NewsEviPro :claim_markF_list="claim_markF_list"></NewsEviPro>
     </div>
   </div>
@@ -22,12 +35,14 @@ import { mapState, mapMutations } from 'vuex';
 import { ref } from 'vue';
 
 import NewsEviPro from './NewsEviPro.vue';
+import NewsLink from './NewsLink.vue';
 
 
 export default {
   name: 'NewsTextContent',
   components: {
     NewsEviPro,
+    NewsLink,
   },
   props: {
     msg: String,
@@ -39,16 +54,49 @@ export default {
       card_width: '480px',
       claim_list: [],
       claim_markF_list: [],
+      activeIndex: null,
     }
   },
   watch: {
     displayMode: function () {
       console.log('displayMode')
+    },
+    mainText_mode: function () {
+
+    },
+    claim_markF_list: function () {
+      // this.getNodeCoor()
+    },
+    eviIndexArray: function () {
+      console.log("watch change ", this.eviIndexArray)
+      var eviIndexArray = this.eviIndexArray
+      var claim_coor_list = this.getNodeCoor()
+      var claim_markF_list = this.claim_markF_list
+      var claim_index_list = []
+      for (var i = 0; i < claim_markF_list.length; i++) {
+        if (claim_markF_list[i] == 1) {
+          claim_index_list.push(i)
+        }
+      }
+
+      var svg_attr = this.$refs.linkDiv.getBoundingClientRect()
+      d3.select(".linkSvg").selectAll(".cardLink").remove()
+      for (i = 0; i < claim_index_list.length; i++) {
+        var claim_i = claim_index_list[i]
+        // draw path
+        d3.select(".linkSvg").append("path")
+          .attr("class", "cardLink")
+          // .attr("id", "p" + i).attr("class", "nodeLink")
+          .attr("d", "M " + (claim_coor_list[claim_i].x - svg_attr.x + claim_coor_list[claim_i].width) + " " + (claim_coor_list[claim_i].y - svg_attr.y) + " L " + (eviIndexArray[i].x - svg_attr.x) + " " + (eviIndexArray[i].y - svg_attr.y + eviIndexArray[i].height / 2))
+          .attr("stroke", "black")
+      }
+
     }
   },
   computed: {
     ...mapState([
-      'displayMode'
+      'displayMode',
+      'eviIndexArray',
     ])
   },
   beforeMount: function () {
@@ -64,11 +112,27 @@ export default {
     const divW = this.$refs.mainTextContent.clientWidth
     const divH = this.$refs.mainTextContent.clientHeight
     this.card_width = divW + 'px';
+
+
   },
   methods: {
+    getNodeCoor() {
+      let vuethis = this
+      var marks = vuethis.$refs.mainMark
+      console.log("coord test ", marks)
+      var mainMarkCoorArray = []
+      for (var i = 0; i < marks.length; i++) {
+        mainMarkCoorArray.push(marks[i].getBoundingClientRect())
+      }
+      console.log("coord test ", mainMarkCoorArray)
+      return mainMarkCoorArray
+
+    },
     textMouseOver(event) {
       // console.log("mouse in!!")
-      // console.log(event.target.tagName)
+
+      event.target.style.background = "grey"
+      // console.log(event.target)
       // if (event.target.tagName == 'SPAN') {
       //   var mark_text = document.createElement("mark")
       //   mark_text.onclick = this.onClick
@@ -83,10 +147,14 @@ export default {
     },
     textMouseOut(event) {
       // console.log("mouse in!!")
+
       // console.log(event.target.firstElementChild)
-      // var id_str = event.target.id
-      // var c_index = parseInt(id_str.slice(1, id_str.length))
-      // var f_mark = this.claim_markF_list[c_index]
+      var id_str = event.target.id
+      var c_index = parseInt(id_str.slice(1, id_str.length))
+      var f_mark = this.claim_markF_list[c_index]
+      if (f_mark == 0) {
+        event.target.style.background = "white"
+      }
       // // console.log("mouse out", event.target, event.target.parentElement)
       // if (f_mark == 0) {
       //   var mark_node, span_node
@@ -112,21 +180,49 @@ export default {
       var c_index = parseInt(id_str.slice(1, id_str.length))
       var f_mark = vuethis.claim_markF_list[c_index]
       var f_list = vuethis.claim_markF_list
-
+      vuethis.activeIndex = c_index
       f_list.splice(c_index, 1, 1 - f_mark)
       vuethis.claim_markF_list = lodash.cloneDeep(f_list)
+
       // alert("mouseclcik")
-      console.log(event.target)
-      console.log(f_mark, vuethis.claim_markF_list[c_index], id_str, c_index)
-      console.log(vuethis.claim_markF_list)
+      // console.log(event.target)
+      // console.log(f_mark, vuethis.claim_markF_list[c_index], id_str, c_index)
+      // console.log(vuethis.claim_markF_list)
 
-      // if (f_mark == 0) {//unfold
-      //   // this.show
-      // }
-      // else {// to fold
+      if (f_mark == 0) {//unfold
+        // this.show
+        event.target.style.background = "grey"
+      }
+      else {// to fold
+        event.target.style.background = "white"
+      }
 
-      // }
+    },
+
+    ifMark(c_index) {
+      let vuethis = this
+      var f_mark = vuethis.claim_markF_list[c_index]
+      if (f_mark == 1) {
+        return true
+      }
+      else {
+        return false
+      }
     }
+    // genMarkColor(event) {
+    //   let vuethis = this
+
+    //   console.log("ele ", vuethis.$el, vuethis, this)
+    //   var id_str = event.id
+    //   var c_index = parseInt(id_str.slice(1, id_str.length))
+    //   var f_mark = vuethis.claim_markF_list[c_index]
+    //   if (f_mark == 0) {
+    //     return "white"
+    //   }
+    //   else {
+    //     return "grey"
+    //   }
+    // }
   }
 }
 </script>
@@ -153,7 +249,7 @@ export default {
     top: 5%;
     left: 0%;
     bottom: 0%;
-    right: 50%;
+    right: 60%;
     text-align: left;
 
     .mainTextCard {
@@ -166,17 +262,27 @@ export default {
       cursor: pointer;
     }
 
-    mark:hover {
-      background: yellow;
+    .paragraphHighlight {
+      background: grey;
     }
 
 
+
+
+  }
+
+  .linkDiv {
+    position: absolute;
+    top: 0%;
+    left: 40%;
+    bottom: 0%;
+    right: 45%;
   }
 
   .eviView {
     position: absolute;
     top: 0%;
-    left: 50%;
+    left: 55%;
     bottom: 0%;
     right: 0%;
     text-align: left;

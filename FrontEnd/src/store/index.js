@@ -8,6 +8,7 @@ export default createStore({
     change_c_index:0,
     f_fold:0,   //1: unfold 2:fold
     eNodeYControlArray:[],
+    eviIndexArray:[],
   },
   getters: {
     
@@ -58,6 +59,10 @@ export default createStore({
       // console.log("eyc init!",value)
       state.eNodeYControlArray=value
       console.log("eyc init!",state.eNodeYControlArray)
+    },
+    setEviIndexArray(state,value){
+      state.eviIndexArray=value
+      console.log("store evi index change!",state.eviIndexArray)
     }
   },
     

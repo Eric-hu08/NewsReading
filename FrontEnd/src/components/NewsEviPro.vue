@@ -1,10 +1,11 @@
 <template>
   <div class="EviDiv">
-    <el-card class="EviCard" v-for="(evi_data, c_index) in evi_show_data" :key="evi_data.name" :id="'EC' + c_index">
-      <span v-for="(evi, e_index) in evi_data.children" :key="evi.name" :id="'E' + e_index" @mouseover="textMouseOver"
+    <el-card class="EviCard" v-for="(evi_data) in evi_show_data" :key="evi_data.name" :id="'EC' + (evi_data.index - 1)"
+      ref="eviCard">
+      <mark v-for="(evi, e_index) in evi_data.children" :key="evi.name" :id="'E' + e_index" @mouseover="textMouseOver"
         @mouseout="textMouseOut">
         {{ evi.name + ". " }}
-      </span>
+      </mark>
     </el-card>
   </div>
 </template>
@@ -88,6 +89,22 @@ export default {
     // this.drawCRLink
     // this.changeEText()
     // console.log("e_dict", this.e_dict)
+    // console.log("eviPro mounted!!")
+
+  },
+  updated() {
+    // console.log("eviPro updateed!!")
+    var eviCard = this.$refs.eviCard
+    console.log("evicard ele ", eviCard)
+    var attr_list = []
+    for (var i = 0; i < eviCard.length; i++) {
+      console.log("coor ", eviCard[i].$el.getBoundingClientRect())
+      attr_list.push(eviCard[i].$el.getBoundingClientRect())
+
+    }
+    console.log("attrlist", attr_list)
+    this.$store.commit("setEviIndexArray", attr_list)
+
 
   },
   methods: {
@@ -117,5 +134,15 @@ li {
 
 a {
   color: #42b983;
+}
+
+.EviCard {
+  mark {
+    background: white;
+  }
+
+  mark:hover {
+    background: grey;
+  }
 }
 </style>
