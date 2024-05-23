@@ -3,6 +3,7 @@ from flask_cors import CORS, cross_origin
 from dataset.tabular_data_collection import load_tabular_dataset, get_tabular_dataset
 from gpt_processing.GptMp import genGPTMp
 from JsonRead import readJson,readText,readRelation
+from processing.emoVal import emoVal
 
 import os, random
 
@@ -71,6 +72,14 @@ def getTextData():
     json_data=readText(cur_i)
     return {"data": json_data}
 
+@app.route('/emoVal', methods=['GET'])
+@cross_origin()
+def getEmoVal():
+    file_path="t10_correct.json"
+    cur_i = request.args.get('cur_i')
+    # print('tabular_name_list[]', tabular_name_list)
+    emo_flat_list=emoVal(file_path)
+    return {"data": emo_flat_list}
 if __name__ == "__main__":
     print('run 0.0.0.0:14449')
     load_tabular_dataset()

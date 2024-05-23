@@ -86,3 +86,17 @@ export function getTextData(cur_i,getTextDataCallback) {
         getTextDataCallback(jsonData)
     })
 }
+export function getEmoVal(cur_i,getEmoCallback) {
+    let formData = {"cur_i":cur_i}
+    axios({
+        methods: 'get',
+        url: server_address + '/emoVal',
+        params: formData,
+        timeout: 5000
+    })
+    .then((res) => {
+        let jsonData = res['data']['data']
+        // console.log('Textdata in commu', jsonData)
+        getEmoCallback(jsonData)
+    })
+}

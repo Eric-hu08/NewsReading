@@ -13,8 +13,12 @@
       </el-tooltip>
     </el-menu>
     <div class="content-container">
-      <div class="nodeView"></div>
-      <div class="curveView"></div>
+      <div class="nodeView">
+        <NewsNodeTree></NewsNodeTree>
+      </div>
+      <div class="curveView">
+        <NewsCurve></NewsCurve>
+      </div>
       <div class="textView">
         <NewsTextContent :jsonData="jsonData"></NewsTextContent>
       </div>
@@ -26,17 +30,21 @@
 <script>
 
 
-import { getTabularDataset, getJsonData, getTextData, getRelationData } from '@/communication/communicator.js'
+import { getTabularDataset, getJsonData, getTextData, getRelationData, getEmoVal } from '@/communication/communicator.js'
 import { Dataset } from '@/dataset/dataset.js'
 
 import NewsS from './components/NewsS.vue'
 import NewsTextContent from './components/NewsTextContent.vue';
+import NewsNodeTree from './components/NewsNodeTree.vue';
+import NewsCurve from './components/NewsCurve.vue';
 
 export default {
   name: 'app',
   components: {
 
     NewsTextContent,
+    NewsNodeTree,
+    NewsCurve
   },
   data() {
     return {
@@ -48,6 +56,9 @@ export default {
       loadingData: true,
       jsonData: null,
       f_y_change: 0,
+
+
+
     }
   },
   beforeMount: function () {
@@ -57,7 +68,8 @@ export default {
     let jsonDataDeferObj = $.Deferred()
     let textDataDeferObj = $.Deferred()
     let relationDataDeferObj = $.Deferred()
-    $.when(tabularDataDeferObj, jsonDataDeferObj, textDataDeferObj).then(function () {
+    let emoValDataDeferObj = $.Deferred()
+    $.when(tabularDataDeferObj, jsonDataDeferObj, textDataDeferObj, relationDataDeferObj, emoValDataDeferObj).then(function () {
       self.loadingData = false
     })
     let tabularDataList = ['*']
@@ -82,6 +94,11 @@ export default {
     getRelationData(self.cur_news_i, function (processed_json_data) {
       sysDatasetObj.updateRelationData(processed_json_data)
       relationDataDeferObj.resolve()
+
+    })
+    getEmoVal(self.cur_news_i, function (processed_json_data) {
+      sysDatasetObj.updateEmoFlatList(processed_json_data)
+      emoValDataDeferObj.resolve()
 
     })
 
@@ -131,7 +148,9 @@ export default {
 <style lang="less">
 html {
   font-size: 100%;
+  overflow-y: hidden;
 }
+
 
 @menu-height: 2.5rem;
 
@@ -178,10 +197,26 @@ html {
     bottom: 0%;
     right: 0%;
 
+    .nodeView {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      bottom: 0%;
+      right: 95%;
+    }
+
+    .curveView {
+      position: absolute;
+      top: 0%;
+      left: 5%;
+      bottom: 0%;
+      right: 85%;
+    }
+
     .textView {
       position: absolute;
       top: 0%;
-      left: 40%;
+      left: 15%;
       bottom: 0%;
       right: 0%;
     }

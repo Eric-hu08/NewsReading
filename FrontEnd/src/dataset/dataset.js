@@ -4,6 +4,7 @@ export function Dataset () {
     this.jsonData=[]
     this.textData=[]
     this.relationData=[]
+    this.emoFlatData=[]
 }
 
 Dataset.prototype = {
@@ -23,5 +24,8 @@ Dataset.prototype = {
     },
     updateRelationData:function(processed_json_data){
         this.relationData=processed_json_data
-    }
+    },
+    updateEmoFlatList:function(processed_emo_flat_list){
+        this.emoFlatData=processed_emo_flat_list
+    },
 }

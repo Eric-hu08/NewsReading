@@ -9,6 +9,8 @@ export default createStore({
     f_fold:0,   //1: unfold 2:fold
     eNodeYControlArray:[],
     eviIndexArray:[],
+    claimMarkFList:[],
+    eviModeList:[],
   },
   getters: {
     
@@ -63,7 +65,29 @@ export default createStore({
     setEviIndexArray(state,value){
       state.eviIndexArray=value
       console.log("store evi index change!",state.eviIndexArray)
-    }
+    },
+    setCMFArray(state,value){
+      state.claimMarkFList=value
+    },
+    editCMFArray(state,{index,value}){
+      var temp_array=lodash.cloneDeep(state.claimMarkFList)
+      temp_array.splice(index,1,value)
+      // console.log("begin change cnnodea",temp_array,index,value)
+      state.claimMarkFList=lodash.cloneDeep(temp_array)
+      // var temp2=
+      
+      // console.log("cnodearray",state.cNodeYArray,value)
+    },
+    setEviModeList(state,value){
+      state.eviModeList=value
+    },
+    editEviModeList(state,{index,value}){
+      var temp_array=lodash.cloneDeep(state.eviModeList)
+      temp_array.splice(index,1,value)
+      // console.log("begin change cnnodea",temp_array,index,value)
+      state.eviModeList=lodash.cloneDeep(temp_array)
+      
+  },
   },
     
   actions: {
