@@ -73,6 +73,7 @@ export default {
       var node_type_list = []
       var flat_c_mark_list = []
       var flat_type_list = []
+      var bind_list = []
       for (var i = 0; i < tree_data.length; i++) {
         var word_len = tree_data[i].name.length
         word_len_list.push(word_len)
@@ -80,12 +81,14 @@ export default {
         node_type_list.push(tree_data[i].type)
         flat_c_mark_list.push(1)
         flat_type_list.push("C" + tree_data[i].index)
+        bind_list.push(tree_data[i])
         for (var j = 0; j < tree_data[i].children.length; j++) {
           total_length += tree_data[i].children[j].name.length
           word_len_list.push(tree_data[i].children[j].name.length)
           node_type_list.push(tree_data[i].children[j].type)
           flat_c_mark_list.push(0)
           flat_type_list.push(i + "-" + j + "-" + tree_data[i].children[j].type.slice(-1))
+          bind_list.push(tree_data[i].children[j])
         }
       }
       var tree_height = vuethis.divH * vuethis.curve_height_r
@@ -181,7 +184,7 @@ export default {
             // 计算提示框的初始位置
             var top = event.clientY;
             var left = event.clientX;
-            top -= 20
+            top -= 30
             left -= 20
             top -= mainDiv_top
             left -= mainDiv_left
