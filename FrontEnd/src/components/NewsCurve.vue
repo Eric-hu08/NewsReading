@@ -29,6 +29,31 @@ export default {
     displayMode: function () {
       console.log('displayMode')
 
+    },
+    claimMarkFList: function () {
+      // console.log('claimMarkFList', this.claimMarkFList)
+      let vuethis = this
+      d3.select("body").select(".curve-svg").selectAll(".cNode").classed("highLighted", function (d) {
+
+        var f_0 = 0
+        for (var i = 0; i < vuethis.claimMarkFList.length; i++) {
+          if (vuethis.claimMarkFList[i] != 0) {
+            f_0 = 1
+            break;
+          }
+        }
+        if (f_0 == 0) {
+          return false;
+        }
+        if (d.id.indexOf("C") != -1) {
+          var c_index = parseInt(d.id.slice(1)) - 1
+          if (vuethis.claimMarkFList[c_index] == 1) {
+            return false;
+          }
+        }
+        return true;
+
+      })
     }
   },
   computed: {
@@ -73,7 +98,7 @@ export default {
       var node_type_list = []
       var flat_c_mark_list = []
       var flat_type_list = []
-      var bind_list = []
+
       for (var i = 0; i < tree_data.length; i++) {
         var word_len = tree_data[i].name.length
         word_len_list.push(word_len)
@@ -81,14 +106,14 @@ export default {
         node_type_list.push(tree_data[i].type)
         flat_c_mark_list.push(1)
         flat_type_list.push("C" + tree_data[i].index)
-        bind_list.push(tree_data[i])
+
         for (var j = 0; j < tree_data[i].children.length; j++) {
           total_length += tree_data[i].children[j].name.length
           word_len_list.push(tree_data[i].children[j].name.length)
           node_type_list.push(tree_data[i].children[j].type)
           flat_c_mark_list.push(0)
           flat_type_list.push(i + "-" + j + "-" + tree_data[i].children[j].type.slice(-1))
-          bind_list.push(tree_data[i].children[j])
+
         }
       }
       var tree_height = vuethis.divH * vuethis.curve_height_r
@@ -154,117 +179,121 @@ export default {
         .attr("d", "M" + vuethis.divW / 2 + "," + x_start + "L" + vuethis.divW / 2 + "," + tree_height)
         .attr("stroke", "black")
         .attr("fill", "none");
-      for (var i = 0; i < emo_flat_list.length; i++) {
-        svg.append("circle")
-          .attr("cy", x_cur_list[i])
-          .attr("cx", y_cur_list[i])
-          .attr("r", Math.log10(word_len_list[i] * h_r) * 5)
-          .attr("fill", vuethis.eNodeColor(node_type_list[i]))
-          .attr("stroke", "black")
-          .attr("stroke-width", 1)
-          .attr("opacity", 1)
-          .attr("id", flat_type_list[i])
-          .on("mouseover", function (d) {
-            // console.log("mouse over!", event)
-            var id_str = event.target.id
-            // console.log("id str!!", id_str)
-            if (id_str.indexOf("C") == -1) {
-              id_str = id_str.slice(-1)
-            }
-            document.getElementById("tooltip").innerText = `${id_str}`;
-            var tooltip = document.getElementById("tooltip");
-            // 获取提示框的尺寸
+
+      const node_bind_data = emo_flat_list.map((item, index) => ({
+        cy: x_cur_list[index],
+        cx: y_cur_list[index],
+        r: Math.log10(word_len_list[index] * h_r) * 5,
+        fill: vuethis.eNodeColor(node_type_list[index]),
+        id: flat_type_list[index],
+        node_type: node_type_list[index],
+        // node_index: function () {
+        //   if (this.id.indexOf("C") != -1) {
+        //     var index_str = parseInt(this.id.slice(1))
+        //     return index_str - 1
+        //   }
+        //   else{
+
+        //   }
+        // }
+        // 可以根据需要添加更多数据属性
+      }));
+      svg.selectAll(".cNode")
+        .data(node_bind_data)
+        .enter()
+        .append("circle")
+        .attr("cy", d => d.cy)
+        .attr("cx", d => d.cx)
+        .attr("r", d => d.r)
+        .attr("fill", d => d.fill)
+        .attr("class", "cNode")
+        .attr("id", d => d.id)
+        .on("mouseover", function (d) {
+          // console.log("mouse over!", event)
+          var id_str = event.target.id
+          // console.log("id str!!", id_str)
+          if (id_str.indexOf("C") == -1) {
+            id_str = id_str.slice(-1)
+          }
+          document.getElementById("tooltip").innerText = `${id_str}`;
+          var tooltip = document.getElementById("tooltip");
+          // 获取提示框的尺寸
 
 
-            var curveContainer = vuethis.$refs.curveContainer
-            var curveContainerRect = curveContainer.getBoundingClientRect();
-            var mainDiv_top = curveContainerRect.top
-            var mainDiv_left = curveContainerRect.left
+          var curveContainer = vuethis.$refs.curveContainer
+          var curveContainerRect = curveContainer.getBoundingClientRect();
+          var mainDiv_top = curveContainerRect.top
+          var mainDiv_left = curveContainerRect.left
 
-            // 计算提示框的初始位置
-            var top = event.clientY;
-            var left = event.clientX;
-            top -= 30
-            left -= 20
-            top -= mainDiv_top
-            left -= mainDiv_left
+          // 计算提示框的初始位置
+          var top = event.clientY;
+          var left = event.clientX;
+          top -= 30
+          left -= 20
+          top -= mainDiv_top
+          left -= mainDiv_left
 
-            tooltip.style.top = top + 'px';
-            tooltip.style.left = left + 'px';
-            document.getElementById("tooltip").style.display = "block";
-          })
+          tooltip.style.top = top + 'px';
+          tooltip.style.left = left + 'px';
+          document.getElementById("tooltip").style.display = "block";
+        })
 
 
-          .on("mouseout", function () {
-            // 当鼠标离开时清除提示
-            document.getElementById("tooltip").innerText = "";
-            document.getElementById("tooltip").style.display = "none";
-          })
+        .on("mouseout", function () {
+          // 当鼠标离开时清除提示
+          document.getElementById("tooltip").innerText = "";
+          document.getElementById("tooltip").style.display = "none";
+        })
 
-          .on("click", function () {
-            var id_str = event.target.id
-            var node_index = parseInt(event.target.id.slice(0))
-            var node_type = parseInt(event.target.id.slice(-1))
-            if (id_str.indexOf('C') != -1) {//click claim!
-              var c_index = parseInt(event.target.id.slice(-1)) - 1
-              // var temp_value = vuethis.claimMarkFList[c_index]
-              // console.log("temp value", temp_value, vuethis.claimMarkFList)
-              vuethis.$store.commit("editCMFArray", { index: c_index, value: 1 })
-            }
-            else {  //click evi
-              var str_list = id_str.split('-')
-              c_index = parseInt(str_list[0])
+        .on("click", function () {
+          var id_str = event.target.id
+          var node_index = parseInt(event.target.id.slice(0))
+          var node_type = parseInt(event.target.id.slice(-1))
+          if (id_str.indexOf('C') != -1) {//click claim!
+            var c_index = parseInt(event.target.id.slice(-1)) - 1
+            // var temp_value = vuethis.claimMarkFList[c_index]
+            // console.log("temp value", temp_value, vuethis.claimMarkFList)
+            vuethis.$store.commit("editCMFArray", { index: c_index, value: 1 })
+          }
+          else {  //click evi
+            var str_list = id_str.split('-')
+            c_index = parseInt(str_list[0])
 
-              vuethis.$store.commit("editCMFArray", { index: c_index, value: 1 })
-              var e_index = parseInt(str_list[1])
-              // vuethis.$store.commit("editEviModeList", { index: c_index, value: 1 })
-              vuethis.$nextTick(() => {
-                var eviDivs = d3.select("body").selectAll(".eviNodeDiv")
-                console.log("evi divs ", eviDivs)
-                eviDivs.each(function (d, i) {
-                  var div_id = this.getAttribute("id")
-                  var s_start = div_id.indexOf("C")
-                  var c_index_str = div_id.slice(s_start + 1)
-                  var div_c_id = parseInt(c_index_str)
-                  console.log("id com", div_c_id, c_index)
-                  if (div_c_id == c_index) {
-                    var e_index_str = "E" + e_index
-                    var dst_mark = d3.select(this).select("#" + e_index_str)
-                    console.log("select divs", dst_mark)
-                    dst_mark.style("background", "grey")
-                    setTimeout(function () {
-                      dst_mark.transition().duration(2000)
-                        .style("background", "white")
-                      //   d3.select(self.frameElement).transition()
-                      // .duration(duration)
-                      // .style("height", height + "px");
-                    }, 200)
+            vuethis.$store.commit("editCMFArray", { index: c_index, value: 1 })
+            var e_index = parseInt(str_list[1])
+            // vuethis.$store.commit("editEviModeList", { index: c_index, value: 1 })
+            vuethis.$nextTick(() => {
+              var eviDivs = d3.select("body").selectAll(".eviNodeDiv")
+              console.log("evi divs ", eviDivs)
+              eviDivs.each(function (d, i) {
+                var div_id = this.getAttribute("id")
+                var s_start = div_id.indexOf("C")
+                var c_index_str = div_id.slice(s_start + 1)
+                var div_c_id = parseInt(c_index_str)
+                console.log("id com", div_c_id, c_index)
+                if (div_c_id == c_index) {
+                  var e_index_str = "E" + e_index
+                  var dst_mark = d3.select(this).select("#" + e_index_str)
+                  console.log("select divs", dst_mark)
+                  dst_mark.style("background", "grey")
+                  setTimeout(function () {
+                    dst_mark.transition().duration(2000)
+                      .style("background", "white")
+                    //   d3.select(self.frameElement).transition()
+                    // .duration(duration)
+                    // .style("height", height + "px");
+                  }, 200)
 
-                  }
-                })
-                // for (var i = 0; i < eviDivs.length; i++) {
-                //   var div_id = eviDivs[i].attr("id")
-                //   var s_start = div_id.indexOf("C")
-                //   var c_index_str = div_id.slice(s_start + 1)
-                //   var div_c_id = parseInt(c_index_str)
-                //   console.log("id com", div_c_id, c_index)
-                //   if (div_c_id == c_index) {
-                //     var e_index_str = "E" + e_index
-                //     eviDivs[i].select(".${e_index_str}").style.background = "grey"
-                //     console.log("select divs", eviDivs[i].select(".${e_index_str}"), e_index)
-                //     break;
-                //   }
-                // }
+                }
               })
-            }
 
-          })
+            })
+          }
 
-        // svg.append("text")
-        // .attr("x",x_cur_list[i])
-        // .attr("y",y_cur_list[i])
-        // .text
-      }
+        })
+
+
+
 
     },
     eNodeColor(e_type) {
@@ -309,6 +338,16 @@ export default {
     width: 20px;
     height: 10px;
     /* 确保它在其他元素之上 */
+  }
+
+  .cNode {
+    stroke-width: 1;
+    stroke: black;
+    opacity: 1;
+
+    &.highLighted {
+      opacity: 0.2;
+    }
   }
 }
 </style>

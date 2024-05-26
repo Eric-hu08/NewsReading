@@ -357,7 +357,7 @@ export default {
       var c_index = parseInt(id_str.slice(1, id_str.length))
       var f_mark = this.claim_markF_list[c_index]
       if (f_mark == 0) {
-        console.log("white move out")
+        // console.log("white move out")
         event.target.style.background = "white"
       }
       // // console.log("mouse out", event.target, event.target.parentElement)
@@ -407,7 +407,7 @@ export default {
         event.target.style.background = "grey"
       }
       else {// to fold
-        console.log("white click")
+        // console.log("white click")
 
         event.target.style.background = "white"
       }
