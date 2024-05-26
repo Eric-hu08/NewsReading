@@ -47,15 +47,38 @@ export default {
     displayMode: function () {
       console.log('displayMode')
     },
-    claim_markF_list: function () {
+    claimMarkFList: function () {
+      // console.log('claimMarkFList', this.claimMarkFList)
+      let vuethis = this
+      d3.select("body").select(".treeSvg").selectAll(".treeNodeGroup").classed("highLighted", function (d) {
 
-    },
+        var f_0 = 0
+        for (var i = 0; i < vuethis.claimMarkFList.length; i++) {
+          if (vuethis.claimMarkFList[i] != 0) {
+            f_0 = 1
+            break;
+          }
+        }
+        if (f_0 == 0) {
+          return false;
+        }
+        if (d.type === "diamond") {
+          var c_index = parseInt(d.index) - 1
+          if (vuethis.claimMarkFList[c_index] == 1) {
+            return false;
+          }
+        }
+        return true;
+
+      })
+    }
 
   },
   computed: {
     ...mapState([
       'displayMode',
-      'eNodeYControlArray'
+      'eNodeYControlArray',
+      'claimMarkFList',
     ])
   },
   beforeMount: function () {
@@ -205,7 +228,6 @@ export default {
         .style("text-anchor", "middle")
         .style("font-weight", "bold")
         .style("font-family", "sans-serif")
-        // .style("font-style", "italic")
         .style("dominant-baseline", "middle");
 
 
@@ -326,5 +348,21 @@ a {
   left: 0%;
   bottom: 0%;
   right: 0%;
+
+  .treeNodeGroup {
+    text {
+      font-size: 8px;
+      fill: white;
+      text-anchor: middle;
+      fold-weight: bold;
+      font-family: "sans-serif";
+      dominant-baseline: middle;
+      // .style("font-size", "8px") .style("fill", "white") .style("text-anchor", "middle") .style("font-weight", "bold") .style("font-family", "sans-serif") .style("dominant-baseline", "middle");
+    }
+
+    &.highLighted {
+      opacity: 0.2;
+    }
+  }
 }
 </style>
