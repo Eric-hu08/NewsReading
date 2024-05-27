@@ -62,13 +62,27 @@ export default {
         if (f_0 == 0) {
           return false;
         }
-        if (d.type === "diamond") {
-          var c_index = parseInt(d.index) - 1
-          if (vuethis.claimMarkFList[c_index] == 1) {
+        if (vuethis.HLEList.length == 0) { //click claim
+          if (d.type === "diamond") {
+            var c_index = parseInt(d.index) - 1
+            if (vuethis.claimMarkFList[c_index] == 1) {
+              return false;
+            }
+          }
+          return true;
+        }
+        else {
+          var c_index = vuethis.HLEList[0].c_index
+          var e_index = vuethis.HLEList[0].e_index
+          if (d.type === "diamond") return true;
+          if ((d.index == e_index) && (d.c_index == c_index)) {
             return false;
           }
+          return true;
+
+
         }
-        return true;
+
 
       })
     }
@@ -79,6 +93,7 @@ export default {
       'displayMode',
       'eNodeYControlArray',
       'claimMarkFList',
+      'HLEList',
     ])
   },
   beforeMount: function () {
@@ -127,6 +142,7 @@ export default {
       var cur_y = this.tree_head_inter
       var cur_x = this.tree_left_inter
       // 创建一个新的数据数组，包含菱形和矩形的信息
+      let vuethis = this
       const node_data = [];
       for (let i = 0; i < tree_data.length; i++) {
         const node = tree_data[i];
@@ -158,6 +174,7 @@ export default {
           node_data.push({
             type: 'rect',
             index: j,
+            c_index: i,
             x: cur_x,
             y: cur_y,
             width: childWidth,
@@ -180,7 +197,50 @@ export default {
         .data(node_data)
         .enter()
         .append("g")
-        .attr('class', 'treeNodeGroup');
+        .attr('class', 'treeNodeGroup')
+        .on('click', function (d) {
+          if (d.type === 'diamond') {
+            var c_index = parseInt(d.index) - 1
+            var zero_list = []
+            vuethis.$store.commit("setHLEList", lodash.cloneDeep(zero_list))
+            vuethis.$store.commit("editCMFArray", { index: c_index, value: 1 })
+          }
+          else {
+            var c_index = d.c_index
+            var e_index = d.index
+            vuethis.$store.commit("updateHLEList", { c_index: c_index, e_index: e_index })
+            vuethis.$store.commit("editCMFArray", { index: c_index, value: 1 })
+            vuethis.$nextTick(() => {
+              var eviDivs = d3.select("body").selectAll(".eviNodeDiv")
+              // console.log("evi divs ", eviDivs)
+              eviDivs.each(function (d, i) {
+                var div_id = this.getAttribute("id")
+                var s_start = div_id.indexOf("C")
+                var c_index_str = div_id.slice(s_start + 1)
+                var div_c_id = parseInt(c_index_str)
+                // console.log("id com", div_c_id, c_index)
+                if (div_c_id == c_index) {
+                  var e_index_str = "E" + e_index
+                  var dst_mark = d3.select(this).select("#" + e_index_str)
+                  // console.log("select divs", dst_mark)
+
+                  dst_mark.style("background", "grey")
+                  setTimeout(function () {
+                    dst_mark.transition().duration(2000)
+                      .style("background", "white")
+                    //   d3.select(self.frameElement).transition()
+                    // .duration(duration)
+                    // .style("height", height + "px");
+                  }, 200)
+
+                }
+              })
+
+            })
+
+          }
+        }
+        )
       nodeGroups.append(
         // function (d) {
         //   return document.createElementNS('http://www.w3.org/2000/svg', 'rect')

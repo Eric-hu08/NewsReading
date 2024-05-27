@@ -387,6 +387,8 @@ export default {
       var f_list = vuethis.claim_markF_list
       vuethis.activeIndex = c_index
       f_list.splice(c_index, 1, 1 - f_mark)
+      var temptemp_list = []
+      vuethis.$store.commit("setHLEList", lodash.cloneDeep(temptemp_list))
       vuethis.$store.commit("setCMFArray", lodash.cloneDeep(f_list))
       vuethis.claim_markF_list = lodash.cloneDeep(f_list)
 

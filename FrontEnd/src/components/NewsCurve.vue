@@ -45,13 +45,29 @@ export default {
         if (f_0 == 0) {
           return false;
         }
-        if (d.id.indexOf("C") != -1) {
-          var c_index = parseInt(d.id.slice(1)) - 1
-          if (vuethis.claimMarkFList[c_index] == 1) {
+        if (vuethis.HLEList.length == 0) { //click claim
+          if (d.id.indexOf("C") != -1) {
+            var c_index = parseInt(d.id.slice(1)) - 1
+            if (vuethis.claimMarkFList[c_index] == 1) {
+              return false;
+            }
+          }
+          return true;
+        }
+        else {   //click evidence
+          var c_index = vuethis.HLEList[0].c_index
+          var e_index = vuethis.HLEList[0].e_index
+          if (d.id.indexOf("C") != -1) return true;
+          var cur_c_i = parseInt(d.id.split("-")[0])
+          var cur_e_i = parseInt(d.id.split("-")[1])
+          console.log("cur_c_i", c_index, cur_c_i, "cur_e_i", e_index, cur_e_i)
+          if ((cur_c_i == c_index) && (cur_e_i == e_index)) {
             return false;
           }
+          return true;
+
         }
-        return true;
+
 
       })
     }
@@ -60,6 +76,7 @@ export default {
     ...mapState([
       'displayMode',
       'claimMarkFList',
+      'HLEList',
     ])
   },
   beforeMount: function () {
@@ -253,28 +270,33 @@ export default {
             var c_index = parseInt(event.target.id.slice(-1)) - 1
             // var temp_value = vuethis.claimMarkFList[c_index]
             // console.log("temp value", temp_value, vuethis.claimMarkFList)
+            var zero_list = []
+            vuethis.$store.commit("setHLEList", lodash.cloneDeep(zero_list))
             vuethis.$store.commit("editCMFArray", { index: c_index, value: 1 })
           }
           else {  //click evi
             var str_list = id_str.split('-')
             c_index = parseInt(str_list[0])
 
-            vuethis.$store.commit("editCMFArray", { index: c_index, value: 1 })
+
             var e_index = parseInt(str_list[1])
+            vuethis.$store.commit("updateHLEList", { c_index: c_index, e_index: e_index })
+            vuethis.$store.commit("editCMFArray", { index: c_index, value: 1 })
             // vuethis.$store.commit("editEviModeList", { index: c_index, value: 1 })
             vuethis.$nextTick(() => {
               var eviDivs = d3.select("body").selectAll(".eviNodeDiv")
-              console.log("evi divs ", eviDivs)
+              // console.log("evi divs ", eviDivs)
               eviDivs.each(function (d, i) {
                 var div_id = this.getAttribute("id")
                 var s_start = div_id.indexOf("C")
                 var c_index_str = div_id.slice(s_start + 1)
                 var div_c_id = parseInt(c_index_str)
-                console.log("id com", div_c_id, c_index)
+                // console.log("id com", div_c_id, c_index)
                 if (div_c_id == c_index) {
                   var e_index_str = "E" + e_index
                   var dst_mark = d3.select(this).select("#" + e_index_str)
-                  console.log("select divs", dst_mark)
+                  // console.log("select divs", dst_mark)
+
                   dst_mark.style("background", "grey")
                   setTimeout(function () {
                     dst_mark.transition().duration(2000)

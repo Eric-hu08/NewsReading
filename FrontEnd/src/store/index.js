@@ -11,6 +11,7 @@ export default createStore({
     eviIndexArray:[],
     claimMarkFList:[],
     eviModeList:[],
+    HLEList:[],
   },
   getters: {
     
@@ -88,6 +89,18 @@ export default createStore({
       state.eviModeList=lodash.cloneDeep(temp_array)
       
   },
+    setHLEList(state,value){
+      state.HLEList=value
+    },
+    updateHLEList(state,{c_index,e_index}){
+      var temp_list=[]
+      var index_dict={'c_index':c_index,'e_index':e_index}
+      temp_list.push(index_dict)
+      // console.log("begin change cnnodea",temp_array,index,value)
+      state.HLEList=lodash.cloneDeep(temp_list)
+      console.log("update HLE list",state.HLEList)
+  },
+
   },
     
   actions: {
