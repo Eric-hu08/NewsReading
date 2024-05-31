@@ -1,22 +1,26 @@
 <template>
   <div class="EviDiv" v-on:scroll="eviScroll">
-    <div class="eviNodeDiv" v-for="(evi_data) in evi_show_data" :key="evi_data.name" ref="eviDivs"
+    <div class="eviNodeDiv" v-for="(evi_data, evi_i) in evi_show_data" :key="evi_data.name" ref="eviDivs"
       :id="'DC' + (evi_data.index - 1)">
       <el-card class="EviCard" :id="'EC' + (evi_data.index - 1)" ref="eviCard" v-if="evi_if_show(evi_data.index - 1, 0)"
         shadow="hover">
+        <el-slider class="evi-slider" :max="5" :min="0" v-model="sliderList[evi_i]" :step="1" show-stops></el-slider>
+        <template v-for="(evi, e_index) in evi_data.children" :key="evi.name">
 
-        <mark v-for="(evi, e_index) in evi_data.children" :key="evi.name" :id="'E' + e_index" @mouseover="textMouseOver"
-          @mouseout="textMouseOut">
-          {{ evi.name + ". " }}
-        </mark>
+          <NewsEMark :evi="evi" :e_index="e_index" el_show=0 :evi_sum_exter="sliderList[evi_i]"></NewsEMark>
+          <!-- <mark :id="'E' + e_index">
+            {{ evi.name + ". " }}
+          </mark> -->
 
+        </template>
       </el-card>
       <div class="nodeCardDiv" v-if="evi_if_show(evi_data.index - 1, 1)" :id="'EC' + (evi_data.index - 1)">
 
         <el-card class="EviCard" v-for="(evi, e_index) in evi_data.children" :key="evi.name" :id="'E' + e_index"
           shadow="hover">
-          <circle r="5"></circle>
-          <mark>{{ evi.name + ". " }}</mark>
+          <!-- <circle r="5"></circle> -->
+          <NewsEMark :evi="evi" :e_index="e_index" el_show=1 :evi_sum_exter="sliderList[evi_i]"></NewsEMark>
+          <!-- <mark>{{ evi.name + ". " }}</mark> -->
         </el-card>
 
       </div>
@@ -36,6 +40,7 @@
 <script>
 import { mapState, mapMutations } from 'vuex';
 import NewsEText from './NewsEText.vue';
+import NewsEMark from './NewsEMark.vue';
 export default {
   name: 'NewsEviPro',
   props: {
@@ -46,13 +51,14 @@ export default {
   },
   components: {
     // NewsEText,
+    NewsEMark,
 
   },
   data() {
     return {
       evi_show_data: null,
       evi_mode: false,
-
+      sliderList: [],
 
       marge: { top: 10, bottom: 60, left: 800, right: 60 },
 
@@ -80,15 +86,18 @@ export default {
       var claim_list = window.sysDatasetObj.jsonData.children
       var claim_markF_list = this.claim_markF_list
       var evi_show_data = []
+      var sliderList = []
       for (var i = 0; i < claim_markF_list.length; i++) {
         if (claim_markF_list[i] == 1) {
           if (claim_list[i].children.length > 0) {
             evi_show_data.push(claim_list[i])
+            sliderList.push(0)
           }
 
         }
       }
       this.evi_show_data = evi_show_data
+      this.sliderList = sliderList
       // console.log(this.evi_show_data)
     },
 
@@ -100,14 +109,14 @@ export default {
     ])
   },
   beforeMount: function () {
-    var claim_list = window.sysDatasetObj.jsonData.children
-    var claim_markF_list = this.claim_markF_list
-    var evi_show_data = []
-    for (var i = 0; i < claim_markF_list.length; i++) {
-      if (claim_markF_list[i] == 1) {
-        evi_show_data.push(claim_list[i])
-      }
-    }
+    // var claim_list = window.sysDatasetObj.jsonData.children
+    // var claim_markF_list = this.claim_markF_list
+    // var evi_show_data = []
+    // for (var i = 0; i < claim_markF_list.length; i++) {
+    //   if (claim_markF_list[i] == 1) {
+    //     evi_show_data.push(claim_list[i])
+    //   }
+    // }
     // console.log("claimFlist in evi", this.claim_markF_list)
 
 

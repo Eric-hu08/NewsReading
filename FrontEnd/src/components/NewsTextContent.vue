@@ -1,16 +1,22 @@
 <template>
   <div class="mainTextDiv">
-    <el-switch v-model="mainText_mode" class="mainText-switch"
-      style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949" active-text="text mode"
-      inactive-text="node mode" />
+    <div class="elDiv">
+      <el-switch v-model="mainText_mode" class="mainText-switch"
+        style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949" active-text="text mode"
+        inactive-text="node mode" />
+      <el-slider class="mainText-slider" :max="5" :min="0" v-model="main_sum" :step="1" show-stops />
+    </div>
     <div class="mainText-content" ref="mainTextContent">
-      <el-card class="mainTextCard" v-if="mainText_mode">
-        <mark class="mainMark" :class="{ 'paragraphHighlight': ifMark(c_index) }" ref="mainMark"
-          v-for="(claim, c_index) in claim_list" :key="claim.name" :id="'C' + c_index" @mouseover="textMouseOver"
-          @mouseout="textMouseOut" @click="textClick">
-          {{ claim.name + ". " }}
 
-        </mark>
+      <el-card class="mainTextCard" v-if="mainText_mode">
+        <template v-for="(claim, c_index) in claim_list">
+          <mark class="mainMark" :class="{ 'paragraphHighlight': ifMark(c_index) }" ref="mainMark" :id="'C' + c_index"
+            @mouseover="textMouseOver" @mouseout="textMouseOut" @click="textClick">
+            {{ sumContent(claim, main_sum) }}
+
+          </mark>
+          <span>&nbsp</span>
+        </template>
         <!-- <el-icon @click="foldClick(c_index)">
           <Sort />
         </el-icon> -->
@@ -19,7 +25,7 @@
         <el-card class="mainTextCard" v-for="(claim, c_index) in claim_list" :key="claim.name" :id="'C' + c_index">
           <mark class="mainMark" :class="{ 'paragraphHighlight': ifMark(c_index) }" ref="mainMark" :id="'C' + c_index"
             @mouseover="textMouseOver" @mouseout="textMouseOut" @click="textClick">
-            {{ claim.name + ". " }}
+            {{ sumContent(claim, main_sum) }}
           </mark>
 
         </el-card>
@@ -61,6 +67,10 @@ export default {
       claim_markF_list: [],
       activeIndex: null,
       evi_mode_list: [],
+
+      main_sum: ref(0),
+      min_sum: ref(0),
+      max_sum: ref(5),
 
       pathRect_width: 0.05,
       pathRect_end_h_r: 0.99,
@@ -116,6 +126,15 @@ export default {
     this.genLink()
   },
   methods: {
+    sumContent(claim, main_sum) {
+      if (main_sum == 0) {
+        return (claim.name + ".")
+      }
+      else {
+        var sum_str = "sum" + (main_sum - 1)
+        return (claim[sum_str] + ".")
+      }
+    },
     foldClick(event) {
       console.log("foldclick!!", event.target)
       var id_str = event.target.id
@@ -155,7 +174,7 @@ export default {
         console.log("evi Array", eviIndexArray[i], eviIndexArray[i][1])
         var rect_end_x = eviIndexArray[i][1][0][0].x - pathRect_width - svg_attr.x
         // var rect_end_x = eviIndexArray[i][1][0][0].x - pathRect_width - svg_attr.x
-        // TODO: evi i?
+
         var evi_coor_list = eviIndexArray[i][1]
         var g = d3.select(".linkSvg").append("g").attr("class", "linkG")
 
@@ -445,7 +464,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
+<style lang="less">
 .mainTextDiv {
   position: absolute;
   top: 0%;
@@ -453,13 +472,32 @@ export default {
   bottom: 0%;
   right: 0%;
 
-  .mainText-switch {
+  .elDiv {
     position: absolute;
     top: 0%;
     left: 0%;
     bottom: 95%;
     right: 50%;
+
+    .mainText-switch {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      bottom: 95%;
+      right: 0%;
+    }
+
+    .mainText-slider {
+      max-width: 40%;
+      position: absolute;
+      top: 0%;
+      left: 30%;
+      bottom: 95%;
+      right: 50%;
+    }
   }
+
+
 
   .mainText-content {
     position: absolute;
