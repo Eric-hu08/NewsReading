@@ -8,7 +8,9 @@
           show-stops></el-slider>
         <template v-for="(evi, e_index) in evi_data.children" :key="evi.name">
 
-          <NewsEMark :evi="evi" :e_index="e_index" :el_show=0 :evi_sum_exter="sliderList[evi_data.index - 1]"></NewsEMark>
+          <NewsEMark :evi="evi" :e_index="e_index" :el_show=0 :evi_sum_exter="sliderList[evi_data.index - 1]"
+            @updateEviMark="onEviMarkChanged">
+          </NewsEMark>
           <!-- <mark :id="'E' + e_index">
             {{ evi.name + ". " }}
           </mark> -->
@@ -20,7 +22,9 @@
         <el-card class="EviCard" v-for="(evi, e_index) in evi_data.children" :key="evi.name" :id="'E' + e_index"
           shadow="hover">
           <!-- <circle r="5"></circle> -->
-          <NewsEMark :evi="evi" :e_index="e_index" :el_show=1 :evi_sum_exter="sliderList[evi_data.index - 1]"></NewsEMark>
+          <NewsEMark :evi="evi" :e_index="e_index" :el_show=1 :evi_sum_exter="sliderList[evi_data.index - 1]"
+            @updateEviMark="onEviMarkChanged">
+          </NewsEMark>
           <!-- <mark>{{ evi.name + ". " }}</mark> -->
         </el-card>
 
@@ -99,6 +103,7 @@ export default {
         }
       }
       this.evi_show_data = evi_show_data
+      // this.updateEviCoor()
       // this.sliderList = sliderList
       // console.log(this.evi_show_data)
     },
@@ -144,12 +149,15 @@ export default {
 
   },
   methods: {
+    onEviMarkChanged() {
+      this.updateEviCoor()
+    },
     eviScroll(event) {
       this.updateEviCoor()
 
     },
     updateEviCoor() {
-      // console.log("eviPro updateed!!")
+      console.log("eviPro coor updateed!!")
       var eviDivs = this.$refs.eviDivs
       var eviCard = this.$refs.eviCard
 

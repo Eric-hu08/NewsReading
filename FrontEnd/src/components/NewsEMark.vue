@@ -184,6 +184,9 @@ export default {
 
 
         // });
+        setTimeout(() => {
+          this.$emit('updateEviMark')
+        }, 2010)
 
       },
       // immediate: true,
@@ -208,6 +211,9 @@ export default {
     // console.log("cnodename", this.cNodeName)
 
   },
+  updated() {
+    this.$emit('updateEviMark')
+  },
   mounted: function () {
     var evi_sum_content = this.sumContent(this.evi, this.evi_sum, this.evi_sum_exter)
     var evi_sum_list = evi_sum_content.split(" ")
@@ -217,6 +223,9 @@ export default {
     }
 
     console.log("mount evi sum list", this.evi_sum_list)
+    setTimeout(() => {
+      this.$emit('updateEviMark')
+    }, 10)
 
 
   },

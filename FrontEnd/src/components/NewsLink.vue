@@ -69,8 +69,8 @@ export default {
   },
   mounted: function () {
     const divW = this.$refs.linkSvgDiv.clientWidth
-    const divH = this.$refs.linkSvgDiv.clientHeight
-    console.log("div w h ", divW, divH)
+    const divH = this.$refs.linkSvgDiv.clientHeight * 2
+    // console.log("div w h ", divW, divH)
     d3.select(".linkSvg").attr("width", divW)
     d3.select(".linkSvg").attr("height", divH)
 

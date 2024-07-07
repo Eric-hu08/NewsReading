@@ -140,6 +140,7 @@ export default {
 
   },
   updated: function () {
+    console.log("NTC updated!!")
     this.genLink()
   },
   methods: {
@@ -488,6 +489,9 @@ export default {
   left: 0%;
   bottom: 0%;
   right: 0%;
+  overflow-y: scroll;
+
+
 
   .elDiv {
     position: absolute;
@@ -572,5 +576,24 @@ export default {
 
     // }
   }
+}
+
+.mainTextDiv::-webkit-scrollbar {
+  display: none;
+  width: 10px;
+}
+
+.mainTextDiv::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  opacity: 0.2;
+}
+
+.mainTextDiv::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+.mainTextDiv::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
 }
 </style>
