@@ -14,7 +14,7 @@ import { tree } from 'd3';
 export default {
   name: 'NewsNodeTree',
   props: {
-
+    cur_i_change: Number,
 
 
   },
@@ -46,6 +46,12 @@ export default {
   watch: {
     displayMode: function () {
       console.log('displayMode')
+    },
+    cur_i_change: function () {
+      const svg = d3.select("body").select(".treeSvg");
+      svg.selectAll(".treeNodeGroup").remove()
+      this.drawTree()
+
     },
     claimMarkFList: function () {
       // console.log('claimMarkFList', this.claimMarkFList)

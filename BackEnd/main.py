@@ -78,7 +78,8 @@ def getEmoVal():
     file_path="t10_correct.json"
     cur_i = request.args.get('cur_i')
     # print('tabular_name_list[]', tabular_name_list)
-    emo_flat_list=emoVal(file_path)
+    file_name="t"+str(cur_i)+"_sum.json"
+    emo_flat_list=emoVal(file_name)
     return {"data": emo_flat_list}
 if __name__ == "__main__":
     print('run 0.0.0.0:14449')

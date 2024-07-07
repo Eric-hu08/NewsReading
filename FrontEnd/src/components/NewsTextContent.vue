@@ -47,6 +47,7 @@ import { ref } from 'vue';
 
 import NewsEviPro from './NewsEviPro.vue';
 import NewsLink from './NewsLink.vue';
+import { watch } from 'less';
 
 
 export default {
@@ -58,6 +59,8 @@ export default {
   props: {
     msg: String,
     jsonData: Object,
+    cur_i_change: Number,
+
   },
   data() {
     return {
@@ -90,6 +93,20 @@ export default {
       console.log("watch change ", this.eviIndexArray)
       this.genLink()
 
+    },
+    cur_i_change: function () {
+      this.claim_list = this.jsonData.children
+      // console.log(this.claim_list.length)
+      var claim_markF_list = []
+      var evi_mode_list = []
+      for (var i = 0; i < this.claim_list.length; i++) {
+        claim_markF_list.push(0);
+        evi_mode_list.push(0)
+      }
+      this.claim_markF_list = claim_markF_list
+      this.$store.commit('setCMFArray', claim_markF_list)
+      this.evi_mode_list = evi_mode_list
+      this.$store.commit('setEviModeList', evi_mode_list)
     }
   },
   computed: {

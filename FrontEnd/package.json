@@ -47,7 +47,8 @@
       "no-console": "warn",
       "no-alert": "warn",
       "no-unused-vars": "warn",
-      "vue/valid-v-for": "warn"
+      "vue/valid-v-for": "warn",
+      "no-redeclare": "warn"
     },
     "parserOptions": {
       "parser": "@babel/eslint-parser"

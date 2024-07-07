@@ -1,0 +1,374 @@
+{
+    "name": "\u2018Guilty,\u2019 and History Is Made",
+    "type": "title",
+    "index": 0,
+    "children": [
+        {
+            "name": "\nA single word rings out in a Manhattan courtroom as Donald Trump becomes the first American president convicted of a crime",
+            "type": "C",
+            "index": 1,
+            "children": [
+                {
+                    "name": "The single word that rang out in a Manhattan courtroom a little past 5 p.m. on Thursday afternoon shook the country, making Donald Trump the first American president convicted of a crime",
+                    "type": "E_O",
+                    "index": "1_0",
+                    "children": null,
+                    "sum0": "The single word that rang out in a Manhattan courtroom a little past 5 p.m. on Thursday afternoon shook the country, making Donald Trump the first American president convicted of a crime",
+                    "sum1": "The word spoken in a Manhattan courtroom at 5 p.m. on Thursday afternoon stunned the nation, marking Donald Trump as the first American president convicted of a crime",
+                    "sum2": "A word in a Manhattan courtroom on Thursday afternoon shocked the country, making Donald Trump the first convicted American president",
+                    "sum3": "A word in court on Thursday afternoon shocked the nation, making Trump the first convicted president",
+                    "sum4": "A courtroom announcement on Thursday shocked the nation, making Trump the first convicted president"
+                },
+                {
+                    "name": "It was a landmark \u2014 and, for Trump\u2019s supporters, a black mark \u2014 in American history",
+                    "type": "E_O",
+                    "index": "1_1",
+                    "children": null,
+                    "sum0": "It was a landmark moment and, for Trump's supporters, a regrettable event in American history",
+                    "sum1": "It was a landmark \u2014 and, for Trump\u2019s supporters, a black mark \u2014 in American history",
+                    "sum2": "It was a significant and controversial moment in American history",
+                    "sum3": "It was a notable and disputed event in American history",
+                    "sum4": "It was an important and contentious event"
+                },
+                {
+                    "name": "The word \u201cguilty\u201d actually was heard 34 times, as the jury \u2014 seven men and five women \u2014 found the former president guilty of 34 felony counts of falsifying business records to cover up a $130,000 hush-money payment to Stormy Daniels",
+                    "type": "E_O",
+                    "index": "1_2",
+                    "children": null,
+                    "sum0": "The word \u201cguilty\u201d actually was heard 34 times, as the jury \u2014 seven men and five women \u2014 found the former president guilty of 34 felony counts of falsifying business records to cover up a $130,000 hush-money payment to Stormy Daniels",
+                    "sum1": "The jury found the former president guilty of 34 felony counts related to falsifying business records to cover up a $130,000 hush-money payment to Stormy Daniels",
+                    "sum2": "The former president was found guilty of 34 felony counts related to falsifying business records",
+                    "sum3": "The former president was found guilty of multiple felony counts",
+                    "sum4": "The former president was found guilty"
+                },
+                {
+                    "name": "The verdict shattered a late afternoon languor inside the Manhattan courthouse where Trump\u2019s trial had played out over the last month and a half, during which time the jury heard a sweeping and sometimes sordid tale of sex, payoffs and presidential politics",
+                    "type": "E_O",
+                    "index": "1_3",
+                    "children": null,
+                    "sum0": "The verdict shattered a late afternoon languor inside the Manhattan courthouse where Trump\u2019s trial had played out over the last month and a half, during which time the jury heard a sweeping and sometimes sordid tale of sex, payoffs and presidential politics",
+                    "sum1": "The verdict ended a calm late afternoon atmosphere in the Manhattan courthouse where Trump's trial had been occurring for a month and a half, during which the jury heard an extensive and sometimes scandalous story of sex, payoffs, and presidential politics",
+                    "sum2": "The verdict disrupted the calm atmosphere in the Manhattan courthouse where Trump's trial had taken place for a month and a half, presenting the jury with a broad and often scandalous narrative involving sex, payoffs, and politics",
+                    "sum3": "The verdict disturbed the atmosphere in the Manhattan courthouse where Trump's trial had proceeded for weeks, revealing to the jury a story concerning sex, payoffs, and politics",
+                    "sum4": "The verdict broke the calm in the Manhattan courthouse during Trump's weeks-long trial, which included stories of scandalous events"
+                }
+            ],
+            "sum0": "A single word rings out in a Manhattan courtroom as Donald Trump becomes the first American president convicted of a crime",
+            "sum1": "Donald Trump is the first American president to be convicted of a crime in a Manhattan courtroom",
+            "sum2": "Trump faces conviction as the first American president in a Manhattan courtroom",
+            "sum3": "Trump is the first U.S. president to be convicted in a courtroom",
+            "sum4": "Trump made history with a courtroom conviction"
+        },
+        {
+            "name": "How the outcome affects the 2024 presidential campaign remains to be seen",
+            "type": "C",
+            "index": 2,
+            "children": [
+                {
+                    "name": "Trump could use the conviction to galvanize his base and fund-raising, as he has after arrests in other cases, three of which are still pending",
+                    "type": "E_O",
+                    "index": "2_0",
+                    "children": null,
+                    "sum0": "Trump could use the conviction to strengthen support among his followers and boost fundraising efforts, similar to his response after previous arrests, with three cases still pending",
+                    "sum1": "Trump might leverage the conviction to rally his supporters and increase donations, as he did following earlier arrests, three of which remain unresolved",
+                    "sum2": "Trump could use the conviction to galvanize his base and fund-raising, as he has after arrests in other cases, three of which are still pending",
+                    "sum3": "Trump could utilize the conviction to energize his base and raise funds, just like after past arrests, three still pending",
+                    "sum4": "Trump may use the conviction to gather support and funds, as done after earlier arrests"
+                },
+                {
+                    "name": "On Thursday, after the verdict was read, he assailed what he called \u201ca rigged trial by a conflicted judge who is corrupt\u201d",
+                    "type": "E_O",
+                    "index": "2_1",
+                    "children": null,
+                    "sum0": "On Thursday, after the verdict was read, he assailed what he called \u201ca rigged trial by a conflicted judge who is corrupt\u201d",
+                    "sum1": "On Thursday, after the verdict was read, he criticized what he termed \u201ca rigged trial by a biased judge who is corrupt\u201d",
+                    "sum2": "On Thursday, he condemned what he called \u201ca rigged trial by a corrupt judge\u201d",
+                    "sum3": "He denounced the trial as rigged and the judge as corrupt",
+                    "sum4": "He claimed the trial was unfair and the judge corrupt"
+                },
+                {
+                    "name": "\u201cA disgrace,\u201d he said",
+                    "type": "E_O",
+                    "index": "2_2",
+                    "children": null,
+                    "sum0": "He expressed strong disapproval",
+                    "sum1": "He called it \"a disgrace\"",
+                    "sum2": "He was unhappy with it",
+                    "sum3": "\u201cA disgrace,\u201d he said",
+                    "sum4": "He criticized sharply"
+                },
+                {
+                    "name": "Shortly after the verdict was read aloud in court, President Biden posted a fund-raising appeal, saying that the verdict alone would not be enough to derail Trump or his supporters",
+                    "type": "E_O",
+                    "index": "2_3",
+                    "children": null,
+                    "sum0": "Shortly after the verdict was announced in court, President Biden posted a fund-raising appeal, stating that the verdict by itself would not be sufficient to stop Trump or his supporters",
+                    "sum1": "Shortly after the verdict was read aloud in court, President Biden posted a fund-raising appeal, saying that the verdict alone would not be enough to derail Trump or his supporters",
+                    "sum2": "Soon after the court's verdict, President Biden posted a fund-raising message, indicating that the verdict alone wouldn't be enough to stop Trump or his followers",
+                    "sum3": "Following the court's decision, Biden requested donations, implying the verdict was insufficient to impact Trump significantly",
+                    "sum4": "After the court's verdict, Biden asked for funds, suggesting the verdict wasn't enough to hinder Trump or his base"
+                },
+                {
+                    "name": "\u201cThere\u2019s only one way to keep Donald Trump out of the Oval Office: At the ballot box,\u201d Biden wrote",
+                    "type": "E_O",
+                    "index": "2_4",
+                    "children": null,
+                    "sum0": "Biden emphasized that the only way to prevent Trump from becoming president again is through voting",
+                    "sum1": "\u201cThere\u2019s only one way to keep Donald Trump out of the Oval Office: At the ballot box,\u201d Biden wrote",
+                    "sum2": "Biden stressed that voting is essential to stop Trump",
+                    "sum3": "Biden highlighted the importance of voting",
+                    "sum4": "Biden focused on voting"
+                },
+                {
+                    "name": "That was one thing Biden and Trump agreed on: Trump told reporters that \u201cthe real verdict is going to be Nov. 5 by the people\u201d",
+                    "type": "E_O",
+                    "index": "2_5",
+                    "children": null,
+                    "sum0": "Both Biden and Trump agreed that \u201cthe real verdict is going to be Nov. 5 by the people,\u201d Trump informed reporters",
+                    "sum1": "Biden and Trump concurred that the true decision lies with the people on Nov. 5, as Trump stated to reporters",
+                    "sum2": "Biden and Trump agreed the final decision would be made by the people on Nov. 5",
+                    "sum3": "Both agreed the people would decide on Nov. 5",
+                    "sum4": "The decision would be made by the people"
+                }
+            ],
+            "sum0": "The effect of the outcome on the 2024 presidential campaign is uncertain",
+            "sum1": "How the outcome impacts the 2024 presidential campaign is still unknown",
+            "sum2": "The outcome's impact on the 2024 election is unclear",
+            "sum3": "The outcome could affect the 2024 election",
+            "sum4": "The 2024 election may be influenced"
+        },
+        {
+            "name": "It is not clear what Trump\u2019s legal status will be on Election Day",
+            "type": "C",
+            "index": 3,
+            "children": [
+                {
+                    "name": "He is almost certain to appeal today\u2019s verdict, and that process could take months or even longer",
+                    "type": "E_O",
+                    "index": "3_0",
+                    "children": null,
+                    "sum0": "He is almost certain to appeal today\u2019s verdict, and that process could take months or even longer",
+                    "sum1": "He is likely to appeal today's verdict and that could take months or more",
+                    "sum2": "He will probably challenge today's decision which might take a long time",
+                    "sum3": "He will likely contest the decision and the process could be lengthy",
+                    "sum4": "He is expected to appeal and it could take time"
+                },
+                {
+                    "name": "In the meantime, Trump will confront the nitty-gritty of the New York State criminal justice system: a meeting with the Probation Department, a pre-sentence report, and then \u2014 at 10 a.m. on July 11 \u2014 his sentencing",
+                    "type": "E_O",
+                    "index": "3_1",
+                    "children": null,
+                    "sum0": "In the meantime, Trump will confront the nitty-gritty of the New York State criminal justice system: a meeting with the Probation Department, a pre-sentence report, and then \u2014 at 10 a.m. on July 11 \u2014 his sentencing",
+                    "sum1": "In the meantime, Trump will confront the details of the New York State criminal justice system: a meeting with the Probation Department, a pre-sentence report, and then his sentencing at 10 a.m. on July 11",
+                    "sum2": "In the meantime, Trump will face the New York State criminal justice process, including meetings and sentencing",
+                    "sum3": "Trump will deal with the New York State criminal justice system before his sentencing",
+                    "sum4": "Trump will navigate the criminal justice system before his sentencing"
+                },
+                {
+                    "name": "Trump, a first-time offender, faces probation or up to four years in prison",
+                    "type": "E_O",
+                    "index": "3_2",
+                    "children": null,
+                    "sum0": "ump, a first-time offender, faces probation or up to four years in prison.\n\nLevel 1:\nTrump, as a first-time offender, could potentially receive probation as punishment, or face a maximum sentence of four years in prison.\n\nLevel 2:\nAs a first-time offender, Trump might be given probation or sentenced to a maximum of four years in prison.\n\nLevel 3:\nBeing a first-time offender, Trump's potential penalties range from probation to a maximum of four years in prison.\n\nLevel 4:\nFor a first-time offense, Trump could either be placed on probation or receive a prison sentence of up to four years.\n\nLevel 5:\nTrump, as an offender, faces the possibility of probation or up to four years in prison",
+                    "sum1": "time offender, faces probation or up to four years in prison.\n\nLevel 1:\nTrump, as a first-time offender, could potentially receive probation as punishment, or face a maximum sentence of four years in prison.\n\nLevel 2:\nAs a first-time offender, Trump might be given probation or sentenced to a maximum of four years in prison.\n\nLevel 3:\nBeing a first-time offender, Trump's potential penalties range from probation to a maximum of four years in prison.\n\nLevel 4:\nFor a first-time offense, Trump could either be placed on probation or receive a prison sentence of up to four years.\n\nLevel 5:\nTrump, as an offender, faces the possibility of probation or up to four years in prison",
+                    "sum2": ", faces probation or up to four years in prison.\n\nLevel 1:\nTrump, as a first-time offender, could potentially receive probation as punishment, or face a maximum sentence of four years in prison.\n\nLevel 2:\nAs a first-time offender, Trump might be given probation or sentenced to a maximum of four years in prison.\n\nLevel 3:\nBeing a first-time offender, Trump's potential penalties range from probation to a maximum of four years in prison.\n\nLevel 4:\nFor a first-time offense, Trump could either be placed on probation or receive a prison sentence of up to four years.\n\nLevel 5:\nTrump, as an offender, faces the possibility of probation or up to four years in prison",
+                    "sum3": "tion or up to four years in prison.\n\nLevel 1:\nTrump, as a first-time offender, could potentially receive probation as punishment, or face a maximum sentence of four years in prison.\n\nLevel 2:\nAs a first-time offender, Trump might be given probation or sentenced to a maximum of four years in prison.\n\nLevel 3:\nBeing a first-time offender, Trump's potential penalties range from probation to a maximum of four years in prison.\n\nLevel 4:\nFor a first-time offense, Trump could either be placed on probation or receive a prison sentence of up to four years.\n\nLevel 5:\nTrump, as an offender, faces the possibility of probation or up to four years in prison",
+                    "sum4": " four years in prison.\n\nLevel 1:\nTrump, as a first-time offender, could potentially receive probation as punishment, or face a maximum sentence of four years in prison.\n\nLevel 2:\nAs a first-time offender, Trump might be given probation or sentenced to a maximum of four years in prison.\n\nLevel 3:\nBeing a first-time offender, Trump's potential penalties range from probation to a maximum of four years in prison.\n\nLevel 4:\nFor a first-time offense, Trump could either be placed on probation or receive a prison sentence of up to four years.\n\nLevel 5:\nTrump, as an offender, faces the possibility of probation or up to four years in prison"
+                },
+                {
+                    "name": "That decision will fall to the judge, Juan Merchan, who has been the target of Trump\u2019s attacks during the trial",
+                    "type": "E_O",
+                    "index": "3_3",
+                    "children": null,
+                    "sum0": "That decision will fall to the judge, Juan Merchan, who has been the target of Trump\u2019s attacks during the trial",
+                    "sum1": "The judge, Juan Merchan, will make that decision and has faced Trump's criticism during the trial",
+                    "sum2": "Judge Juan Merchan will decide and has been criticized by Trump",
+                    "sum3": "Judge Merchan will decide and has faced Trump's attacks",
+                    "sum4": "Judge Merchan will decide and has been criticized"
+                },
+                {
+                    "name": "Trump also attacked the judge\u2019s daughter \u2014 a political consultant who has worked with prominent Democrats \u2014 prompting Justice Merchan to expand a gag order before the trial began, barring the former president from attacking members of his family",
+                    "type": "E_O",
+                    "index": "3_4",
+                    "children": null,
+                    "sum0": "Trump also attacked the judge\u2019s daughter \u2014 a political consultant who has worked with prominent Democrats \u2014 prompting Justice Merchan to expand a gag order before the trial began, barring the former president from attacking members of his family",
+                    "sum1": "Trump attacked the judge\u2019s daughter, a political consultant for Democrats, leading Justice Merchan to expand a gag order to prevent him from attacking family members",
+                    "sum2": "Trump's attack on the judge's daughter led to an expanded gag order to stop him from targeting family members",
+                    "sum3": "Trump's actions resulted in a broader gag order",
+                    "sum4": "Trump's behavior caused an expanded gag order"
+                },
+                {
+                    "name": "The order also protected witnesses and jurors, both of whom were targets of Trump\u2019s vitriol",
+                    "type": "E_O",
+                    "index": "3_5",
+                    "children": null,
+                    "sum0": "The order also protected witnesses and jurors, who were targets of Trump's anger",
+                    "sum1": "The order protected witnesses and jurors, targeted by Trump's anger",
+                    "sum2": "The order protected witnesses and jurors from Trump's anger",
+                    "sum3": "The order protected witnesses and jurors",
+                    "sum4": "The order offered protection"
+                }
+            ],
+            "sum0": "The legal status of Trump on Election Day is unclear",
+            "sum1": "Trump's legal status on Election Day is uncertain",
+            "sum2": "Trump's situation on Election Day is unknown",
+            "sum3": "Trump's status on Election Day is unclear",
+            "sum4": "Trump's Election Day status is uncertain"
+        },
+        {
+            "name": "The verdict was a victory for Alvin Bragg, the Manhattan district attorney who staked his reputation on a prosecution that many legal analysts questioned",
+            "type": "C",
+            "index": 4,
+            "children": [
+                {
+                    "name": "But in the end, his strategy was a winning one",
+                    "type": "E_O",
+                    "index": "4_0",
+                    "children": null,
+                    "sum0": "t in the end, his strategy was a winning one.\n\nLevel 1: His strategy ultimately proved successful.  \nLevel 2: The strategy he employed led to victory.  \nLevel 3: The outcome favored his approach.  \nLevel 4: Success resulted from his chosen tactic.  \nLevel 5: His approach achieved the desired outcome",
+                    "sum1": " his strategy was a winning one.\n\nLevel 1: His strategy ultimately proved successful.  \nLevel 2: The strategy he employed led to victory.  \nLevel 3: The outcome favored his approach.  \nLevel 4: Success resulted from his chosen tactic.  \nLevel 5: His approach achieved the desired outcome",
+                    "sum2": " was a winning one.\n\nLevel 1: His strategy ultimately proved successful.  \nLevel 2: The strategy he employed led to victory.  \nLevel 3: The outcome favored his approach.  \nLevel 4: Success resulted from his chosen tactic.  \nLevel 5: His approach achieved the desired outcome",
+                    "sum3": "g one.\n\nLevel 1: His strategy ultimately proved successful.  \nLevel 2: The strategy he employed led to victory.  \nLevel 3: The outcome favored his approach.  \nLevel 4: Success resulted from his chosen tactic.  \nLevel 5: His approach achieved the desired outcome",
+                    "sum4": " 1: His strategy ultimately proved successful.  \nLevel 2: The strategy he employed led to victory.  \nLevel 3: The outcome favored his approach.  \nLevel 4: Success resulted from his chosen tactic.  \nLevel 5: His approach achieved the desired outcome"
+                },
+                {
+                    "name": "The verdict also provided vindication for two crucial witnesses: Michael Cohen, Trump\u2019s former lawyer and fixer; and Daniels, the porn star who testified about a brief, unpleasant sexual encounter with Trump in Lake Tahoe, Nev., in 2006",
+                    "type": "E_O",
+                    "index": "4_1",
+                    "children": null,
+                    "sum0": "rdict also provided vindication for two crucial witnesses: Michael Cohen, Trump\u2019s former lawyer and fixer; and Daniels, the porn star who testified about a brief, unpleasant sexual encounter with Trump in Lake Tahoe, Nev., in 2006.\n\nLevel 2: The verdict vindicated two key witnesses: Michael Cohen, Trump\u2019s former lawyer, and fixer; and Daniels, the porn star who testified about a short, uncomfortable sexual encounter with Trump in Lake Tahoe, Nev., in 2006.\n\nLevel 3: The verdict vindicated key witnesses, including Michael Cohen, Trump\u2019s former lawyer, and fixer, as well as Daniels, the porn star who testified about a sexual encounter with Trump in Lake Tahoe in 2006.\n\nLevel 4: The verdict vindicated key witnesses who testified about events involving Trump, including Michael Cohen, Trump\u2019s former lawyer, and fixer, along with Daniels, the porn star.\n\nLevel 5: Key witnesses received vindication following their testimony involving Trump, including his former lawyer Michael Cohen and porn star Daniels",
+                    "sum1": "ovided vindication for two crucial witnesses: Michael Cohen, Trump\u2019s former lawyer and fixer; and Daniels, the porn star who testified about a brief, unpleasant sexual encounter with Trump in Lake Tahoe, Nev., in 2006.\n\nLevel 2: The verdict vindicated two key witnesses: Michael Cohen, Trump\u2019s former lawyer, and fixer; and Daniels, the porn star who testified about a short, uncomfortable sexual encounter with Trump in Lake Tahoe, Nev., in 2006.\n\nLevel 3: The verdict vindicated key witnesses, including Michael Cohen, Trump\u2019s former lawyer, and fixer, as well as Daniels, the porn star who testified about a sexual encounter with Trump in Lake Tahoe in 2006.\n\nLevel 4: The verdict vindicated key witnesses who testified about events involving Trump, including Michael Cohen, Trump\u2019s former lawyer, and fixer, along with Daniels, the porn star.\n\nLevel 5: Key witnesses received vindication following their testimony involving Trump, including his former lawyer Michael Cohen and porn star Daniels",
+                    "sum2": "ation for two crucial witnesses: Michael Cohen, Trump\u2019s former lawyer and fixer; and Daniels, the porn star who testified about a brief, unpleasant sexual encounter with Trump in Lake Tahoe, Nev., in 2006.\n\nLevel 2: The verdict vindicated two key witnesses: Michael Cohen, Trump\u2019s former lawyer, and fixer; and Daniels, the porn star who testified about a short, uncomfortable sexual encounter with Trump in Lake Tahoe, Nev., in 2006.\n\nLevel 3: The verdict vindicated key witnesses, including Michael Cohen, Trump\u2019s former lawyer, and fixer, as well as Daniels, the porn star who testified about a sexual encounter with Trump in Lake Tahoe in 2006.\n\nLevel 4: The verdict vindicated key witnesses who testified about events involving Trump, including Michael Cohen, Trump\u2019s former lawyer, and fixer, along with Daniels, the porn star.\n\nLevel 5: Key witnesses received vindication following their testimony involving Trump, including his former lawyer Michael Cohen and porn star Daniels",
+                    "sum3": " crucial witnesses: Michael Cohen, Trump\u2019s former lawyer and fixer; and Daniels, the porn star who testified about a brief, unpleasant sexual encounter with Trump in Lake Tahoe, Nev., in 2006.\n\nLevel 2: The verdict vindicated two key witnesses: Michael Cohen, Trump\u2019s former lawyer, and fixer; and Daniels, the porn star who testified about a short, uncomfortable sexual encounter with Trump in Lake Tahoe, Nev., in 2006.\n\nLevel 3: The verdict vindicated key witnesses, including Michael Cohen, Trump\u2019s former lawyer, and fixer, as well as Daniels, the porn star who testified about a sexual encounter with Trump in Lake Tahoe in 2006.\n\nLevel 4: The verdict vindicated key witnesses who testified about events involving Trump, including Michael Cohen, Trump\u2019s former lawyer, and fixer, along with Daniels, the porn star.\n\nLevel 5: Key witnesses received vindication following their testimony involving Trump, including his former lawyer Michael Cohen and porn star Daniels",
+                    "sum4": "esses: Michael Cohen, Trump\u2019s former lawyer and fixer; and Daniels, the porn star who testified about a brief, unpleasant sexual encounter with Trump in Lake Tahoe, Nev., in 2006.\n\nLevel 2: The verdict vindicated two key witnesses: Michael Cohen, Trump\u2019s former lawyer, and fixer; and Daniels, the porn star who testified about a short, uncomfortable sexual encounter with Trump in Lake Tahoe, Nev., in 2006.\n\nLevel 3: The verdict vindicated key witnesses, including Michael Cohen, Trump\u2019s former lawyer, and fixer, as well as Daniels, the porn star who testified about a sexual encounter with Trump in Lake Tahoe in 2006.\n\nLevel 4: The verdict vindicated key witnesses who testified about events involving Trump, including Michael Cohen, Trump\u2019s former lawyer, and fixer, along with Daniels, the porn star.\n\nLevel 5: Key witnesses received vindication following their testimony involving Trump, including his former lawyer Michael Cohen and porn star Daniels"
+                },
+                {
+                    "name": "That encounter led to the $130,000 payoff from Cohen, which led \u2014 in turn \u2014 to his reimbursement, which led \u2014 in turn \u2014 to the falsification of business records for which Trump was convicted",
+                    "type": "E_O",
+                    "index": "4_2",
+                    "children": null,
+                    "sum0": "That encounter led to the $130,000 payoff from Cohen, which led \u2014 in turn \u2014 to his reimbursement, which led \u2014 in turn \u2014 to the falsification of business records for which Trump was convicted",
+                    "sum1": "The encounter resulted in a $130,000 payment from Cohen, which subsequently led to reimbursement, ultimately culminating in Trump's conviction for falsifying business records.",
+                    "sum2": "A meeting initiated a series of events: a payment from Cohen, followed by reimbursement, and ultimately, Trump's conviction for falsifying business records.",
+                    "sum3": "An interaction triggered a chain reaction: payment, reimbursement, and Trump's legal trouble for falsifying records.",
+                    "sum4": "A sequence of events unfolded, involving financial transactions and legal consequences for Trump."
+                },
+                {
+                    "name": "That cascading narrative spanned a decade, from the hotel encounter to the days before the 2016 election, and spilled out in a trial that subjected both Cohen and Daniels to often blistering cross-examination",
+                    "type": "E_O",
+                    "index": "4_3",
+                    "children": null,
+                    "sum0": "That cascading narrative spanned a decade, from the hotel encounter to the days before the 2016 election, and spilled out in a trial that subjected both Cohen and Daniels to often blistering cross-examination",
+                    "sum1": "The narrative spanned ten years, from the hotel encounter to just before the 2016 election, and culminated in a trial with intense cross-examination for Cohen and Daniels",
+                    "sum2": "The decade-long story led to a trial where Cohen and Daniels faced harsh cross-examination",
+                    "sum3": "The ten-year saga resulted in a trial with tough questioning for Cohen and Daniels",
+                    "sum4": "The story ended in a trial with rigorous cross-examination"
+                },
+                {
+                    "name": "Trump denied ever having sex with Daniels, despite her precise details about the night of their encounter \u2014 what was in his bathroom, how he waited for her in his boxers, sitting on a bed",
+                    "type": "E_O",
+                    "index": "4_4",
+                    "children": null,
+                    "sum0": "Trump denied ever having sex with Daniels, even though she provided specific details about the night they allegedly met, including the contents of his bathroom and how he was waiting in his boxers on a bed",
+                    "sum1": "Trump denied having sex with Daniels, despite her specific details about their alleged encounter",
+                    "sum2": "Trump denied having sex with Daniels, despite her detailed account",
+                    "sum3": "Trump denied having sex with Daniels",
+                    "sum4": "Trump denied the allegation"
+                },
+                {
+                    "name": "Trump\u2019s lawyers were aggressive in suggesting she was lying, even as she stood fast",
+                    "type": "E_O",
+                    "index": "4_5",
+                    "children": null,
+                    "sum0": "Trump\u2019s lawyers were aggressive in suggesting she was lying, even as she stood fast",
+                    "sum1": "Trump's lawyers strongly implied she was lying, but she remained firm",
+                    "sum2": "Trump's lawyers challenged her honesty, but she stood her ground",
+                    "sum3": "Trump's lawyers claimed she was lying, yet she stayed firm",
+                    "sum4": "Trump's lawyers accused her, but she remained resolute"
+                },
+                {
+                    "name": "But defense lawyers rested their hopes on destroying the credibility of Cohen, whom they painted as a pathetic sycophant and money-hungry opportunist",
+                    "type": "E_O",
+                    "index": "4_6",
+                    "children": null,
+                    "sum0": "Defense lawyers aimed to discredit Cohen by portraying him as a pathetic sycophant and money-hungry opportunist.",
+                    "sum1": "Defense lawyers aimed to weaken Cohen's credibility through negative characterization.",
+                    "sum2": "Defense lawyers sought to undermine Cohen's credibility by depicting him negatively.",
+                    "sum3": "Lawyers aimed to discredit Cohen by questioning his integrity and motivations.",
+                    "sum4": "Legal strategy focused on discrediting Cohen's credibility."
+                },
+                {
+                    "name": "He, too, largely remained steady, despite admitting to many lies during his life, and career, as Trump\u2019s fixer",
+                    "type": "E_O",
+                    "index": "4_7",
+                    "children": null,
+                    "sum0": "Despite his acknowledgment of numerous untruths in both personal and professional contexts while serving as Donald Trump's confidant, he managed to maintain a sense of stability.",
+                    "sum1": "Despite acknowledging numerous falsehoods throughout his personal and professional life as Donald Trump's confidant, he generally maintained stability.",
+                    "sum2": "Despite admitting to falsehoods in various aspects of his life and work as Donald Trump's confidant, he showed consistent stability.",
+                    "sum3": "He, too, largely remained steady, despite admitting to many lies during his life, and career, as Trump\u2019s fixer",
+                    "sum4": "Despite his history of dishonesty, he remained steadfast in his role as Donald Trump's confidant."
+                },
+                {
+                    "name": "In the end, it appeared that the jury was not swayed by the defense\u2019s attacks",
+                    "type": "E_O",
+                    "index": "4_8",
+                    "children": null,
+                    "sum0": "In the end, it seemed that the jury was not influenced by the defense\u2019s arguments",
+                    "sum1": "The jury remained unconvinced by the defense",
+                    "sum2": "The defense failed to sway the jury",
+                    "sum3": "The jury remained steadfast",
+                    "sum4": "The jury was not persuaded"
+                },
+                {
+                    "name": "Though the testimony lasted more than five weeks, the jury took less than two full days of deliberations to find the former president guilty",
+                    "type": "E_O",
+                    "index": "4_9",
+                    "children": null,
+                    "sum0": "Despite the testimony spanning over five weeks, the jury needed under two full days of deliberation to convict the former president",
+                    "sum1": "Although the testimony went on for over five weeks, the jury took less than two days to reach a guilty verdict",
+                    "sum2": "The jury quickly found the former president guilty after lengthy testimony",
+                    "sum3": "After long testimony, the jury quickly convicted the former president",
+                    "sum4": "The jury swiftly convicted the former president"
+                },
+                {
+                    "name": "Trump\u2019s initial reaction was muted: He sat in the courtroom, in a red pleather chair, placidly listening as the jury foreman repeated the same word over and over",
+                    "type": "E_O",
+                    "index": "4_10",
+                    "children": null,
+                    "sum0": "Trump\u2019s initial reaction was muted: He sat in the courtroom, in a red pleather chair, placidly listening as the jury foreman repeated the same word over and over",
+                    "sum1": "Trump's initial reaction was muted as he sat in a red pleather chair in the courtroom, listening calmly to the jury foreman",
+                    "sum2": "Trump's initial reaction was muted as he calmly listened to the jury foreman",
+                    "sum3": "Trump had a muted reaction while listening to the jury foreman",
+                    "sum4": "Trump reacted calmly in the courtroom"
+                },
+                {
+                    "name": "As the individual jurors were polled, he looked over at the jury box",
+                    "type": "E_O",
+                    "index": "4_11",
+                    "children": null,
+                    "sum0": "As the individual jurors were polled, he looked over at the jury box",
+                    "sum1": "While the jurors were being questioned, he looked at the jury box",
+                    "sum2": "As each juror was asked individually, he glanced at the jury box",
+                    "sum3": "He watched the jurors being polled",
+                    "sum4": "He observed the jurors"
+                },
+                {
+                    "name": "Moments later, those 12 New Yorkers \u2014 drawn from the many neighborhoods of Manhattan, where Trump made his name as a brash businessman \u2014 left the courtroom, walking right past the man they had just convicted",
+                    "type": "E_O",
+                    "index": "4_12",
+                    "children": null,
+                    "sum0": "Shortly after, those 12 New Yorkers from various Manhattan neighborhoods, where Trump established his reputation as an audacious businessman, exited the courtroom, passing the individual they had just found guilty",
+                    "sum1": "Moments later, those 12 New Yorkers \u2014 drawn from the many neighborhoods of Manhattan, where Trump made his name as a brash businessman \u2014 left the courtroom, walking right past the man they had just convicted",
+                    "sum2": "Soon after, the 12 jurors from Manhattan, where Trump became known as a bold businessman, left the courtroom, crossing paths with the convicted man",
+                    "sum3": "Moments later, the 12 Manhattan jurors left the courtroom, encountering the man they convicted",
+                    "sum4": "Later, the 12 jurors from Manhattan exited the courtroom, moving past the convicted individual"
+                }
+            ],
+            "sum0": "The verdict was a victory for Alvin Bragg, the Manhattan district attorney who staked his reputation on a prosecution that many legal analysts questioned",
+            "sum1": "The verdict was a win for Alvin Bragg, the district attorney of Manhattan, who took a risk on this prosecution",
+            "sum2": "The verdict favored Alvin Bragg, the Manhattan DA, who took a significant risk",
+            "sum3": "The verdict was in Alvin Bragg's favor",
+            "sum4": "The decision was favorable"
+        }
+    ]
+}

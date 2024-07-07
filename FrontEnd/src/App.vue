@@ -14,13 +14,13 @@
     </el-menu>
     <div class="content-container">
       <div class="nodeView">
-        <NewsNodeTree></NewsNodeTree>
+        <NewsNodeTree :cur_i_change="cur_i_change"></NewsNodeTree>
       </div>
       <div class="curveView">
-        <NewsCurve></NewsCurve>
+        <NewsCurve :cur_i_change="cur_i_change"></NewsCurve>
       </div>
       <div class="textView">
-        <NewsTextContent :jsonData="jsonData"></NewsTextContent>
+        <NewsTextContent :jsonData="jsonData" :cur_i_change="cur_i_change"></NewsTextContent>
       </div>
 
     </div>
@@ -49,8 +49,8 @@ export default {
   data() {
     return {
       appName: "News Reader",
-      operationArray: ['News1', 'News2', 'News3', 'News4', 'News5', 'News6', 'News7', 'T7', 'T8'],
-      cur_news_i: 1,
+      operationArray: ['News1', 'News2', 'News3'],
+      cur_news_i: 10,
       cur_i_change: 1,
       activeIndex: '',
       loadingData: true,
@@ -66,10 +66,10 @@ export default {
     window.sysDatasetObj = new Dataset()
     let tabularDataDeferObj = $.Deferred()
     let jsonDataDeferObj = $.Deferred()
-    let textDataDeferObj = $.Deferred()
+    // let textDataDeferObj = $.Deferred()
     let relationDataDeferObj = $.Deferred()
     let emoValDataDeferObj = $.Deferred()
-    $.when(tabularDataDeferObj, jsonDataDeferObj, textDataDeferObj, relationDataDeferObj, emoValDataDeferObj).then(function () {
+    $.when(tabularDataDeferObj, jsonDataDeferObj, relationDataDeferObj, emoValDataDeferObj).then(function () {
       self.loadingData = false
     })
     let tabularDataList = ['*']
@@ -86,11 +86,11 @@ export default {
       jsonDataDeferObj.resolve()
       self.jsonData = processed_json_data
     })
-    getTextData(self.cur_news_i, function (processed_json_data) {
-      sysDatasetObj.updateTextData(processed_json_data)
-      textDataDeferObj.resolve()
+    // getTextData(self.cur_news_i, function (processed_json_data) {
+    //   sysDatasetObj.updateTextData(processed_json_data)
+    //   textDataDeferObj.resolve()
 
-    })
+    // })
     getRelationData(self.cur_news_i, function (processed_json_data) {
       sysDatasetObj.updateRelationData(processed_json_data)
       relationDataDeferObj.resolve()
@@ -113,19 +113,28 @@ export default {
       let vuethis = this;
       console.log("in change", this.cur_news_i)
       let jsonDataDeferObj = $.Deferred()
-      let textDataDeferObj = $.Deferred()
-      $.when(jsonDataDeferObj, textDataDeferObj).then(function () {
+      // let textDataDeferObj = $.Deferred()
+      let emoValDataDeferObj = $.Deferred()
+      $.when(jsonDataDeferObj, emoValDataDeferObj).then(function () {
         vuethis.cur_i_change++
+        console.log("cur_i_change!!", vuethis.cur_i_change)
       })
       getJsonData(this.cur_news_i, 1, function (processed_json_data) {
         sysDatasetObj.updateJsonData(processed_json_data)
         jsonDataDeferObj.resolve()
+        vuethis.jsonData = processed_json_data
       })
-      getTextData(this.cur_news_i, function (processed_json_data) {
-        sysDatasetObj.updateTextData(processed_json_data)
-        textDataDeferObj.resolve()
+      getEmoVal(this.cur_news_i, function (processed_json_data) {
+        sysDatasetObj.updateEmoFlatList(processed_json_data)
+        emoValDataDeferObj.resolve()
 
       })
+
+      // getTextData(this.cur_news_i, function (processed_json_data) {
+      //   sysDatasetObj.updateTextData(processed_json_data)
+      //   textDataDeferObj.resolve()
+
+      // })
     }
   },
   methods: {
@@ -138,7 +147,17 @@ export default {
 
       var index_News = vuethis.operationArray.indexOf(operation)
       // console.group(index_News)
-      vuethis.cur_news_i = index_News + 1
+      if (index_News == 0) {
+        vuethis.cur_news_i = 10
+      }
+      else if (index_News == 2) {
+        vuethis.cur_news_i = 19
+      }
+      else {
+        vuethis.cur_news_i = index_News + 15
+      }
+
+
       console.log("event", vuethis.cur_news_i)
     }
   }

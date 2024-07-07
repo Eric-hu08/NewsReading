@@ -4,10 +4,11 @@
       :id="'DC' + (evi_data.index - 1)">
       <el-card class="EviCard" :id="'EC' + (evi_data.index - 1)" ref="eviCard" v-if="evi_if_show(evi_data.index - 1, 0)"
         shadow="hover">
-        <el-slider class="evi-slider" :max="5" :min="0" v-model="sliderList[evi_i]" :step="1" show-stops></el-slider>
+        <el-slider class="evi-slider" :max="5" :min="0" v-model="sliderList[evi_data.index - 1]" :step="1"
+          show-stops></el-slider>
         <template v-for="(evi, e_index) in evi_data.children" :key="evi.name">
 
-          <NewsEMark :evi="evi" :e_index="e_index" el_show=0 :evi_sum_exter="sliderList[evi_i]"></NewsEMark>
+          <NewsEMark :evi="evi" :e_index="e_index" :el_show=0 :evi_sum_exter="sliderList[evi_data.index - 1]"></NewsEMark>
           <!-- <mark :id="'E' + e_index">
             {{ evi.name + ". " }}
           </mark> -->
@@ -19,7 +20,7 @@
         <el-card class="EviCard" v-for="(evi, e_index) in evi_data.children" :key="evi.name" :id="'E' + e_index"
           shadow="hover">
           <!-- <circle r="5"></circle> -->
-          <NewsEMark :evi="evi" :e_index="e_index" el_show=1 :evi_sum_exter="sliderList[evi_i]"></NewsEMark>
+          <NewsEMark :evi="evi" :e_index="e_index" :el_show=1 :evi_sum_exter="sliderList[evi_data.index - 1]"></NewsEMark>
           <!-- <mark>{{ evi.name + ". " }}</mark> -->
         </el-card>
 
@@ -59,6 +60,7 @@ export default {
       evi_show_data: null,
       evi_mode: false,
       sliderList: [],
+      claim_markF_list_clone: [],
 
       marge: { top: 10, bottom: 60, left: 800, right: 60 },
 
@@ -86,18 +88,18 @@ export default {
       var claim_list = window.sysDatasetObj.jsonData.children
       var claim_markF_list = this.claim_markF_list
       var evi_show_data = []
-      var sliderList = []
+      // var sliderList = []
       for (var i = 0; i < claim_markF_list.length; i++) {
         if (claim_markF_list[i] == 1) {
           if (claim_list[i].children.length > 0) {
             evi_show_data.push(claim_list[i])
-            sliderList.push(0)
+            // sliderList.push(0)
           }
 
         }
       }
       this.evi_show_data = evi_show_data
-      this.sliderList = sliderList
+      // this.sliderList = sliderList
       // console.log(this.evi_show_data)
     },
 
@@ -128,7 +130,12 @@ export default {
     // console.log("e_dict", this.e_dict)
     // console.log("eviPro mounted!!")
     const EviDiv = this.$refs.EviDiv
-
+    this.claim_markF_list_clone = this.claim_markF_list
+    var sliderList = []
+    for (var i = 0; i < this.claim_markF_list_clone.length; i++) {
+      sliderList.push(0)
+    }
+    this.sliderList = sliderList
 
   },
   updated() {
@@ -273,14 +280,12 @@ a {
 
 .EviCard {
 
+  // mark {
+  //   background: white;
+  // }
 
-
-  mark {
-    background: white;
-  }
-
-  mark:hover {
-    background: grey;
-  }
+  // mark:hover {
+  //   background: grey;
+  // }
 }
 </style>

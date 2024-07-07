@@ -12,7 +12,8 @@ import { mapState, mapMutations } from 'vuex';
 export default {
   name: 'NewsCurve',
   props: {
-    msg: String
+    msg: String,
+    cur_i_change: Number,
   },
   data() {
     return {
@@ -70,7 +71,12 @@ export default {
 
 
       })
-    }
+    },
+    cur_i_change: function () {
+      this.emo_flat_list = window.sysDatasetObj.emoFlatData
+      d3.select(".curve-svg").selectAll("*").remove()
+      this.drawCurve()
+    },
   },
   computed: {
     ...mapState([
@@ -204,6 +210,7 @@ export default {
         fill: vuethis.eNodeColor(node_type_list[index]),
         id: flat_type_list[index],
         node_type: node_type_list[index],
+        emo: emo_flat_list[index],
         // node_index: function () {
         //   if (this.id.indexOf("C") != -1) {
         //     var index_str = parseInt(this.id.slice(1))
@@ -232,7 +239,8 @@ export default {
           if (id_str.indexOf("C") == -1) {
             id_str = id_str.slice(-1)
           }
-          document.getElementById("tooltip").innerText = `${id_str}`;
+          var d_content = id_str + ":" + d.emo
+          document.getElementById("tooltip").innerText = `${d_content}`;
           var tooltip = document.getElementById("tooltip");
           // 获取提示框的尺寸
 
@@ -357,8 +365,8 @@ export default {
     border-radius: 3px;
     font-size: 14px;
     position: absolute;
-    width: 20px;
-    height: 10px;
+    width: 60px;
+    height: 20px;
     /* 确保它在其他元素之上 */
   }
 
