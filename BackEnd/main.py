@@ -79,6 +79,8 @@ def getEmoVal():
     cur_i = request.args.get('cur_i')
     # print('tabular_name_list[]', tabular_name_list)
     file_name="t"+str(cur_i)+"_sum.json"
+    if cur_i==str(2):
+        file_name="f"+str(cur_i)+"p_sum_test.json"
     emo_flat_list=emoVal(file_name)
     return {"data": emo_flat_list}
 if __name__ == "__main__":

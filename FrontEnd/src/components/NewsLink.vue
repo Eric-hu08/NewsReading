@@ -59,11 +59,6 @@ export default {
     ])
   },
   beforeMount: function () {
-    var claim_list = window.sysDatasetObj.jsonData.children
-    var claim_markF_list = this.claim_markF_list
-    var evi_show_data = []
-
-
 
 
   },

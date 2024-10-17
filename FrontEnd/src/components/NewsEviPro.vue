@@ -84,15 +84,14 @@ export default {
 
   },
   watch: {
-    displayMode: function () {
-      // console.log('displayMode')
-    },
+
     claim_markF_list: function () {
-      // console.log("claimF change!")
+      console.log("claimF change!")
       var claim_list = window.sysDatasetObj.jsonData.children
       var claim_markF_list = this.claim_markF_list
       var evi_show_data = []
       // var sliderList = []
+
       for (var i = 0; i < claim_markF_list.length; i++) {
         if (claim_markF_list[i] == 1) {
           if (claim_list[i].children.length > 0) {
@@ -104,7 +103,17 @@ export default {
       }
       this.evi_show_data = evi_show_data
       // this.updateEviCoor()
-      // this.sliderList = sliderList
+      if (claim_markF_list.length != this.claim_markF_list_clone.length) { //news change! reset the sliderList
+
+        var sliderList = []
+        for (var i = 0; i < claim_markF_list.length; i++) {
+          sliderList.push(0)
+        }
+        this.claim_markF_list_clone = this.claim_markF_list
+        this.sliderList = sliderList
+        console.log("sliderList reset!len:", sliderList.length)
+      }
+
       // console.log(this.evi_show_data)
     },
 
@@ -116,15 +125,7 @@ export default {
     ])
   },
   beforeMount: function () {
-    // var claim_list = window.sysDatasetObj.jsonData.children
-    // var claim_markF_list = this.claim_markF_list
-    // var evi_show_data = []
-    // for (var i = 0; i < claim_markF_list.length; i++) {
-    //   if (claim_markF_list[i] == 1) {
-    //     evi_show_data.push(claim_list[i])
-    //   }
-    // }
-    // console.log("claimFlist in evi", this.claim_markF_list)
+
 
 
 
@@ -141,6 +142,7 @@ export default {
       sliderList.push(0)
     }
     this.sliderList = sliderList
+    console.log("sliderList len:", this.sliderList.length)
 
   },
   updated() {
@@ -201,15 +203,7 @@ export default {
 
         }
       }
-      // for (var i = 0; i < eviCard.length; i++) {
-      //   console.log("evicard ele ", eviCard[i].$el.id)
-      //   var id_str = eviCard[i].$el.id
-      //   var id_c_index = id_str.slice(2)
-      //   console.log("coor ", eviCard[i].$el.getBoundingClientRect(), id_c_index)
-      //   attr_index_list.push(id_c_index)
-      //   attr_list.push([id_c_index, eviCard[i].$el.getBoundingClientRect()])
 
-      // }
       attr_list.sort(function (a, b) {
         if (a[0] < b[0]) {
           return -1

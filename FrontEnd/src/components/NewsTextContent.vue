@@ -80,15 +80,13 @@ export default {
     }
   },
   watch: {
-    displayMode: function () {
-      console.log('displayMode')
-    },
+
     claimMarkFList: function () {
       this.claim_markF_list = this.claimMarkFList
     },
-    eviModeList: function () {
-      this.evi_mode_list = this.eviModeList
-    },
+    // eviModeList: function () {
+    //   this.evi_mode_list = this.eviModeList
+    // },
     eviIndexArray: function () {
       console.log("watch change ", this.eviIndexArray)
       this.genLink()
@@ -463,20 +461,7 @@ export default {
         return false
       }
     }
-    // genMarkColor(event) {
-    //   let vuethis = this
 
-    //   console.log("ele ", vuethis.$el, vuethis, this)
-    //   var id_str = event.id
-    //   var c_index = parseInt(id_str.slice(1, id_str.length))
-    //   var f_mark = vuethis.claim_markF_list[c_index]
-    //   if (f_mark == 0) {
-    //     return "white"
-    //   }
-    //   else {
-    //     return "grey"
-    //   }
-    // }
   }
 }
 </script>

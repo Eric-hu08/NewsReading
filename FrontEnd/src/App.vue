@@ -69,7 +69,7 @@ export default {
     // let textDataDeferObj = $.Deferred()
     let relationDataDeferObj = $.Deferred()
     let emoValDataDeferObj = $.Deferred()
-    $.when(tabularDataDeferObj, jsonDataDeferObj, relationDataDeferObj, emoValDataDeferObj).then(function () {
+    $.when(tabularDataDeferObj, jsonDataDeferObj, emoValDataDeferObj).then(function () {
       self.loadingData = false
     })
     let tabularDataList = ['*']
@@ -91,11 +91,11 @@ export default {
     //   textDataDeferObj.resolve()
 
     // })
-    getRelationData(self.cur_news_i, function (processed_json_data) {
-      sysDatasetObj.updateRelationData(processed_json_data)
-      relationDataDeferObj.resolve()
+    // getRelationData(self.cur_news_i, function (processed_json_data) {
+    //   sysDatasetObj.updateRelationData(processed_json_data)
+    //   relationDataDeferObj.resolve()
 
-    })
+    // })
     getEmoVal(self.cur_news_i, function (processed_json_data) {
       sysDatasetObj.updateEmoFlatList(processed_json_data)
       emoValDataDeferObj.resolve()
@@ -150,8 +150,8 @@ export default {
       if (index_News == 0) {
         vuethis.cur_news_i = 10
       }
-      else if (index_News == 2) {
-        vuethis.cur_news_i = 19
+      else if (index_News == 1) {
+        vuethis.cur_news_i = 2
       }
       else {
         vuethis.cur_news_i = index_News + 15

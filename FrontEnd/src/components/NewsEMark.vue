@@ -216,10 +216,17 @@ export default {
   },
   mounted: function () {
     var evi_sum_content = this.sumContent(this.evi, this.evi_sum, this.evi_sum_exter)
+    console.log("evi_sum_content: ", evi_sum_content)
     var evi_sum_list = evi_sum_content.split(" ")
     for (var i = 0; i < evi_sum_list.length; i++) {
       var id = this.generateUniqueId()
-      this.evi_sum_list.push({ id: id, text: evi_sum_list[i] });
+      if (i == evi_sum_list.length - 1) {
+        this.evi_sum_list.push({ id: id, text: evi_sum_list[i] + "." });
+      }
+      else {
+        this.evi_sum_list.push({ id: id, text: evi_sum_list[i] });
+      }
+
     }
 
     console.log("mount evi sum list", this.evi_sum_list)
@@ -242,55 +249,20 @@ export default {
       }
     },
     sumContent(evi, evi_sum, evi_sum_exter) {
+      console.log("sumContext: evi: ", evi, evi_sum, evi_sum_exter, this.el_show)
+      //根据概括层级获取内容
       if (this.el_show == 0) {
         evi_sum = evi_sum_exter
       }
       if (evi_sum == 0) {
-        return (evi.name + ".")
+        return (evi.name)
       }
       else {
         var sum_str = "sum" + (evi_sum - 1)
-        return (evi[sum_str] + ".")
+        return (evi[sum_str])
       }
     },
-    ifAdd(index) {
 
-
-      var evi_sum = this.evi_sum
-      console.log("in ifadd", evi_sum)
-      return false;
-      if (evi_sum == 0) return false
-      var attr_str = "diffT" + (evi_sum - 1)
-      var diff_dict = this.evi[attr_str]
-
-      var nxt_list = diff_dict.nxt
-      // console.log("diff_dict", index, attr_str)
-
-      // console.log(nxt_list[index])
-      if (nxt_list[index].tag == "insert") {
-        return true;
-      }
-      return false;
-    },
-    ifDelete(index) {
-
-
-      var evi_sum = this.evi_sum
-      console.log("in delete", evi_sum)
-      return false;
-      if (evi_sum == 0) return false
-      var attr_str = "diffT" + (evi_sum - 1)
-      var diff_dict = this.evi[attr_str]
-
-      var cur_list = diff_dict.cur
-      // console.log("diff_dict", index, attr_str)
-
-      // console.log(nxt_list[index])
-      if (cur_list[index].tag == "delete") {
-        return true;
-      }
-      return false;
-    }
 
 
 
@@ -316,26 +288,20 @@ export default {
     background: grey;
   }
 
-  mark.added {
-    animation: fadeIn 1s ease-in;
-  }
 
-  mark.deleted {
-    animation: fadeOut 1s ease-in;
-  }
 
 
 
 }
 
 .slide-enter-active {
-  transition: all 2s ease;
+  transition: all 1s ease;
   background-color: green !important;
 }
 
 
 .slide-leave-active {
-  transition: all 2s ease;
+  transition: all 1s ease;
   background-color: red !important;
 }
 

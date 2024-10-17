@@ -1,0 +1,231 @@
+{
+    "name": "Our Planet\u2019s Twin Crises",
+    "type": "title",
+    "index": 0,
+    "children": [
+        {
+            "name": "In her last newsletter for the Times, a Climate Forward reporter reflects on the intertwined problems of climate change and biodiversity loss",
+            "type": "C",
+            "index": 1,
+            "children": [],
+            "s_index": 0,
+            "sum0": "A reporter for the Times\u2019 Climate Forward reflects on the linked problems of climate change and biodiversity loss in her last newsletter",
+            "sum1": "A Times Climate Forward reporter contemplates climate change and biodiversity loss in her final newsletter",
+            "sum2": "Times reporter examines climate change and biodiversity loss",
+            "sum3": "Times reporter on climate and biodiversity",
+            "sum4": "Climate and biodiversity issues"
+        },
+        {
+            "name": "Rising temperatures, fueled by global warming, seem to be the driving force behind the powerful drought",
+            "type": "C",
+            "index": 2,
+            "children": [
+                {
+                    "name": "The world\u2019s largest river, the Amazon, has fallen to its lowest level on record in the past few weeks, a development that has shocked experts around the world",
+                    "type": "S",
+                    "index": "1_0",
+                    "children": null,
+                    "sum0": "The world\u2019s largest river, the Amazon, has fallen to its lowest level on record in the past few weeks, a development that has shocked experts around the world",
+                    "sum1": "The largest river, the Amazon, has fallen to its lowest level on record recently, shocking experts globally",
+                    "sum2": "The largest river, the Amazon, has reached its lowest level, shocking experts",
+                    "sum3": "The Amazon's level is now the lowest, shocking experts",
+                    "sum4": "Amazon's level is lowest, shocking experts"
+                },
+                {
+                    "name": "They\u2019re parching the largest freshwater reservoir on the planet, Ana Ionova reported, and pushing the Brazilian government to take drastic measures that were once unthinkable",
+                    "type": "E",
+                    "index": "1_1",
+                    "children": null,
+                    "sum0": "They\u2019re drying the largest freshwater reservoir on the planet, Ana Ionova reported, and urging the Brazilian government to consider extreme measures that were once unthinkable",
+                    "sum1": "They\u2019re drying the biggest freshwater reservoir on Earth, Ana Ionova reported, and urging Brazil\u2019s government to consider extreme steps that were once unthinkable",
+                    "sum2": "They\u2019re drying the largest freshwater reservoir on Earth, and urging Brazil to consider extreme steps",
+                    "sum3": "They\u2019re drying Earth\u2019s largest freshwater reservoir, urging Brazil to act",
+                    "sum4": "They\u2019re drying the largest reservoir, urging action"
+                }
+            ],
+            "s_index": "1",
+            "sum0": "Rising temperatures, driven by global warming, appear to be the driving force behind the powerful drought",
+            "sum1": "Rising temperatures, fueled by global warming, seem to be the driving force behind the powerful drought",
+            "sum2": "Rising temperatures from global warming seem to drive the powerful drought",
+            "sum3": "Temperatures rising from global warming drive drought",
+            "sum4": "Global warming drives drought"
+        },
+        {
+            "name": "But, though climate change has fueled much of the Amazon\u2019s problems, it is also true that deforestation has gradually chipped away at the jungle\u2019s ability to replenish its own water supplies",
+            "type": "C",
+            "index": 3,
+            "children": [
+                {
+                    "name": "The forest can, in fact, create its own rain, researchers have found",
+                    "type": "S",
+                    "index": "2_0",
+                    "children": null,
+                    "sum0": "The forest can, in fact, create its own rain, researchers have found",
+                    "sum1": "The forest can create its own rain, researchers have found",
+                    "sum2": "Forests can create their own rain, researchers found",
+                    "sum3": "Forests create rain, say researchers",
+                    "sum4": "Researchers say forests create rain"
+                }
+            ],
+            "s_index": "2",
+            "sum0": "But, though climate change has fueled much of the Amazon\u2019s problems, it is also true that deforestation has gradually chipped away at the jungle\u2019s ability to replenish its own water supplies",
+            "sum1": "Climate change fuels Amazon\u2019s problems but deforestation also impacts the jungle\u2019s ability to replenish water supplies",
+            "sum2": "Climate change creates Amazon issues; deforestation affects water replenishment",
+            "sum3": "Amazon's water supply suffers from climate change, deforestation",
+            "sum4": "Climate change and deforestation harm Amazon's water cycle"
+        },
+        {
+            "name": "This brings to mind one of the main lessons I\u2019ve learned from reporting on our planet\u2019s environmental catastrophes: The price for the destruction of nature may not be immediately clear, but someone always pays it, and it\u2019s often steeper than government leaders imagined it would be",
+            "type": "C",
+            "index": 4,
+            "children": [
+                {
+                    "name": "I wanted to share that thought with you because, after two and a half years, I am leaving the Climate Forward team for a new role",
+                    "type": "O",
+                    "index": "3_0",
+                    "children": null,
+                    "sum0": "I wanted to share that thought with you as I'm leaving the Climate Forward team, after two and a half years, for a new role",
+                    "sum1": "I wanted to share that I'm leaving the Climate Forward team for a new role after two and a half years",
+                    "sum2": "I wanted to share I'm leaving the Climate Forward team for a new role",
+                    "sum3": "I'm leaving the Climate Forward team for a new role",
+                    "sum4": "I'm leaving for a new role"
+                }
+            ],
+            "s_index": "3",
+            "sum0": "This brings to mind one of the main lessons I\u2019ve learned from reporting on our planet\u2019s environmental catastrophes: The price for the destruction of nature may not be immediately clear, but someone always pays it, and it\u2019s often steeper than government leaders imagined it would be",
+            "sum1": "One lesson from reporting on environmental catastrophes is that the cost of destroying nature may not be clear, but someone pays it, often more than leaders imagined",
+            "sum2": "A key lesson from environmental reporting is that the cost of nature's destruction isn't clear, but someone always pays, often more than imagined",
+            "sum3": "From environmental reporting, the lesson is destruction costs are unclear, but paid, often more than imagined",
+            "sum4": "Environmental lesson: destruction costs unclear, but paid, often more than thought"
+        },
+        {
+            "name": "I write this with a heavy heart, but also with the hope that I helped you see how the world\u2019s two main ecological crises, climate change and biodiversity loss, are interconnected",
+            "type": "C",
+            "index": 5,
+            "children": [
+                {
+                    "name": "Governments are increasingly aware of this",
+                    "type": "O",
+                    "index": "4_0",
+                    "children": null,
+                    "sum0": "Governments are becoming more aware of this",
+                    "sum1": "Governments are increasingly aware of this",
+                    "sum2": "Governments are more aware of this",
+                    "sum3": "Governments aware of this",
+                    "sum4": "Governments aware"
+                },
+                {
+                    "name": "In two weeks, high-ranking officials from around the world will gather in Cali, Colombia, to discuss how countries are doing on their pledge to protect nature at a global biodiversity summit known as COP16",
+                    "type": "O",
+                    "index": "4_1",
+                    "children": null,
+                    "sum0": "In two weeks, high-ranking officials from around the world will gather in Cali, Colombia, to discuss how countries are doing on their pledge to protect nature at a global biodiversity summit known as COP16",
+                    "sum1": "In two weeks, top officials globally will meet in Cali, Colombia, to evaluate countries' progress on their promise to protect nature at the global biodiversity summit, COP16",
+                    "sum2": "In two weeks, top officials will meet in Cali, Colombia, to evaluate how countries are adhering to their promise to protect nature at COP16",
+                    "sum3": "In two weeks, top officials will meet in Cali to evaluate countries' adherence to nature protection at COP16",
+                    "sum4": "In two weeks, top officials will meet in Cali to assess nature protection at COP16"
+                }
+            ],
+            "s_index": "4",
+            "sum0": "I write this with a heavy heart, hoping I helped you see how the world\u2019s two main ecological crises, climate change and biodiversity loss, interconnect",
+            "sum1": "I write with a heavy heart, hoping I helped you see how climate change and biodiversity loss interconnect",
+            "sum2": "I write with hope I helped you see climate change and biodiversity are connected",
+            "sum3": "I hope I helped show climate change and biodiversity connect",
+            "sum4": "I hope I showed climate and biodiversity link"
+        },
+        {
+            "name": "One of Colombia\u2019s goals is for countries to come out of it with a commitment that addresses the biodiversity and the climate crises at the same time",
+            "type": "C",
+            "index": 6,
+            "children": [
+                {
+                    "name": "But with countries falling short on both fronts, it\u2019s a tall order",
+                    "type": "O",
+                    "index": "5_0",
+                    "children": null,
+                    "sum0": "But with countries falling short on both fronts, it\u2019s a tall order",
+                    "sum1": "But with nations falling short on both fronts, it\u2019s a tall task",
+                    "sum2": "With countries falling short, it\u2019s a tall task",
+                    "sum3": "Countries falling short make it challenging",
+                    "sum4": "Countries aren't meeting expectations"
+                }
+            ],
+            "s_index": "5",
+            "sum0": "One of Colombia\u2019s aims is for nations to leave with a pledge addressing both biodiversity and climate crises simultaneously",
+            "sum1": "Colombia wants countries to pledge to address biodiversity and climate together",
+            "sum2": "Colombia desires countries to commit to both biodiversity and climate",
+            "sum3": "Colombia seeks a dual pledge on biodiversity and climate",
+            "sum4": "Colombia wants joint biodiversity-climate goals"
+        },
+        {
+            "name": "Since I joined the Climate Forward team, my goal has been to help you see both the problems and solutions that emerge from this challenge",
+            "type": "C",
+            "index": 7,
+            "children": [
+                {
+                    "name": "We\u2019ve introduced to you a lawyer running afoul of the Indian government to protect forests in courts, Indigenous people in Canada protecting traditions that can help keep ecological disaster at bay, and a government official who had dedicated his life to protect uncontacted tribes in Brazil",
+                    "type": "O",
+                    "index": "6_0",
+                    "children": null,
+                    "sum0": "We\u2019ve introduced to you a lawyer running afoul of the Indian government to protect forests in courts, Indigenous people in Canada protecting traditions that can help keep ecological disaster at bay, and a government official who had dedicated his life to protect uncontacted tribes in Brazil",
+                    "sum1": "We\u2019ve introduced a lawyer challenging the Indian government to protect forests, Indigenous people in Canada preserving traditions to prevent ecological disaster, and a government official dedicated to uncontacted tribes in Brazil",
+                    "sum2": "We've shared a lawyer opposing the Indian government to save forests, Indigenous people in Canada preserving traditions to avert ecological disaster, and an official focused on uncontacted tribes in Brazil",
+                    "sum3": "We've shared a lawyer opposing Indian government for forests, Indigenous preserving traditions for ecology, and an official for uncontacted tribes in Brazil",
+                    "sum4": "We've shared a lawyer against Indian forest policies, Indigenous preserving traditions, and an official for tribes"
+                },
+                {
+                    "name": "We\u2019ve reported on the innovative strategies trying to make the Amazon\u2019s forests more profitable than beef and efforts to introduce nature-related risk to companies\u2019 balance sheets, as well as the debate about how to fix the supply chains of commodities, like chocolate and palm oil, that put ecosystems at risk",
+                    "type": "O",
+                    "index": "6_1",
+                    "children": null,
+                    "sum0": "We\u2019ve reported on the innovative strategies trying to make the Amazon\u2019s forests more profitable than beef and efforts to introduce nature-related risk to companies\u2019 balance sheets, as well as the debate about how to fix the supply chains of commodities, like chocolate and palm oil, that put ecosystems at risk",
+                    "sum1": "We\u2019ve reported on strategies making the Amazon\u2019s forests more profitable than beef and efforts to add nature-related risk to companies\u2019 balance sheets, as well as debates on fixing commodity supply chains, like chocolate and palm oil, that endanger ecosystems",
+                    "sum2": "We\u2019ve discussed strategies making the Amazon\u2019s forests more profitable than beef and adding nature-related risk to balance sheets, plus debates on fixing supply chains that endanger ecosystems",
+                    "sum3": "We\u2019ve discussed strategies to profit from Amazon forests and add nature risks to balance sheets, plus fixing endangering supply chains",
+                    "sum4": "We\u2019ve discussed profiting Amazon forests, nature risks, and supply chains fixes"
+                },
+                {
+                    "name": "We also reported on how to think about personal decisions, whether about owning a car, talking to your neighbors or buying gifts on Christmas; and about the ways governments are rethinking their polices on taxes, fossil fuel subsidies and how we grow our food",
+                    "type": "O",
+                    "index": "6_2",
+                    "children": null,
+                    "sum0": "We also discussed how to think about personal choices, like owning a car, talking to neighbors, or buying Christmas gifts; and how governments are reevaluating policies on taxes, fossil fuel subsidies, and food production",
+                    "sum1": "We discussed thinking about personal choices, such as owning cars, talking to neighbors, and buying gifts; and governments reevaluating tax, fossil fuel, and food policies",
+                    "sum2": "We discussed personal choices, owning cars, and governments' policy reevaluation",
+                    "sum3": "We discussed choices and policy reevaluation",
+                    "sum4": "Choices and policies"
+                }
+            ],
+            "s_index": "6",
+            "sum0": "Since I joined the Climate Forward team, my goal has been to help you see both the problems and solutions that emerge from this challenge",
+            "sum1": "Since joining the team, my goal has been to help you see the problems and solutions from this challenge",
+            "sum2": "Since joining, my goal has been to help you see problems and solutions from this challenge",
+            "sum3": "Since joining, my goal has been to help see problems and solutions",
+            "sum4": "Since joining, my goal is to help see problems and solutions"
+        },
+        {
+            "name": "But some of the newsletters that I cherish the most were the ones you helped me write",
+            "type": "C",
+            "index": 8,
+            "children": [
+                {
+                    "name": "You told us about the wildlife in your communities, the generational differences in your families and how some of you have addressed climate change in your jobs",
+                    "type": "O",
+                    "index": "7_0",
+                    "children": null,
+                    "sum0": "You told us about the wildlife in your communities, the generational differences in your families and how some of you have addressed climate change in your jobs",
+                    "sum1": "You told us about wildlife in communities, generational family differences, and how some addressed climate change in jobs",
+                    "sum2": "You shared about wildlife, family generational differences, and addressing climate change in jobs",
+                    "sum3": "You talked about wildlife, family differences, and climate change",
+                    "sum4": "You discussed wildlife and climate change"
+                }
+            ],
+            "s_index": "7",
+            "sum0": "But some of the newsletters that I cherish the most were the ones you helped me write",
+            "sum1": "Some newsletters I cherish the most were ones you helped write",
+            "sum2": "Newsletters I cherish most were ones you helped write",
+            "sum3": "Newsletters I cherish were ones you helped",
+            "sum4": "Cherished newsletters you helped"
+        }
+    ]
+}
