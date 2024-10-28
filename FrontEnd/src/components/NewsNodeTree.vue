@@ -215,7 +215,7 @@ export default {
             height: nodeHeight,
             // fill: '#1b9e77',
             fill: '#bbdefb',
-            text: 'C' + node.index,
+            text: 'C' + node['s-index'],
             textX: cur_x + nodeWidth / 2,
             textY: cur_y + nodeHeight / 2,
           });

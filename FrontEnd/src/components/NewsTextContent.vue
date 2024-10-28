@@ -226,11 +226,13 @@ export default {
 
         var evi_coor_list = eviIndexArray[i][1]
         var g = d3.select(".linkSvg").append("g").attr("class", "linkG")
-
+        var rect_height = claim_coor_list[claim_i].height - 10
+        // if (rect_height < 8) rect_height = 18
         g.append("rect")
           .attr("x", rect_x).attr("y", claim_coor_list[claim_i].y - svg_attr.y + 10)
+          // .attr("x", rect_x).attr("y", claim_coor_list[claim_i].y - svg_attr.y)
           .attr("width", pathRect_width)
-          .attr("height", claim_coor_list[claim_i].height - 10)
+          .attr("height", rect_height)
           .attr("rx", 1).attr("ry", 2)
           .attr("stroke", "grey")
           .attr("fill", "grey")
