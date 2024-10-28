@@ -295,13 +295,13 @@ export default {
 }
 
 .slide-enter-active {
-  transition: all 1s ease;
+  transition: all 1.5s ease;
   background-color: green !important;
 }
 
 
 .slide-leave-active {
-  transition: all 1s ease;
+  transition: all 1.5s ease;
   background-color: red !important;
 }
 

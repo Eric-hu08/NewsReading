@@ -35,7 +35,7 @@ export default {
       // console.log('claimMarkFList', this.claimMarkFList)
       let vuethis = this
       d3.select("body").select(".curve-svg").selectAll(".cNode").classed("highLighted", function (d) {
-
+        //返回true则虚化，返回false不虚化
         var f_0 = 0
         for (var i = 0; i < vuethis.claimMarkFList.length; i++) {
           if (vuethis.claimMarkFList[i] != 0) {
@@ -68,8 +68,55 @@ export default {
           return true;
 
         }
+      })
+      d3.select("body").select(".curve-svg").selectAll(".cNode").classed("highLightOn", function (d) {
+        //返回true则高亮，返回false不高亮
+        var f_0 = 0
+        for (var i = 0; i < vuethis.claimMarkFList.length; i++) {
+          if (vuethis.claimMarkFList[i] != 0) {
+            f_0 = 1
+            break;
+          }
+        }
+        if (f_0 == 0) {
+          return false;
+        }
+        if (vuethis.HLEList.length == 0) { //click claim
+          if (d.id.indexOf("C") != -1) {
+            var c_index = parseInt(d.id.slice(1)) - 1
+            if (vuethis.claimMarkFList[c_index] == 1) {
+              return true;
+            }
+          }
+          return false;
+        }
+        else {   //click evidence
+          var c_index = vuethis.HLEList[0].c_index
+          var e_index = vuethis.HLEList[0].e_index
+          if (d.id.indexOf("C") != -1) return false;
+          var cur_c_i = parseInt(d.id.split("-")[0])
+          var cur_e_i = parseInt(d.id.split("-")[1])
+          console.log("cur_c_i", c_index, cur_c_i, "cur_e_i", e_index, cur_e_i)
+          if ((cur_c_i == c_index) && (cur_e_i == e_index)) {
+            return true;
+          }
+          return false;
 
+        }
+      })
 
+      d3.select("body").select(".curve-svg").selectAll("path").classed("highLighted", function (d) {
+        var f_0 = 0
+        for (var i = 0; i < vuethis.claimMarkFList.length; i++) {
+          if (vuethis.claimMarkFList[i] != 0) {
+            f_0 = 1
+            break;
+          }
+        }
+        if (f_0 == 0) {
+          return false;
+        }
+        return true
       })
     },
     cur_i_change: function () {
@@ -126,8 +173,20 @@ export default {
         var word_len = tree_data[i].name.length
         word_len_list.push(word_len)
         total_length += word_len
-        node_type_list.push(tree_data[i].type)
-        flat_c_mark_list.push(1)
+        if (tree_data[i]['s-index'] == 0) {
+          node_type_list.push("MC")
+          flat_c_mark_list.push(1)
+        }
+        else if (tree_data[i]['s-index'] && tree_data[i]['s-index'].includes('-')) {
+          node_type_list.push("SC")
+          flat_c_mark_list.push(0)
+        }
+        else {
+          node_type_list.push(tree_data[i].type)
+          flat_c_mark_list.push(1)
+        }
+
+
         flat_type_list.push("C" + tree_data[i].index)
 
         for (var j = 0; j < tree_data[i].children.length; j++) {
@@ -201,6 +260,7 @@ export default {
 
         .attr("d", "M" + vuethis.divW / 2 + "," + x_start + "L" + vuethis.divW / 2 + "," + tree_height)
         .attr("stroke", "black")
+        .attr("class", "mainLine")
         .attr("fill", "none");
 
       const node_bind_data = emo_flat_list.map((item, index) => ({
@@ -236,9 +296,11 @@ export default {
           // console.log("mouse over!", event)
           var id_str = event.target.id
           // console.log("id str!!", id_str)
+          id_str = d.node_type
           if (id_str.indexOf("C") == -1) {
             id_str = id_str.slice(-1)
           }
+
           var d_content = id_str + ":" + d.emo
           document.getElementById("tooltip").innerText = `${d_content}`;
           var tooltip = document.getElementById("tooltip");
@@ -327,8 +389,14 @@ export default {
 
     },
     eNodeColor(e_type) {
+      if (e_type.indexOf('M') != -1) {
+        return "#fff9c4"
+      }
+
       if (e_type.indexOf('C') != -1) {
-        return "#1b9e77"
+        if (e_type.indexOf('S') != -1) return '#fde0c3'
+        // return "#1b9e77"
+        return "#bbdefb"
       }
       if (e_type.indexOf('S') != -1) {
         return "#66a61e"
@@ -371,13 +439,34 @@ export default {
   }
 
   .cNode {
-    stroke-width: 1;
+    // stroke-width: 1;
     stroke: black;
     opacity: 1;
 
     &.highLighted {
-      opacity: 0.2;
+
+      // opacity: 0.4;
+      stroke-width: 0;
+      fill: #ebebeb
+    }
+
+    &.highLightOn {
+      stroke-width: 1.5;
     }
   }
+
+  path {
+    &.highLighted {
+      // opacity: 0.05;
+      stroke: #ebebeb;
+
+      &.mainLine {
+        stroke-dasharray: 5, 5;
+      }
+    }
+
+  }
+
+
 }
 </style>

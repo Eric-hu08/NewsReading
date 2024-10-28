@@ -10,8 +10,11 @@
 
       <el-card class="mainTextCard" v-if="mainText_mode">
         <template v-for="(claim, c_index) in claim_list">
-          <mark class="mainMark" :class="{ 'paragraphHighlight': ifMark(c_index) }" ref="mainMark" :id="'C' + c_index"
-            @mouseover="textMouseOver" @mouseout="textMouseOut" @click="textClick">
+          <mark class="mainMark" :class="{
+            'paragraphHighlight': ifMark(c_index),
+            'bold': isBold(claim),
+            'underline': isUnderline(claim)
+          }" ref="mainMark" :id="'C' + c_index" @mouseover="textMouseOver" @mouseout="textMouseOut" @click="textClick">
             {{ sumContent(claim, main_sum) }}
 
           </mark>
@@ -22,7 +25,9 @@
         </el-icon> -->
       </el-card>
       <div class="node_card" v-if="!mainText_mode">
-        <el-card class="mainTextCard" v-for="(claim, c_index) in claim_list" :key="claim.name" :id="'C' + c_index">
+        <el-card class="mainTextCard" :class="{ 'indentClaim': claim['s-index'] == 0 }"
+          v-for="(claim, c_index) in claim_list" :key="claim.name" :id="'C' + c_index"
+          :style="{ 'margin-left': calIndent(claim) + 'px!important' }">
           <mark class="mainMark" :class="{ 'paragraphHighlight': ifMark(c_index) }" ref="mainMark" :id="'C' + c_index"
             @mouseover="textMouseOver" @mouseout="textMouseOut" @click="textClick">
             {{ sumContent(claim, main_sum) }}
@@ -48,6 +53,7 @@ import { ref } from 'vue';
 import NewsEviPro from './NewsEviPro.vue';
 import NewsLink from './NewsLink.vue';
 import { watch } from 'less';
+import { transition } from 'd3';
 
 
 export default {
@@ -65,7 +71,8 @@ export default {
   data() {
     return {
       mainText_mode: ref(true),
-      card_width: '480px',
+      card_width: '480',
+      indent_r: 0.03,
       claim_list: [],
       claim_markF_list: [],
       activeIndex: null,
@@ -75,7 +82,7 @@ export default {
       min_sum: ref(0),
       max_sum: ref(5),
 
-      pathRect_width: 0.05,
+      pathRect_width: 0.1,
       pathRect_end_h_r: 0.99,
     }
   },
@@ -133,7 +140,7 @@ export default {
   mounted: function () {
     const divW = this.$refs.mainTextContent.clientWidth
     const divH = this.$refs.mainTextContent.clientHeight
-    this.card_width = divW + 'px';
+    this.card_width = divW;
 
 
   },
@@ -142,6 +149,32 @@ export default {
     this.genLink()
   },
   methods: {
+    calIndent(claim) {
+      if (claim['s-index'] == 0) {
+        return 0
+      }
+      else if (claim['s-index'] && claim['s-index'].includes('-')) {
+        return this.indent_r * this.card_width * 2.5
+      }
+      else {
+        return this.indent_r * this.card_width * 1
+      }
+    },
+    isBold(claim) {
+      if (claim['s-index'] == 0) {
+        return true
+      }
+      else if (claim['s-index'] && claim['s-index'].includes('-')) {
+        return false
+      }
+      return true
+    },
+    isUnderline(claim) {
+      if (claim['s-index'] == 0) {
+        return true
+      }
+      return false
+    },
     sumContent(claim, main_sum) {
       if (main_sum == 0) {
         return (claim.name + ".")
@@ -204,7 +237,8 @@ export default {
 
         g.append("text")
           .attr("x", rect_x + pathRect_width / 2).attr("y", claim_coor_list[claim_i].y - svg_attr.y + claim_coor_list[claim_i].height / 2)
-          .text("C" + claim_list[claim_i].index)
+          // .text("C" + claim_list[claim_i].index)
+          .text(getCText(claim_list[claim_i]))
           .style("font-size", "8px")
           .style("fill", "white")
           .style("text-anchor", "middle")
@@ -213,6 +247,17 @@ export default {
           // .style("font-style", "italic")
           .style("dominant-baseline", "middle")
 
+        function getCText(claim) {
+          if (claim['s-index'] == 0) {
+            return "MC"
+          }
+          else if (claim['s-index'] && claim['s-index'].includes('-')) {
+            return "SC" + claim['s-index']
+          }
+          else {
+            return "C" + claim['s-index']
+          }
+        }
 
         if (claim_list[claim_i].children.length > 1) {
           g.append("circle")
@@ -513,8 +558,12 @@ export default {
     right: 60%;
     text-align: left;
 
+    &.indentClaim {
+      // margin-left: 20px;
+    }
+
     .mainTextCard {
-      max-width: v-bind(card_width);
+      max-width: v-bind(card_width)+'px';
 
     }
 
@@ -580,5 +629,13 @@ export default {
 
 .mainTextDiv::-webkit-scrollbar-thumb:hover {
   background-color: #555;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.underline {
+  text-decoration: underline;
 }
 </style>

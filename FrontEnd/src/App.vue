@@ -48,9 +48,10 @@ export default {
   },
   data() {
     return {
-      appName: "News Reader",
-      operationArray: ['News1', 'News2', 'News3'],
-      cur_news_i: 10,
+      appName: "LivingNews",
+      // operationArray: ['News1', 'News2', 'News3'],
+      operationArray: ['', '', ''],
+      cur_news_i: 1,
       cur_i_change: 1,
       activeIndex: '',
       loadingData: true,
@@ -97,6 +98,10 @@ export default {
 
     // })
     getEmoVal(self.cur_news_i, function (processed_json_data) {
+      if (self.cur_news_i == 1) {
+        var temp_emo_list = [-0.5, -0.6, -0.7, -0.8, -0.8, -0.4, -0.5, -0.4, -0.5, -0.2, -0.8, 0, -0.2, -0.3, -0.5, -0.4, -0.6, -0.2, -0.4, -0.3, -0.2, -0.3, -0.5, -0.1, 0, 0, -0.4, -0.2]
+        processed_json_data = temp_emo_list
+      }
       sysDatasetObj.updateEmoFlatList(processed_json_data)
       emoValDataDeferObj.resolve()
 
@@ -124,7 +129,12 @@ export default {
         jsonDataDeferObj.resolve()
         vuethis.jsonData = processed_json_data
       })
-      getEmoVal(this.cur_news_i, function (processed_json_data) {
+      getEmoVal(this.cur_news_i, (processed_json_data) => {
+        console.log("cur_news_i in getEmoVal", this.cur_news_i)
+        if (this.cur_news_i == 1) {
+          var temp_emo_list = [-0.5, -0.6, -0.7, -0.8, -0.8, -0.4, -0.5, -0.4, -0.5, -0.2, -0.8, 0, -0.2, -0.3, -0.5, -0.4, -0.6, -0.2, -0.4, -0.3, -0.2, -0.3, -0.5, -0.1, 0, 0, -0.4, -0.2]
+          processed_json_data = temp_emo_list
+        }
         sysDatasetObj.updateEmoFlatList(processed_json_data)
         emoValDataDeferObj.resolve()
 
@@ -151,7 +161,7 @@ export default {
         vuethis.cur_news_i = 10
       }
       else if (index_News == 1) {
-        vuethis.cur_news_i = 2
+        vuethis.cur_news_i = 1
       }
       else {
         vuethis.cur_news_i = index_News + 15

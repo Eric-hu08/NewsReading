@@ -279,6 +279,11 @@ a {
   background-color: #555;
 }
 
+.EviDiv {
+  .el-slider {
+    --el-slider-button-size: 15px
+  }
+}
 
 .EviCard {
 

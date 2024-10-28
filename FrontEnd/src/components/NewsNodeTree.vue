@@ -54,22 +54,24 @@ export default {
 
     },
     claimMarkFList: function () {
-      // console.log('claimMarkFList', this.claimMarkFList)
+      console.log('claimMarkFList in NNT watch', this.claimMarkFList)
       let vuethis = this
       d3.select("body").select(".treeSvg").selectAll(".treeNodeGroup").classed("highLighted", function (d) {
-
+        //返回true则虚化，返回false不虚化
         var f_0 = 0
         for (var i = 0; i < vuethis.claimMarkFList.length; i++) {
           if (vuethis.claimMarkFList[i] != 0) {
             f_0 = 1
+
             break;
           }
         }
         if (f_0 == 0) {
-          return false;
+          return false;   //看CMF是否有为1的，有则说明有点击，无则所有都不虚化
         }
+
         if (vuethis.HLEList.length == 0) { //click claim
-          if (d.type === "diamond") {
+          if (d.type === "diamond" || d.type === "star" || d.type === "triangle") {
             var c_index = parseInt(d.index) - 1
             if (vuethis.claimMarkFList[c_index] == 1) {
               return false;
@@ -80,7 +82,7 @@ export default {
         else {
           var c_index = vuethis.HLEList[0].c_index
           var e_index = vuethis.HLEList[0].e_index
-          if (d.type === "diamond") return true;
+          if (d.type === "diamond" || d.type === "star" || d.type === "triangle") return true;
           if ((d.index == e_index) && (d.c_index == c_index)) {
             return false;
           }
@@ -154,20 +156,71 @@ export default {
         const node = tree_data[i];
         const nodeWidth = this.tree_width;
         const nodeHeight = node.name.length * h_r;
+        console.log("s-index", node['s-index'])
+        if (node['s-index'] == 0) {
+          const numPoints = 5; // 五角星的顶点数
+          const radius = nodeWidth / 2; // 五角星的半径
+          const angle = (2 * Math.PI) / numPoints; // 每个顶点的角度
 
-        // 菱形信息
-        node_data.push({
-          type: 'diamond',
-          index: node.index,
-          x: nodeWidth / 2 + cur_x,
-          y: cur_y,
-          width: nodeWidth,
-          height: nodeHeight,
-          fill: '#1b9e77',
-          text: 'C' + node.index,
-          textX: cur_x + nodeWidth / 2,
-          textY: cur_y + nodeHeight / 2,
-        });
+          // 计算五角星的顶点坐标
+          const points = [];
+          for (let i = 0; i < numPoints * 2; i++) {
+            const isOuterPoint = i % 2 === 0;
+            const r = isOuterPoint ? radius : radius / 2;
+            const x = cur_x + nodeWidth / 2 + r * Math.cos(i * angle);
+            const y = cur_y + nodeHeight / 2 + r * Math.sin(i * angle);
+            points.push({ x, y });
+          }
+
+          // 将顶点坐标转换为字符串形式
+          const pointsStr = points.map(point => `${point.x},${point.y}`).join(' ');
+
+          node_data.push({
+            type: 'star',
+            index: node.index,
+            x: cur_x + nodeWidth / 2,
+            y: cur_y + nodeHeight / 2,
+            width: nodeWidth,
+            height: nodeHeight,
+            fill: '#fff9c4',
+            text: 'MC',
+            textX: cur_x + nodeWidth / 2,
+            textY: cur_y + nodeHeight / 2,
+            points: pointsStr,
+          });
+        }
+        else if (node['s-index'] && node['s-index'].includes("-")) {
+          node_data.push({
+            type: 'triangle',
+            index: node.index,
+            x: cur_x + nodeWidth / 2,
+            y: cur_y + nodeHeight / 2,
+            width: nodeWidth,
+            height: nodeHeight,
+            fill: '#fde0c3',
+            text: 'SC' + node['s-index'],
+            textX: cur_x + nodeWidth / 2,
+            textY: cur_y + nodeHeight / 2 * 1.2,
+            points: '', // 三角形的顶点坐标字符串，可以在这里计算或在后续处理中计算
+          });
+        }
+        else {
+          // 菱形信息
+          node_data.push({
+            type: 'diamond',
+            index: node.index,
+            x: nodeWidth / 2 + cur_x,
+            y: cur_y,
+            width: nodeWidth,
+            height: nodeHeight,
+            // fill: '#1b9e77',
+            fill: '#bbdefb',
+            text: 'C' + node.index,
+            textX: cur_x + nodeWidth / 2,
+            textY: cur_y + nodeHeight / 2,
+          });
+        }
+
 
         cur_y += nodeHeight + this.tree_inter;
 
@@ -204,6 +257,7 @@ export default {
         .enter()
         .append("g")
         .attr('class', 'treeNodeGroup')
+
         .on('click', function (d) {
           if (d.type === 'diamond') {
             var c_index = parseInt(d.index) - 1
@@ -256,9 +310,17 @@ export default {
           // return document.createElement("rect")
           if (d.type === 'diamond') {
             return document.createElementNS('http://www.w3.org/2000/svg', 'path')
-          } else {
+          }
+          else if (d.type === 'star') {
+            return document.createElementNS('http://www.w3.org/2000/svg', 'path')
+          }
+          else if (d.type === 'triangle') {
+            return document.createElementNS('http://www.w3.org/2000/svg', 'path')
+          }
+          else {
             return document.createElementNS('http://www.w3.org/2000/svg', 'rect')
           }
+
         }
       )
         .attr('class', 'treeNode')
@@ -271,6 +333,47 @@ export default {
                L ${d.x - d.width / 2},${d.y + d.height / 2}
                Z`;
           }
+          else if (d.type == 'star') {
+            const numPoints = 5; // 五角星的顶点数
+            const outerRadius = d.width / 2; // 五角星的外半径
+            const innerRadius = outerRadius / 2 * 1.2; // 五角星的内半径
+            const angle = (2 * Math.PI) / numPoints; // 每个顶点的角度
+            const startAngle = -Math.PI / 2; // 调整初始角度，使五角星的一个顶点位于上方
+
+            let points = '';
+            for (let i = 0; i < numPoints; i++) {
+              const outerX = d.x + outerRadius * Math.cos(startAngle + i * angle);
+              const outerY = d.y + outerRadius * Math.sin(startAngle + i * angle);
+              const innerX = d.x + innerRadius * Math.cos(startAngle + (i * angle + angle / 2));
+              const innerY = d.y + innerRadius * Math.sin(startAngle + (i * angle + angle / 2));
+
+              if (i === 0) {
+                points += `M ${outerX},${outerY} L ${innerX},${innerY} `;
+              } else {
+                points += `L ${outerX},${outerY} L ${innerX},${innerY} `;
+              }
+            }
+            return `${points}Z`;
+          }
+          else if (d.type === 'triangle') {
+            const numPoints = 3; // 三角形的顶点数
+            // const radius = d.width / 2; // 三角形的半径
+            const radius = d.width / Math.sqrt(3); // 三角形的半径
+            const angle = (2 * Math.PI) / numPoints; // 每个顶点的角度
+            const startAngle = -Math.PI / 2; // 调整初始角度，使三角形的一个顶点位于上方
+
+            let points = '';
+            for (let i = 0; i < numPoints; i++) {
+              const x = d.x + radius * Math.cos(startAngle + i * angle);
+              const y = d.y + radius * Math.sin(startAngle + i * angle);
+              if (i === 0) {
+                points += `M ${x},${y} `;
+              } else {
+                points += `L ${x},${y} `;
+              }
+            }
+            return `${points}Z`;
+          }
         })
         .attr("fill", function (d) { return d.fill; })
         .attr("x", function (d) { return d.x; })
@@ -279,7 +382,9 @@ export default {
         .attr("height", function (d) { return d.type === 'diamond' ? null : d.height; }) // 对菱形忽略高度
         // .attr("width", function (d) { return d.width; }) // 对菱形忽略宽度
         // .attr("height", function (d) { return d.height; }) // 对菱形忽略高度
-        .attr("opacity", function (d) { return d.opacity; });
+        .attr("opacity", function (d) { return d.opacity; })
+        .attr('stroke', 'black')
+        .attr('stroke-width', '1px')
 
       // // 文本
       nodeGroups.selectAll("text")
@@ -289,8 +394,22 @@ export default {
         .attr("x", function (d) { return d.textX; })
         .attr("y", function (d) { return d.textY; })
         .text(function (d) { return d.text; })
-        .style("font-size", "8px")
-        .style("fill", "white")
+        .style("font-size", function (d) {
+          if (d.type === 'triangle') {
+            return '6px'
+          }
+          else {
+            return '8px'
+          }
+        })
+        .style("fill", function (d) {
+          if (d.type === 'diamond' || d.type === 'star' || d.type === 'triangle') {
+            return "black"
+          }
+          else {
+            return "black"
+          }
+        })
         .style("text-anchor", "middle")
         .style("font-weight", "bold")
         .style("font-family", "sans-serif")

@@ -4,7 +4,7 @@ def readJson(mp_level,cur_i):
     print(cur_i)
     if int(cur_i)== 10:
         file_name="t"+str(cur_i)+"_diff.json"
-    elif int(cur_i)==2:
+    elif int(cur_i)==1:
         file_name="f"+str(cur_i)+"p_diff.json"
     # file_name="t1"+".json"
     # file_name="t10_correct.json"
