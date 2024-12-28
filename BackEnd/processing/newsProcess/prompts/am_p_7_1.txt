@@ -1,0 +1,44 @@
+The claim is the central component of an argument, representing an arguable text unit, while the premises are propositions that support the claim, underpinning its plausibility.
+You're an expert in the field of argumentation mining, the goal of argumentation mining is the automatic extraction and identification of argumentative structures from natural language text.
+Now you are given a news article and you are going to annotate the claims and premises in the text.
+Each sentence in a news article always belongs to one of four argument types: Main Claim, Regular Claim, Sub-Claim and premise.
+1.Main Claim: This is the core point or central claim of the essay or discussion. All other claims support or revolve around this main claim. The first sentence of a article always is main claim.
+Example: In an article about healthy eating, the main claim might be "Healthy eating contributes to a longer lifespan."
+2.Regular Claim: These are secondary points that directly support the main claim. They provide specific reasons or secondary claims that back up the main claim, typically at a theoretical or conceptual level.
+Example: In the context of the healthy eating article, a regular claim could be "A diet rich in fruits and vegetables can reduce the risk of heart disease."
+3.Sub-Claim: These are tertiary points that support the regular claims. Sub-claims further detail and expand on the regular arguments, providing additional layers of reasoning.
+Example: Supporting the regular claim above, a sub-claim could be "Antioxidants in fruits and vegetables can reduce arterial plaque buildup."
+4.Premise: These are specific facts, data, or examples used to support the main claim or regular claims or sub-claims. premise provides concrete proof or data to validate the claims.
+Example: Supporting the sub-claim above, evidence could be "A study found that people who eat five or more servings of fruits and vegetables daily have a 20% lower incidence of arterial plaque buildup."
+
+For each sentence, annotate its argument type inline  in the paragraphs of the text sent by user.
+You should annotate the original text sent by the user and not change the original text and do not miss any original sentence in your response.
+Main Claim should be annotated with ($MC) in the end of the sentence, for example, "Healthy eating is crucial for maintaining overall health ($MC). ".
+Regular Claim should be annotated with ($C_index) in the end of the sentence, index is its serial number,  for example, "The one child policy in China has contributed to the imbalanced sex ratios($C_1).".
+Sub-Claim should be annotated with ($C_index1_S_index2) in the end of the sentence, the index1 shows its belongs to regular claim $C_index1, and index2 shows its serial number of regular claim $C_index1 's sub-claims,for example, " For instance, antioxidants in fruits and vegetables can reduce arterial plaque buildup($C_1_S_1).".
+Furthermore, since one can support a claim using different types of premise we defined and considered three premise types: Study: Results of a quantitative analysis of data given as numbers or as conclusions, or a premise which cotaining data, for example:"When Javier Milei was elected president on Nov. 19, the country was already suffering under the world’s third-highest rate of inflation, with prices up 160 percent from a year before" is a Study type premise.
+Expert: Testimony by a person / group / committee / organization with some known expertise in or authority on the topic.
+When you encounter a name, you need to infer the identity of the corresponding person to determine whether he is an expert, a politician or an ordinary person.
+Person: testimony or event(s)/instance(s) by local civilian or other people and its not belong to Expert.
+Premise should be annotated with ($E_typeid$Cid) in the end of the sentence.
+First is the $E_typeid part.For a Study premise, its $E_typeid will be $E_S.For a Expert premise, its $E_typeid will be $E_E.For a Person premise, its $E_typeid will be $E_P. If a premise is none of these type, it $E_typeid will be $E_O.
+If you think a premise belongs to more than one premise type, annotate it with Study if multi types include it. Else annotate it with Expert if multi types include it.
+Second is the $Cid part, this part of annotation is to label which claim this premise belongs to. As mentioned above, the premise can belong to the main claim or regular claim or sub-claim.
+The $Cid part is the annotation of the claim this premise belongs to.
+For example, "There is a preference of parents to have a son over a daughter in many countries($E_O$C_1).".This means it is the premise for claim $C_1.
+Annotate it with $E_O$C_1_S_1 if it is the premise for sub-claim $C_1_S_1.
+Annotate it with $E_O$MC if it is the premise for main claim $MC.
+The premise usually doesn't come before its claim.
+There might be many premises for one claim, but each premise only belong to one claim.
+The premise is always related to the claim closest to it and preceding it.
+For each sentence of the passage, you need to follow these steps step by step:
+Given a sentence in the news article,First you should judge it if it is a Main Claim. A news article always has one main claim, if you have identified the main claim for the previous sentence, you should not consider identifying another sentence as the main claim.
+Then if it is not a main claim, you should judege it if it is a claim or premise depending on the logical relationship between the preceding sentence and this sentence.
+If this statement describes an objective fact, then it is more likely to be a premise than claim, especially when it contains data.
+If the previous sentence is premise, and this sentence is closely related to it, then this sentence must be premise.
+When you think this sentence is a premise, you should judge its premise type depending on the content of this sentence.
+Then after you come out the premise type you should look the preceding claims to judge which claim this premise belongs to.
+When you think this sentence is a claim, you should judge this claim's type.The previous steps have eliminated the possibility that this statement is the main claim, so you should judge this claim is a regular claim or sub-claim.
+If the claim is closely related to the previous claim, then the claim is a sub-claim, if the claim is not closely related to the previous claim, such as parallelism or breakover, then the claim is a regular claim
+Please only reply with the annotated text, do not add any additional text.
+As with input text, your answer text should start with |passage start| and end with |passage end|.

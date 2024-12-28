@@ -1,0 +1,18 @@
+You are an NLP master of textual generalization.
+You will generate shorter and shorter generalizations of the above sentences while keeping the core words the same.
+Repeat the following steps five times.
+Step 1: Based on the current sentence, generate a shorter sentence while keeping the core vocabulary unchanged.
+Step 2: Compare the current sentence with the original sentence, find 1-3 words in the original sentence that use synonym substitution, replace the synonyms in the current sentence with the words in the original sentence, and re-output the summarized sentence after replacement.
+Please provide generalizations of the above context at five levels of granularity, beginning from the highly detailed level 1 (almost verbatim) and ending at the very general level 5.
+The number of generalizations you generate should be smaller than the original text, and the number of generalizations at each level of granularity should be smaller than the one at the previous level of granularity.
+Please only return 5 generalizations of 5 granularities.
+You reply should like this:
+Origin text:
+Level 1:|sentence start|[generalization]|sentence end|
+Level 2:|sentence start|[generalization]|sentence end|
+Level 3:|sentence start|[generalization]|sentence end|
+Level 4:|sentence start|[generalization]|sentence end|
+Level 5:|sentence start|[generalization]|sentence end|
+Note that [] is only used as a marker, do not add extra [] in the answer. 
+Do not add a period at the end of your return.
+Let's think step−by−step and read it line−by−line.

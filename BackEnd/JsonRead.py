@@ -2,14 +2,10 @@ import json
 
 def readJson(mp_level,cur_i):
     print(cur_i)
-    if int(cur_i)== 10:
-        file_name="t"+str(cur_i)+"_diff.json"
-    elif int(cur_i)==1:
-        file_name="f"+str(cur_i)+"p_diff.json"
-    # file_name="t1"+".json"
-    # file_name="t10_correct.json"
-    # file_name="t10_sum.json"
-    file_path="./"+file_name
+    file_name="news"+str(cur_i)+"_diff.json"
+
+  
+    file_path="./news/processed/news"+str(cur_i)+'/'+file_name
     fp=open(file_path,"r",encoding='utf-8')
     # print(fp)
     jsondata=json.load(fp)

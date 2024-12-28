@@ -544,7 +544,7 @@ export default {
       max-width: 40%;
       position: absolute;
       top: 0%;
-      left: 30%;
+      left: 35%;
       bottom: 95%;
       right: 50%;
     }
